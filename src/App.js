@@ -1,21 +1,27 @@
-/* import { Routes, Route, Navigate} from 'react-router-dom';
-import Layout from './layout/Layout'; */
+import { Route, Routes } from "react-router-dom";
+import LoginPage from "./components/auth/LoginPage";
+import RequireAuth from "./components/auth/RequiteAuth";
+import Layout from "./components/layout/Layout";
 
 function App() {
   return (
     
-    <div className="App">
-        {/* <Routes >
-          <Route path ='/login' />
-          <Route path = '/adverts' element={<Layout />}/>
-
-            
+      <div className="App" >
+        <Routes>
+          <Route path ='/login' element={<LoginPage />}/>
+          <Route path='/'
+        element={
+          <RequireAuth>
+            <Layout />
+          </RequireAuth>
+        }>
+        <Route index path='/'/>
+        
+      </Route>
+        </Routes>
           
-          <Route path='/' element={<Navigate to='/adverts'/>}/>
-          <Route path='/404' element={<h1>404 | Not Found</h1>}/>
-          <Route path='*' element={<Navigate to='/404'/>}/>
-        </Routes> */}
-    </div>
+      </div>
+    
   );
     
 }
