@@ -1,6 +1,6 @@
 import Page from "../layout/Page";
 import { useEffect } from "react";
-import { fetchAllAdverts } from "../store/slices/adverts";
+import { fetchAllAdverts } from "../../store/slices/adverts";
 import { useDispatch, useSelector } from "react-redux";
 
 // const adverts = [
@@ -49,7 +49,7 @@ const AdvertsPage = ({ ...props }) => {
 
   useEffect(() => {
     dispatch(fetchAllAdverts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Page title="UWUNTU GAMES" {...props}>
