@@ -25,4 +25,10 @@ const client = axios.create({
     delete client.defaults.headers.common['Authorization'];
   };
 
+  export const configureClient = ({ token }) => {
+    if (token) {
+      setAuthorizationHeader(token);
+    }
+  };
+
 export default client;
