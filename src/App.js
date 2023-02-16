@@ -5,6 +5,7 @@ import Layout from "./components/layout/Layout";
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import RegisterPage from "./components/auth/RegisterPage";
 import ProfilePage from "./components/ProfilePage";
+import AdvertDetail from "./components/adverts/AdvertDetail";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             
             <Route path='/adverts' element={ <Layout />}/>
             <Route index element={<AdvertsPage />}/>
+            <Route path=":advertId" element={<AdvertDetail />} />
           </Route>
           <Route path ='/login' element={<LoginPage />}/>
           <Route path='/register' element={<RegisterPage />} />
@@ -30,7 +32,7 @@ function App() {
           
       </div>
     
-  );
-}
 
-export default App;
+  )}
+
+  export default App;
