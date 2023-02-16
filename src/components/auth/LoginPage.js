@@ -1,86 +1,66 @@
-import { useState } from "react"
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
-import { authLogin } from "../../store/slices/auth";
-import { login } from "./service";
-
+import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import Error from '../Error'
+import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { userLogin } from '../../store/actions/authActions'
 
 const LoginPage = () => {
-    
+  const { loading,userInfo, error } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
 
-    const [name, setUsername] = useState('')
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [remember, setRemember] = useState(false)
+  const { register, handleSubmit } = useForm()
 
-    const handleChangeUsername = event => setUsername(event.target.value);
-    const handleChangePassword = event => setPassword(event.target.value);
-    
-    const resetError = () => setError(null);
-    const location = useLocation();
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    
-    const handleRemember = () => setRemember(!remember)
+  const navigate = useNavigate()
 
-    const handleSubmit = async event => {
-        event.preventDefault();
-        try {
-            resetError();
-            setIsLoading(true);
-            const userData = await login({name,password,remember})
-            dispatch(authLogin({...userData,name}));
-            const to = location.state?.from?.pathname || '/';
-            navigate(to, { replace: true });
-            
+  // redirect authenticated user to profile screen
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/')
+    }
+  }, [navigate, userInfo])
 
-        } catch (error) {
-            setError(error);
-            setIsLoading(false);
-            
-        }
+  const submitForm = (data) => {
+    dispatch(userLogin(data))
+  }
 
-    };
 
     return <div className="login-form">
         <h1> Log In </h1>
-        <form onSubmit={handleSubmit}>
-            <input 
-            type="text" 
-            name="name" 
-            placeholder="Username"
-            className="login-input"
-            onChange={handleChangeUsername}
-            value={name}/>
-            
+        <form onSubmit={handleSubmit(submitForm)}>
+            <div className='form-group'>
+            <label htmlFor='name'>Name</label>
             <input
-            type='password' 
-            name="password" 
-            placeholder="Password"
-            className="login-input"
-            onChange={handleChangePassword}
-            value={password}/>
-
-            <input
-            type="checkbox"
-            name="selector"
-            label="Stay logged in"
-            onChange={handleRemember}
-            checked={remember}
+            type='text'
+            className='form-input'
+            {...register('name')}
+            required
             />
-            
-            <button 
-            type="submit" 
-            disabled={ !(name && password && !isLoading)}> Log In </button>
-        </form>
-        {error && (
-        <div onClick={resetError} className="page-error">
-          {error.message = 'Wrong email or password'}
+        </div>
+        <div className='form-group'>
+            <label htmlFor='password'>Password</label>
+            <input
+            type='password'
+            className='form-input'
+            {...register('password')}
+            required
+            />
+        </div>
+        <div>
+        <span>Remember</span>
+        <input
+          type="checkbox"
+          name="remember"
+          /* {...register('remember')} */
+        />
+        </div>
+        <button type='submit' className='button' disabled={loading}>
+            Login
+        </button>
+            {error && <Error>{error}</Error>}
+            </form>
           
         </div>
-      )}
-    </div>
 }
 
 export default LoginPage
