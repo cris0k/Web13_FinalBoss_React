@@ -7,7 +7,6 @@ import { registerUser, userLogin } from '../actions/authActions'
 const userToken = storage.get('auth')
   ? storage.get('auth')
   : null
-console.log(userToken);
 
 const initialState = {
   loading: false,
