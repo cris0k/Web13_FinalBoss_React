@@ -5,16 +5,15 @@ import client, {
 
   import storage from '../../utils/storage';
   
-  export const login = ({...credentials}) => {
+  export const login = ({remember, ...credentials}) => {
     return client
     .post('/api/login', credentials)
     .then(({ token }) => {
       setAuthorizationHeader(token);
-      /* storage.remove('auth');
+      storage.remove('auth');
       if (remember) {
         storage.set('auth', token);
-      } */
-      storage.set('auth', token);
+      }
       return token
     });
   };
