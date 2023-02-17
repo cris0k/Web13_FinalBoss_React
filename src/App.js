@@ -13,17 +13,17 @@ function App() {
     
       <div className="App" >
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path='/user-profile' element={
-              <RequireAuth>
-                <ProfilePage />
-              </RequireAuth>
-            } />
-            
-            <Route path='/adverts' element={ <Layout />}/>
+          
+          <Route path='/adverts' element={<Layout />}>
             <Route index element={<AdvertsPage />}/>
             <Route path=":advertId" element={<AdvertDetail />} />
           </Route>
+
+          <Route path='/user-profile' element={
+            <RequireAuth>
+              <ProfilePage />
+            </RequireAuth>
+          } />
           <Route path ='/login' element={<LoginPage />}/>
           <Route path='/register' element={<RegisterPage />} />
           <Route path="/" element={<Navigate to="/adverts" />} />
