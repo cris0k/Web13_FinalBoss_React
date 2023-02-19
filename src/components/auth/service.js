@@ -1,26 +1,31 @@
 import client, {
-    removeAuthorizationHeader,
-    setAuthorizationHeader,
-  } from '../../api/client';
+  removeAuthorizationHeader,
+  setAuthorizationHeader,
+} from "../../api/client";
 
-  import storage from '../../utils/storage';
-  
-  export const login = ({remember, ...credentials}) => {
-    return client
-    .post('/api/login', credentials)
-    .then(({ token }) => {
-      setAuthorizationHeader(token);
-      storage.remove('auth');
-      if (remember) {
-        storage.set('auth', token);
-      }
-      return token
-    });
-  };
-  
-  export const logout = () => {
-    return Promise.resolve().then(() => {
-      removeAuthorizationHeader();
-      storage.remove('auth');
-    });
-  };
+import storage from "../../utils/storage";
+
+export const login = ({ remember, ...credentials }) => {
+  return client.post("/api/login", credentials).then(({ token }) => {
+    setAuthorizationHeader(token);
+    storage.remove("auth");
+    if (remember) {
+      storage.set("auth", token);
+    }
+    return token;
+  });
+};
+
+export const logout = () => {
+  return Promise.resolve().then(() => {
+    removeAuthorizationHeader();
+    storage.remove("auth");
+  });
+};
+
+// const adsUrl = "/api/newadvert";
+//const adsUrl = "/api/newadvert";
+export const setAd = (newAd) => {
+  //const url = adsUrl;
+  return client.post("/api/adverts", newAd);
+};
