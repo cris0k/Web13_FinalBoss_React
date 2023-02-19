@@ -38,12 +38,12 @@ import i18n from "../../i18n";
 // ];
 
 const EmptyList = () => {
-  <div>
+  return (<div>
     <p>{i18n.t("No products")}</p>
-  </div>;
+  </div>)
 };
 const AdvertsPage = ({ ...props }) => {
-  const { list: adverts } = useSelector((state) => state.adverts);
+  const adverts = useSelector((state) => state.adverts.list);
   const dispatch = useDispatch();
 
   console.log(adverts);
@@ -55,9 +55,9 @@ const AdvertsPage = ({ ...props }) => {
   return (
     <Page title="UWUNTU GAMES" {...props}>
       <div className="advertsPage">
-        {adverts.results ? (
+        {adverts  ? (
           <ul>
-            {adverts.results.map((item) => (
+            {adverts.map((item) => (
               <li className="advertsPage-item" key={item._id}>
                 <p>
                   {i18n.t("Product")}: {item.name}
