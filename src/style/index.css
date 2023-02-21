@@ -1,0 +1,19 @@
+:root {
+  font-size: 16px;
+  font-weight: 200;
+  --background-color:#c2d0ff;
+  --header-footer:#ffa200;
+  --details-dark:#294E6B;
+  --details-light-blue:#5AADED;
+  --details-white:#ffffff;
+  --details-black:#000000;
+  --disabled:#bfc1c2;
+  --cancel: #dd0202;
+  --green-bttn: #03ac03;
+  --yellow-bttn:#e4e404;
+  --black-shadow:#00000060;
+  
+  font-family: 'Poppins', sans-serif;
+}
+
+
