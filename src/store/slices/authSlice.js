@@ -4,14 +4,14 @@ import { registerUser, userLogin } from '../actions/authActions'
 
 
 // initialize userToken from local storage
-const userToken = storage.get('auth')
+const token = storage.get('auth')
   ? storage.get('auth')
   : null
 
 const initialState = {
   loading: false,
   userInfo: null,
-  userToken,
+  token,
   error: null,
   success: false,
 }
@@ -20,11 +20,11 @@ const authSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    logout: (state) => {
+    logoutSlice: (state) => {
       storage.remove('auth') // delete token from storage
       state.loading = false
       state.userInfo = null
-      state.userToken = null
+      state.token = null
       state.error = null
     },
     setCredentials: (state, { payload }) => {
@@ -37,10 +37,11 @@ const authSlice = createSlice({
       state.loading = true
       state.error = null
     },
-    [userLogin.fulfilled]: (state, { payload }) => {
+    [userLogin.fulfilled]: (state, { payload } ) => {
       state.loading = false
       state.userInfo = payload
-      state.userToken = payload.userToken
+      state.token = payload
+      state.success = true
     },
     [userLogin.rejected]: (state, { payload }) => {
       state.loading = false
@@ -62,6 +63,6 @@ const authSlice = createSlice({
   },
 })
 
-export const { logout, setCredentials } = authSlice.actions
+export const { logoutSlice, setCredentials } = authSlice.actions
 
 export default authSlice.reducer
