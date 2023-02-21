@@ -32,9 +32,9 @@ export const registerUser = createAsyncThunk(
       await client.post(
         `/api/register`,
         { name, email, password }, config ) 
-        const remember = true
+        /* const remember = true
         const token = await login({ name, password,remember})
-        return token
+        return token */
     } catch (error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message)

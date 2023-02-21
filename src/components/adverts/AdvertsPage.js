@@ -52,7 +52,6 @@ const AdvertsPage = ( props ) => {
 
   useEffect(() => {
     dispatch(fetchAllAdverts());
-    console.log(fetchAllAdverts())
   }, [dispatch]);
 
   return (

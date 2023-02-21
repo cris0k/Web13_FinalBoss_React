@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { registerUser, userLogin } from "../../store/actions/authActions"
+import { registerUser} from "../../store/actions/authActions"
 import Error from "../Error"
 
 
@@ -23,7 +23,7 @@ const RegisterPage = () => {
   
     // redirect user to login page if registration was successful
     if (success) {
-      navigate('/')}
+      navigate('/login')}
     }, [navigate, userInfo, success])
     
     const submitForm = (data) => {
@@ -36,6 +36,7 @@ const RegisterPage = () => {
       data.email = data.email.toLowerCase()
       
       dispatch(registerUser(data))
+      
       //se le envia data pero no le termina de gustar
 
   }
