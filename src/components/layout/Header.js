@@ -1,9 +1,6 @@
 import AuthButton from "../auth/AuthButton";
 
-
 function Header() {
- 
-
 
   return (
     <header>
