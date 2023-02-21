@@ -19,9 +19,6 @@ const RegisterPage = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // redirect authenticated user to profile screen
-  
-    // redirect user to login page if registration was successful
     if (success) {
       navigate('/login')}
     }, [navigate, userInfo, success])
