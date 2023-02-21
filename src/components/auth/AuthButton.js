@@ -1,17 +1,19 @@
 import { NavLink } from 'react-router-dom';
 import ConfirmationButton from '../common/ConfirmationButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../store/slices/authSlice';
+import { logoutSlice } from '../../store/slices/authSlice';
+import { logout } from './service';
 
 
 
 const AuthButton = () => {
-  const { userInfo } = useSelector((state) => state.auth)
+  const { token } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
   const handleLogoutConfirm = async () => {
     try {
-      dispatch(logout())
+      await logout()
+      dispatch(logoutSlice())
 
       
     } catch (error) {
@@ -20,7 +22,7 @@ const AuthButton = () => {
     
   };
 
-  return userInfo ? (
+  return token ? (
     <ConfirmationButton
       confirmation="Are you sure?"
       onConfirm={handleLogoutConfirm}
