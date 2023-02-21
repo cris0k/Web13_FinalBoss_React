@@ -11,6 +11,7 @@ const config = {
     "Content-Type": "multipart/form-data",
   },
 };
+
 export const login = ({ remember, ...credentials }) => {
   return client.post("/api/login", credentials).then(({ token }) => {
     setAuthorizationHeader(token);
@@ -27,6 +28,10 @@ export const logout = () => {
     removeAuthorizationHeader();
     storage.remove("auth");
   });
+};
+
+export const userInfo = () => {
+  return client.get("/api/profile").then((response) => console.log(response));
 };
 
 // const adsUrl = "/api/newadvert";
