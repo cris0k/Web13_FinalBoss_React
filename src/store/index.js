@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 // reducer
-
 import adverts from "./slices/adverts";
 import authSlice from "./slices/authSlice";
 

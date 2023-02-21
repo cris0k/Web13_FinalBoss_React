@@ -12,7 +12,7 @@ const AdvertDetail = (props) => {
   //Obtener el anuncio
   const advert = useEffect(() => {
     dispatch(getUniqueAdvert(advertId));
-  }, []);
+  }, [dispatch,advertId]);
 
   return (
     <Page title="Detail product" {...props}>

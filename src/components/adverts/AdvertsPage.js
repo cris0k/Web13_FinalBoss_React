@@ -38,24 +38,27 @@ import i18n from "../../i18n";
 // ];
 
 const EmptyList = () => {
-  return (<div>
-    <p>{i18n.t("No products")}</p>
-  </div>)
-};
-const AdvertsPage = ({ ...props }) => {
-  const adverts = useSelector((state) => state.adverts.list);
-  const dispatch = useDispatch();
 
-  console.log(adverts);
+  return (
+    <div>
+     <p>{i18n.t("No products")}</p>
+    </div>
+  )
+  
+};
+const AdvertsPage = ( props ) => {
+  const adverts = useSelector((state) => state.adverts.list);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchAllAdverts());
+    console.log(fetchAllAdverts())
   }, [dispatch]);
 
   return (
     <Page title="UWUNTU GAMES" {...props}>
       <div className="advertsPage">
-        {adverts  ? (
+        {adverts.length > 0 ? (
           <ul>
             {adverts.map((item) => (
               <li className="advertsPage-item" key={item._id}>

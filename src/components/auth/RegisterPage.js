@@ -20,7 +20,7 @@ const RegisterPage = () => {
 
   useEffect(() => {
     // redirect authenticated user to profile screen
-    
+  
     // redirect user to login page if registration was successful
     if (success) {
       navigate('/')}
@@ -37,8 +37,7 @@ const RegisterPage = () => {
       
       dispatch(registerUser(data))
       //se le envia data pero no le termina de gustar
-      console.log()
-      dispatch(userLogin(data))
+
   }
 
   return (

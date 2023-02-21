@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import client from "../../api/client";
 
-import client from "../../api/client"
 const advertUrl = "/api/adverts";
 
 export const advertsSlice = createSlice({
@@ -18,16 +18,15 @@ export const advertsSlice = createSlice({
   },
 });
 
-export const { setAdvertsList, setAdvertDetail } = advertsSlice.actions;
-export default advertsSlice.reducer;
 
 export const fetchAllAdverts = () => (dispatch) => {
   client
-    .get(advertUrl)
-    .then((response) => {
-      dispatch(setAdvertsList(response.results));
-    })
-    .catch((error) => console.log(error));
+  .get(advertUrl)
+  .then((response) => {
+    dispatch(setAdvertsList(response.results));
+    
+  })
+  .catch((error) => console.log(error));
 };
 
 export const getUniqueAdvert = (advertId) => (dispatch) => {
@@ -38,3 +37,6 @@ export const getUniqueAdvert = (advertId) => (dispatch) => {
     })
     .catch((error) => console.log(error));
 };
+
+export const { setAdvertsList, setAdvertDetail } = advertsSlice.actions;
+export default advertsSlice.reducer;

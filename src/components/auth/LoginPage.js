@@ -13,15 +13,15 @@ const LoginPage = () => {
 
   const navigate = useNavigate()
 
-  // redirect authenticated user to profile screen
   useEffect(() => {
     if (userInfo) {
       navigate('/')
     }
   }, [navigate, userInfo])
 
-  const submitForm = (data) => {
-    dispatch(userLogin(data))
+  const submitForm = (credentials) => {
+    dispatch(userLogin(credentials))
+    
   }
 
 
@@ -51,7 +51,7 @@ const LoginPage = () => {
         <input
           type="checkbox"
           name="remember"
-          /* {...register('remember')} */
+          {...register('remember')}
         />
         </div>
         <button type='submit' className='button' disabled={loading}>
