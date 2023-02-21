@@ -27,22 +27,22 @@ const LoginPage = () => {
 
 
     return <div className="login-form">
-        <h1> Log In </h1>
+        <h1 className='form-title'> Log In </h1>
         <form className='signin-up-form' onSubmit={handleSubmit(submitForm)}>
             <div className='form-group'>
-            <label htmlFor='name'>Name</label>
             <input
             type='text'
             className='form-input'
+            placeholder='Name'
             {...register('name')}
             required
             />
         </div>
         <div className='form-group'>
-            <label htmlFor='password'>Password</label>
             <input
             type='password'
             className='form-input'
+            placeholder='Password'
             {...register('password')}
             required
             />

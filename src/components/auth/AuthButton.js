@@ -30,7 +30,7 @@ const AuthButton = () => {
       Logout
     </ConfirmationButton>
   ) : (
-    <NavLink className='button' to='/login'>Login</NavLink>
+    <NavLink className='button-log' to='/login'>Login</NavLink>
   );
 };
 
