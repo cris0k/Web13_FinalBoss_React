@@ -5,6 +5,12 @@ import client, {
 
 import storage from "../../utils/storage";
 
+const config = {
+  headers: {
+    // "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
+  },
+};
 export const login = ({ remember, ...credentials }) => {
   return client.post("/api/login", credentials).then(({ token }) => {
     setAuthorizationHeader(token);
@@ -27,5 +33,5 @@ export const logout = () => {
 //const adsUrl = "/api/newadvert";
 export const setAd = (newAd) => {
   //const url = adsUrl;
-  return client.post("/api/adverts", newAd);
+  return client.post("/api/adverts", newAd, config);
 };
