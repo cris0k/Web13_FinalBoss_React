@@ -24,3 +24,9 @@ import client, {
       storage.remove('auth');
     });
   };
+
+  export const userInfo = ()=>{
+    return client
+    .get('/api/profile')
+    .then(response => console.log(response))
+  }
