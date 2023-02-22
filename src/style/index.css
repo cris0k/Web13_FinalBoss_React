@@ -2,8 +2,6 @@
   font-size: 16px;
   font-weight: 200;
   --background-color:#242222;
-  --header-footer:#ffa200;
-  --details-dark:#294E6B;
   --details-light-blue: linear-gradient(90deg, #57cbf7 0%, #cb86ff 100%);
   --details-white:#ffffff;
   --details-black:#000000;
@@ -20,7 +18,11 @@ header {
   padding: 0.5rem;
   position: sticky;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+}
+.nav-buttons {
+  display: flex;
   align-items: center;
 }
 
@@ -30,16 +32,18 @@ body {
   height: 100vh;
   margin:0 auto;
 }
+
 .nav-link {
-  border-radius: 10%;
+  border-radius: 30%;
   margin-left: 10px;
-  padding: 10px;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-decoration: none;
-  background-color: var(--button);
   color: var(--details-white);
-  height: 20px;
+}
+
+.nav-link:hover {
+  color: var(--shadow);
 }
 
 li {
