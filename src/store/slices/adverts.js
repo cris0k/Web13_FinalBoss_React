@@ -19,14 +19,11 @@ export const advertsSlice = createSlice({
   },
 });
 
-export const { setAdvertsList, setAdvertDetail } = advertsSlice.actions;
-export default advertsSlice.reducer;
-
 export const fetchAllAdverts = () => (dispatch) => {
   axios
     .get(advertUrl)
     .then((response) => {
-      dispatch(setAdvertsList(response.data));
+      dispatch(setAdvertsList(response.results));
     })
     .catch((error) => console.log(error));
 };
@@ -35,7 +32,10 @@ export const getUniqueAdvert = (advertId) => (dispatch) => {
   axios
     .get(`${advertUrl}/${advertId}`)
     .then((response) => {
-      dispatch(setAdvertDetail(response.data));
+      dispatch(setAdvertDetail(response.results));
     })
     .catch((error) => console.log(error));
 };
+
+export const { setAdvertsList, setAdvertDetail } = advertsSlice.actions;
+export default advertsSlice.reducer;

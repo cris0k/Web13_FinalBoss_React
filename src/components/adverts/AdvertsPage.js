@@ -3,39 +3,6 @@ import { useEffect } from "react";
 import { fetchAllAdverts } from "../../store/slices/adverts";
 import { useDispatch, useSelector } from "react-redux";
 
-// const adverts = [
-//   {
-//     name: "FinalFantasyXV",
-//     id: 1,
-//     company: "SquareEnix",
-//     sale: true,
-//     price: 40.0,
-//     photo: "FinalFantasyXV.png",
-//     category: ["Fantasy", "RPG"],
-//     description: "Juego qu eno es de Pium Pium",
-//   },
-//   {
-//     name: "FinalFantasyXV",
-//     id: 2,
-//     company: "Square Enix",
-//     sale: true,
-//     price: 40.0,
-//     photo: "FinalFantasyXV.png",
-//     category: ["Fantasy", "RPG"],
-//     description: "Juego qu eno es de Pium Pium",
-//   },
-//   {
-//     name: "FinalFantasyXV",
-//     id: 3,
-//     company: "Square Enix",
-//     sale: true,
-//     price: 40.0,
-//     photo: "FinalFantasyXV.png",
-//     category: ["Fantasy", "RPG"],
-//     description: "Juego qu eno es de Pium Pium",
-//   },
-// ];
-
 const EmptyList = () => {
   <div>
     <p>No existen resultados.</p>

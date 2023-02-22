@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getUniqueAdvert } from "../../store/slices/adverts";
 import Page from "../layout/Page";
@@ -10,7 +10,11 @@ const AdvertDetail = (props) => {
   const dispatch = useDispatch();
 
   //Obtener el anuncio
-  const advert = useEffect(() => {
+  const { list: advert } = useSelector((state) => state.adverts);
+
+  console.log(advert);
+
+  useEffect(() => {
     dispatch(getUniqueAdvert(advertId));
   }, []);
 
@@ -24,10 +28,10 @@ const AdvertDetail = (props) => {
             {advert.sale ? "Se vende" : "Se compra"}
           </p>
           <p>PGI: {advert.PGI}</p>
-          <p>
+          {/* <p>
             -Categorias:
-            {advert.tags.toString()}
-          </p>
+            {advert.category.toString()}
+          </p> */}
           <div>
             {advert.photo ? (
               <img
