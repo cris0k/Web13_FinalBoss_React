@@ -5,7 +5,6 @@ import { getUniqueAdvert } from "../../store/slices/adverts";
 import Page from "../layout/Page";
 
 const AdvertDetail = (props) => {
-  //coger el id ddel anuncio que viene en la URL
   const { advertId } = useParams();
   const dispatch = useDispatch();
 
@@ -16,7 +15,7 @@ const AdvertDetail = (props) => {
 
   useEffect(() => {
     dispatch(getUniqueAdvert(advertId));
-  }, [dispatch,advertId]);
+  }, [dispatch, advertId]);
 
   return (
     <Page title="Detail product" {...props}>
@@ -28,10 +27,14 @@ const AdvertDetail = (props) => {
             {advert.sale ? "Se vende" : "Se compra"}
           </p>
           <p>PGI: {advert.PGI}</p>
-          {/* <p>
-            -Categorias:
-            {advert.category.toString()}
-          </p> */}
+          {advert.category ? (
+            <p>
+              -Categorias:
+              {advert.category.toString()}
+            </p>
+          ) : (
+            <p></p>
+          )}
           <div>
             {advert.photo ? (
               <img
