@@ -1,86 +1,68 @@
-import { useState } from "react"
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
-import { authLogin } from "../../store/slices/auth";
-import { login } from "./service";
-
+import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import Error from '../Error'
+import { Link, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { userLogin } from '../../store/actions/authActions'
+import '../../style/form.css'
 
 const LoginPage = () => {
+  const { loading,userInfo, error } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+
+  const { register, handleSubmit } = useForm()
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/')
+    }
+  }, [navigate, userInfo])
+
+  const submitForm = (credentials) => {
+    dispatch(userLogin(credentials))
     
+  }
 
-    const [name, setUsername] = useState('')
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [remember, setRemember] = useState(false)
-
-    const handleChangeUsername = event => setUsername(event.target.value);
-    const handleChangePassword = event => setPassword(event.target.value);
-    
-    const resetError = () => setError(null);
-    const location = useLocation();
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    
-    const handleRemember = () => setRemember(!remember)
-
-    const handleSubmit = async event => {
-        event.preventDefault();
-        try {
-            resetError();
-            setIsLoading(true);
-            const userData = await login({name,password,remember})
-            dispatch(authLogin({...userData,name}));
-            const to = location.state?.from?.pathname || '/';
-            navigate(to, { replace: true });
-            
-
-        } catch (error) {
-            setError(error);
-            setIsLoading(false);
-            
-        }
-
-    };
 
     return <div className="login-form">
-        <h1> Log In </h1>
-        <form onSubmit={handleSubmit}>
-            <input 
-            type="text" 
-            name="name" 
-            placeholder="Username"
-            className="login-input"
-            onChange={handleChangeUsername}
-            value={name}/>
-            
+        <h1 className='form-title'> Log In </h1>
+        <form className='signin-up-form' onSubmit={handleSubmit(submitForm)}>
+            <div className='form-group'>
             <input
-            type='password' 
-            name="password" 
-            placeholder="Password"
-            className="login-input"
-            onChange={handleChangePassword}
-            value={password}/>
-
-            <input
-            type="checkbox"
-            name="selector"
-            label="Stay logged in"
-            onChange={handleRemember}
-            checked={remember}
+            type='text'
+            className='form-input'
+            placeholder='Name'
+            {...register('name')}
+            required
             />
-            
-            <button 
-            type="submit" 
-            disabled={ !(name && password && !isLoading)}> Log In </button>
-        </form>
-        {error && (
-        <div onClick={resetError} className="page-error">
-          {error.message = 'Wrong email or password'}
+        </div>
+        <div className='form-group'>
+            <input
+            type='password'
+            className='form-input'
+            placeholder='Password'
+            {...register('password')}
+            required
+            />
+        </div>
+        <div>
+        <span>Remember me</span>
+        <input
+          type="checkbox"
+          name="remember"
+          {...register('remember')}
+        />
+        </div>
+        <button type='submit' className='button-log' disabled={loading}>
+            Login
+        </button>
+        <Link>Forgot password?</Link>
+            {error && <Error>{error}</Error>}
+            </form>
           
         </div>
-      )}
-    </div>
 }
 
 export default LoginPage
