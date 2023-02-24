@@ -98,3 +98,15 @@ footer {
   color: #000000;
   text-decoration: none;
 }
+.uwu-404 {
+  width: 500px;
+}
+.message-404 {
+  font-size: 4rem;
+}
+
+.home-link {
+  margin-top: 20px;
+  color: var(--details-black);
+  font-size: 2rem;
+}

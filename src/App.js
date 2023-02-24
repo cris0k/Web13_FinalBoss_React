@@ -6,6 +6,7 @@ import AdvertsPage from "./components/adverts/AdvertsPage";
 import RegisterPage from "./components/auth/RegisterPage";
 import ProfilePage from "./components/ProfilePage";
 import AdvertDetail from "./components/adverts/AdvertDetail";
+import NotFoundPage from "./components/common/NotFoundPage";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           } />
           <Route path ='/login' element={<LoginPage />}/>
           <Route path='/register' element={<RegisterPage />} />
+          <Route path="/404" element={<NotFoundPage/>}/>
           <Route path="/" element={<Navigate to="/adverts" />} />
           <Route path="*" element={<Navigate to="/404" />} />
         </Routes>

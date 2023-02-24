@@ -26,43 +26,42 @@ const LoginPage = () => {
   }
 
 
-    return <div className="login-form">
-        <h1 className='form-title'> Log In </h1>
-        <form className='signin-up-form' onSubmit={handleSubmit(submitForm)}>
-            <div className='form-group'>
-            <input
-            type='text'
-            className='form-input'
-            placeholder='Name'
-            {...register('name')}
-            required
-            />
-        </div>
-        <div className='form-group'>
-            <input
-            type='password'
-            className='form-input'
-            placeholder='Password'
-            {...register('password')}
-            required
-            />
-        </div>
-        <div>
-        <span>Remember me</span>
-        <input
-          type="checkbox"
-          name="remember"
-          {...register('remember')}
-        />
-        </div>
-        <button type='submit' className='button-log' disabled={loading}>
-            Login
-        </button>
-        <NavLink className="nav-link">Forgot password?</NavLink>
+    return <form className='signin-up-form' onSubmit={handleSubmit(submitForm)}>
+          <h1 className='form-title'> Log In </h1>
+              <div className='form-group'>
+              <input
+              type='text'
+              className='form-input'
+              placeholder='Name'
+              {...register('name')}
+              required
+              />
+          </div>
+          <div className='form-group'>
+              <input
+              type='password'
+              className='form-input'
+              placeholder='Password'
+              {...register('password')}
+              required
+              />
+          </div>
+          <div>
+          <span>Remember me</span>
+          <input
+            type="checkbox"
+            name="remember"
+            {...register('remember')}
+          />
+          </div>
+          <button type='submit' className='button-log' disabled={loading}>
+              Login
+          </button>
+          <NavLink className="nav-link">Forgot password?</NavLink>
             {error && <Error>{error}</Error>}
-            </form>
+        </form>
           
-        </div>
+  
 }
 
 export default LoginPage

@@ -1,9 +1,5 @@
-form, .login-form {
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+form {
+    margin-top: 150px;
 }
 .form-title {
     text-align: center;
@@ -12,7 +8,7 @@ form, .login-form {
 .signin-up-form, .new-ad-form  {
     background-color: var(--background-color);
     color: var(--details-white);
-    box-shadow: 0 15px 15px var(--shadow);
+    box-shadow: 15px 15px 15px 15px var(--shadow);
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 28px;
@@ -24,7 +20,7 @@ form, .login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    border-radius: 30px;
 }
 a {
     margin-top: 10px;
@@ -65,9 +61,10 @@ button, .button-log {
     margin-left: 10px;
 }
 
-button[disabled]{
+.button-log[disabled]{
     pointer-events: none; 
     background-color: var(--disabled);
+    background: var(--disabled);
 }
 
 button:hover,.button-log:hover{
