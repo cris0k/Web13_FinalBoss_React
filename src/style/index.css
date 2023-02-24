@@ -9,7 +9,8 @@
   --details-black: #000000;
   --disabled: #bfc1c2;
   --hover: linear-gradient(90deg, #57cbf7 0%, #deb1ff 100%);
-  --shadow: #e5cdfc;
+  --neon-title:#ed95ffee;
+  --shadow: #c7b2dab6;
 
   font-family: "Poppins", sans-serif;
 }

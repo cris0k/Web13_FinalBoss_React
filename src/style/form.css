@@ -3,12 +3,13 @@ form {
 }
 .form-title {
     text-align: center;
+   
 }
 
 .signin-up-form, .new-ad-form  {
     background-color: var(--background-color);
     color: var(--details-white);
-    box-shadow: 15px 15px 15px 15px var(--shadow);
+    box-shadow: var(--shadow) 5px 0px 30px 10px,var(--shadow) -5px 0px 30px 10px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 28px;
