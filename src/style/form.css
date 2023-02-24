@@ -1,3 +1,10 @@
+form, .login-form {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
 .form-title {
     text-align: center;
 }
@@ -49,13 +56,13 @@ button, .button-log {
     border-radius: 20px;
     background: #57cbf7;
     background: var(--details-light-blue);
-    padding: 5px 10px;
+    padding: 5px 20px;
     border: none;
     cursor: pointer;
     text-decoration: none;
     color: var(--details-black);
     margin-top: 10px;
-    min-width: 100px;
+    margin-left: 10px;
 }
 
 button[disabled]{

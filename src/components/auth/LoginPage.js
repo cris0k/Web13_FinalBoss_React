@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import Error from '../Error'
-import { Link, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { userLogin } from '../../store/actions/authActions'
 import '../../style/form.css'
@@ -58,7 +58,7 @@ const LoginPage = () => {
         <button type='submit' className='button-log' disabled={loading}>
             Login
         </button>
-        <Link>Forgot password?</Link>
+        <NavLink className="nav-link">Forgot password?</NavLink>
             {error && <Error>{error}</Error>}
             </form>
           
