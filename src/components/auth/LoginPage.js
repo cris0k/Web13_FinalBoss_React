@@ -7,7 +7,7 @@ import { userLogin } from '../../store/actions/authActions'
 import '../../style/form.css'
 
 const LoginPage = () => {
-  const { loading,userInfo, error } = useSelector((state) => state.auth)
+  const { loading,token, error } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
   const { register, handleSubmit } = useForm()
@@ -15,10 +15,10 @@ const LoginPage = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (userInfo) {
+    if (token) {
       navigate('/')
     }
-  }, [navigate, userInfo])
+  }, [navigate, token])
 
   const submitForm = (credentials) => {
     dispatch(userLogin(credentials))
