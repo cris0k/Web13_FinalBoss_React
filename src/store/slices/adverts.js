@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 import client from "../../api/client";
 
 const advertUrl = "/api/adverts";
@@ -18,22 +19,20 @@ export const advertsSlice = createSlice({
   },
 });
 
-
 export const fetchAllAdverts = () => (dispatch) => {
   client
-  .get(advertUrl)
-  .then((response) => {
-    dispatch(setAdvertsList(response.results));
-    
-  })
-  .catch((error) => console.log(error));
+    .get(advertUrl)
+    .then((response) => {
+      dispatch(setAdvertsList(response.results));
+    })
+    .catch((error) => console.log(error));
 };
 
 export const getUniqueAdvert = (advertId) => (dispatch) => {
   client
     .get(`${advertUrl}/${advertId}`)
     .then((response) => {
-      dispatch(setAdvertDetail(response.data));
+      dispatch(setAdvertDetail(response.results));
     })
     .catch((error) => console.log(error));
 };

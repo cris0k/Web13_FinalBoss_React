@@ -1,15 +1,17 @@
 :root {
   font-size: 16px;
   font-weight: 200;
-  --background-color:#242222;
+  --background-color: #242222;
+  --header-footer: #ffa200;
+  --details-dark: #294e6b;
   --details-light-blue: linear-gradient(90deg, #57cbf7 0%, #cb86ff 100%);
-  --details-white:#ffffff;
-  --details-black:#000000;
-  --disabled:#bfc1c2;
-  --hover:linear-gradient(90deg, #57cbf7 0%, #deb1ff 100%);
-  --shadow:#e5cdfc;
-  
-  font-family: 'Poppins', sans-serif;
+  --details-white: #ffffff;
+  --details-black: #000000;
+  --disabled: #bfc1c2;
+  --hover: linear-gradient(90deg, #57cbf7 0%, #deb1ff 100%);
+  --shadow: #e5cdfc;
+
+  font-family: "Poppins", sans-serif;
 }
 
 header {
@@ -30,7 +32,7 @@ body {
   text-align: center;
   width: 80%;
   height: 100vh;
-  margin:0 auto;
+  margin: 0 auto;
 }
 
 .nav-link {
@@ -49,7 +51,7 @@ body {
 li {
   list-style-type: none;
 }
-.confirmation-message{
+.confirmation-message {
   font-size: 1.5rem;
 }
 .confirmation {
@@ -57,15 +59,14 @@ li {
   flex-direction: column;
   border: none;
   border-radius: 5px;
-  background:var(--shadow);
+  background: var(--shadow);
   margin-top: 100px;
   min-width: 250px;
   position: fixed;
   top: 2%;
   left: 60%;
   right: 0;
-  bottom: 0;  
-  
+  bottom: 0;
 }
 
 button {
@@ -80,9 +81,9 @@ button {
   font-size: 1rem;
 }
 
-button:hover{
+button:hover {
   background-color: var(--button-hover);
-  transition: background-color .3s linear;
+  transition: background-color 0.3s linear;
 }
 
 footer {
@@ -91,4 +92,9 @@ footer {
   text-align: center;
   background-color: var(--background-color);
   color: var(--details-white);
+}
+
+.linkDetail {
+  color: #000000;
+  text-decoration: none;
 }
