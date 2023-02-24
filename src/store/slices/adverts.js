@@ -14,7 +14,7 @@ export const advertsSlice = createSlice({
       state.list = action.payload;
     },
     setAdvertDetail: (state, action) => {
-      state.list = action.payload;
+      state.list = [action.payload];
     },
   },
 });
