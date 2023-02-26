@@ -6,6 +6,7 @@ import AdvertsPage from "./components/adverts/AdvertsPage";
 import RegisterPage from "./components/auth/RegisterPage";
 import ProfilePage from "./components/ProfilePage";
 import AdvertDetail from "./components/adverts/AdvertDetail";
+import ForgetPassword from "./components/auth/ForgottenPassword";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
               <ProfilePage />
             </RequireAuth>
           } />
+          <Route path = '/forgottenPassword' element ={<ForgetPassword/>}/>
           <Route path ='/login' element={<LoginPage />}/>
           <Route path='/register' element={<RegisterPage />} />
           <Route path="/" element={<Navigate to="/adverts" />} />

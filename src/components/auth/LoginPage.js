@@ -58,7 +58,7 @@ const LoginPage = () => {
         <button type='submit' className='button-log' disabled={loading}>
             Login
         </button>
-        <Link>Forgot password?</Link>
+        Forgot Password? <Link to ="/forgottenPassword">Click Here</Link>
             {error && <Error>{error}</Error>}
             </form>
           

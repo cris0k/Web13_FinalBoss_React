@@ -1,5 +1,5 @@
 import AuthButton from "../auth/AuthButton";
-
+import { NavLink } from "react-router-dom";
 function Header() {
 
   return (
@@ -12,6 +12,15 @@ function Header() {
       </nav>
       
       <AuthButton />
+      <NavLink className="button" to="/register">
+      Register
+      </NavLink>
+      <NavLink className="button" to="/user-profile">
+      Profile
+      </NavLink>
+
+
+
     </header>
   )
   

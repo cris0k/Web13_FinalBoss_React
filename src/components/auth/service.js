@@ -30,3 +30,8 @@ import client, {
     .get('/api/profile')
     .then(response => console.log(response))
   }
+  export const forgottenPassword = ({...credentials}) => {
+    return client
+    .post('/api/requestPasswordReset', credentials)
+    .then(credentials => console.log(credentials))
+  };
