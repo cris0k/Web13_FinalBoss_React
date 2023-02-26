@@ -10,7 +10,6 @@ const token = storage.get('auth')
 
 const initialState = {
   loading: false,
-  userInfo: null,
   token,
   error: null,
   success: false,
@@ -21,14 +20,13 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logoutSlice: (state) => {
-      storage.remove('auth') // delete token from storage
       state.loading = false
-      state.userInfo = null
       state.token = null
       state.error = null
+      state.success = true
     },
     setCredentials: (state, { payload }) => {
-      state.userInfo = payload
+      state.token = payload
     },
   },
   extraReducers: {
@@ -39,7 +37,6 @@ const authSlice = createSlice({
     },
     [userLogin.fulfilled]: (state, { payload } ) => {
       state.loading = false
-      state.userInfo = payload
       state.token = payload
       state.success = true
     },
@@ -55,8 +52,7 @@ const authSlice = createSlice({
     [registerUser.fulfilled]: (state, { payload }) => {
       state.loading = false
       state.success = true
-      /* state.userInfo = payload
-      state.userToken = payload */ // registration successful
+      state.token = payload // registration successful
     },
     [registerUser.rejected]: (state, { payload }) => {
       state.loading = false
