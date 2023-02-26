@@ -1,11 +1,11 @@
 // Imports goes here
-import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import Page from "../layout/Page";
 import { setAd } from "../auth/service";
+import { useForm } from "react-hook-form";
 import async from "async";
 
 const NewAdvert = (props) => {
@@ -49,7 +49,10 @@ const NewAdvert = (props) => {
   //const onSubmit = (data) => console.log(data);
 
   const onSubmit = (data) => {
+    const files = document.getElementById("photo");
+    // console.log(files);
     const formData = new FormData();
+    // formData.append("photo", data.photo);
     formData.append("photo", data.photo[0].name);
     // formData.append("category", JSON.stringify(data.category));
     formData.append("category", data.category.types);
@@ -58,8 +61,24 @@ const NewAdvert = (props) => {
     formData.append("user", data.user);
     formData.append("company", data.company);
     formData.append("buyorsale", data.buyorsale);
+    // formData.append("buyorsale", JSON.stringify(data.buyorsale));
     // const jsond = JSON.stringify(data);
-    console.log(data);
+
+    // Tutorial Multer
+    // console.log(files.files.length + " es la longitud del array");
+    for (let i = 0; i < files.files.length; i++) {
+      // console.log(files.files[i]);
+      formData.append("files", files.files[i]);
+    }
+    // fetch("http://localhost:3001/api/upload_files", {
+    //   method: "POST",
+    //   body: formData,
+    //   headers: {
+    //     "Content-Type": "multipart/form-data",
+    //   },
+    // });
+    // console.log(formData.get("files"));
+    // console.log(data);
     setAd(formData);
   };
 
@@ -75,7 +94,11 @@ const NewAdvert = (props) => {
     <Page title="New Advert Page" {...props}>
       {/* <h2>New Advert Page</h2> */}
       <section>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form
+          // encType="multipart/form-data"
+          // method="post"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <br></br>
           <label>Name:</label>
           {/* <input
@@ -85,7 +108,11 @@ const NewAdvert = (props) => {
             onChange={handleChangeUsername}
             value={name}
           ></input> */}
-          <input type="text" {...register("name", { required: true })}></input>
+          <input
+            id="name"
+            type="text"
+            {...register("name", { required: true })}
+          ></input>
 
           <label>User:</label>
           {/* <input
@@ -157,9 +184,12 @@ const NewAdvert = (props) => {
             value={photo}
           ></input> */}
           <input
+            id="photo"
+            name="photo"
             type="file"
             // accept="image/png, image/jpeg"
             {...register("photo")}
+            multiple
           ></input>
 
           <br></br>
