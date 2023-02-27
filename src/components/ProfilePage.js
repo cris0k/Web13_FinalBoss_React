@@ -1,16 +1,38 @@
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { profileData } from '../store/actions/userActions';
+
 
 const ProfilePage= () => {
-  const { userInfo } = useSelector((state) => state.auth)
+  const { userInfo } = useSelector((state) => state.user)
+  const dispatch = useDispatch()
+  console.log(userInfo);
+  useEffect(() => {
+    try {
+      dispatch(profileData())
+      
+    } catch (error) {
+      console.log('Did not dispatch profileData');
+    }
+
+  },[dispatch]);
 
   return (
-    <div>
-      <figure>{userInfo?.name.charAt(0).toUpperCase()}</figure>
-      <span>
-        Welcome <strong>{userInfo?.name}!</strong> You can view this page
-        because you're logged in
-      </span>
-    </div>
+    <section>
+      <div>
+        <h1>
+          Welcome <strong>{userInfo?.name}!</strong>
+        </h1>
+      </div>
+      <div>
+        <h2>My data</h2>
+        <ul>
+          <li>{userInfo?.id}</li>
+          <li>{userInfo?.name}</li>
+          <li>{userInfo?.email}</li>
+        </ul>
+      </div>
+    </section>
   )
 }
 

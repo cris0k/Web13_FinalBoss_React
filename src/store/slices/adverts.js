@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+//import axios from "axios";
 import client from "../../api/client";
 
 const advertUrl = "/api/adverts";

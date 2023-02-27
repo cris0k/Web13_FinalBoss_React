@@ -25,8 +25,9 @@ import client, {
     });
   };
 
-  export const userInfo = ()=>{
+  export const getUserInfo = ()=>{
     return client
-    .get('/api/profile')
-    .then(response => console.log(response))
+    .get('/api/user')
+    .then(response => response)
+    .catch(error => error)
   }
