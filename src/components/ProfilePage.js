@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom';
 import { profileData } from '../store/actions/userActions';
+import '../style/profile.css'
 
 
 const ProfilePage= () => {
   const { userInfo } = useSelector((state) => state.user)
   const dispatch = useDispatch()
-  console.log(userInfo);
+  
   useEffect(() => {
     try {
       dispatch(profileData())
@@ -18,19 +20,32 @@ const ProfilePage= () => {
   },[dispatch]);
 
   return (
-    <section>
+    <section className='profile-page'>
       <div>
-        <h1>
-          Welcome <strong>{userInfo?.name}!</strong>
-        </h1>
+        <nav className='nav-profile'>
+          <NavLink className="nav-user">| Favourites |</NavLink>
+          <NavLink className="nav-user">| Reserved |</NavLink>
+        </nav>
       </div>
-      <div>
-        <h2>My data</h2>
+      <div className='profile-data'>
+        <section>
+        <img src={'img/uwu-profile.png'} alt='avatar'/>
         <ul>
-          <li>{userInfo?.id}</li>
-          <li>{userInfo?.name}</li>
-          <li>{userInfo?.email}</li>
+          <li>ID : {userInfo?.id}</li>
+          <li>Name : {userInfo?.name}</li>
+          <li>Email : {userInfo?.email}</li>
         </ul>
+        <div>
+        <NavLink> Edit profile</NavLink>
+        </div>
+        <div>
+        <NavLink> Delete account</NavLink>
+        </div>
+        </section>
+        <section className='my-adverts'>
+          <h1>My Adverts</h1>
+          
+        </section>
       </div>
     </section>
   )
