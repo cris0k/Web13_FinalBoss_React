@@ -1,16 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import storage from '../../utils/storage'
 import { registerUser, userLogin } from '../actions/authActions'
 
 
-// initialize userToken from local storage
-const token = storage.get('auth')
-  ? storage.get('auth')
-  : null
-
 const initialState = {
   loading: false,
-  token,
+  token: null,
   error: null,
   success: false,
 }
