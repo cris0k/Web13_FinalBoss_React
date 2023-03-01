@@ -4,7 +4,7 @@ import RequireAuth from "./components/auth/RequiteAuth";
 import Layout from "./components/layout/Layout";
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import RegisterPage from "./components/auth/RegisterPage";
-import ProfilePage from "./components/ProfilePage";
+import ProfilePage from "./components/profile/ProfilePage";
 import AdvertDetail from "./components/adverts/AdvertDetail";
 import NotFoundPage from "./components/common/NotFoundPage";
 

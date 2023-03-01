@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { getUserInfo } from '../../components/auth/service'
+import { getUserInfo } from '../../components/profile/service';
+
 
 export const profileData = createAsyncThunk(
     'profile/user',

@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom';
-import { profileData } from '../store/actions/userActions';
-import '../style/profile.css'
+import { profileData } from '../../store/actions/userActions';
+import '../../style/profile.css'
+import DeleteAccount from './DeleteAccount';
 
 
 const ProfilePage= () => {
@@ -10,13 +11,8 @@ const ProfilePage= () => {
   const dispatch = useDispatch()
   
   useEffect(() => {
-    try {
       dispatch(profileData())
       
-    } catch (error) {
-      console.log('Did not dispatch profileData');
-    }
-
   },[dispatch]);
 
   return (
@@ -39,7 +35,7 @@ const ProfilePage= () => {
         <NavLink> Edit profile</NavLink>
         </div>
         <div>
-        <NavLink> Delete account</NavLink>
+          <DeleteAccount/>
         </div>
         </section>
         <section className='my-adverts'>
