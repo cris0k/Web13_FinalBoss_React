@@ -13,14 +13,26 @@
     background: var(--background-color);
   }
 
-img {
+figure {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 150px;
-    margin: 10px
+    height: 150px;
+    font-size: 2rem;
+    word-break: break-all;
+    color: white;
+    background: rgb(22, 184, 243);
+    background: linear-gradient(149deg, rgba(22, 184, 243, 1) 0%, rgba(108, 231, 185, 1) 65%);
+    border-radius: 50%;
+    padding: 8px;
+    font-weight: 600;
 }
+  
+figure span {
+    text-align: center;
 
+}
 
 .profile-data {
     text-align: left;
@@ -30,3 +42,13 @@ img {
     grid-template-areas: 
     "sidebar my-adverts"
 }
+
+@media (max-width: 500px) {
+    .profile-data {
+      grid-template-columns: 4fr;
+      grid-template-areas:
+        "content"
+        "sidebar"
+        
+    }
+  }

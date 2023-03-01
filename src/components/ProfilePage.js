@@ -29,7 +29,7 @@ const ProfilePage= () => {
       </div>
       <div className='profile-data'>
         <section>
-        <img src={'img/uwu-profile.png'} alt='avatar'/>
+        <figure src={'img/uwu-profile.png'} alt='avatar'>{userInfo?.name}</figure>
         <ul>
           <li>ID : {userInfo?.id}</li>
           <li>Name : {userInfo?.name}</li>
