@@ -39,10 +39,9 @@ export const userInfo = () => {
 export const setAd = (newAd) => {
   //const url = adsUrl;
   // return client.post("/api/adverts", newAd, config);
-  // return client.post("/api/upload_files", uploadFiles);
+  // return client.post("/api/adverts", uploadFiles);
   // function uploadFiles(req, res) {
   //   console.log(req.body);
   // }
-
   return client.post("/api/adverts", newAd, config);
 };
