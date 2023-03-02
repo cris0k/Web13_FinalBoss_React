@@ -1,12 +1,11 @@
 // Imports goes here
-import { useState } from 'react';
+/* import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom'; */
 import Page from '../layout/Page';
 import { setAd } from '../auth/service';
 import { useForm } from 'react-hook-form';
-import async from 'async';
 import '../../style/form.css';
 
 const NewAdvert = (props) => {
@@ -17,9 +16,9 @@ const NewAdvert = (props) => {
 	// const [photo, setPhoto] = useState("");
 	// const [description, setDescription] = useState("");
 
-	const [error, setError] = useState(null);
+	//const [error, setError] = useState(null);
 	// const location = useLocation();
-	const navigate = useNavigate();
+	//const navigate = useNavigate();
 
 	// const handleChangeUsername = (event) => setName(event.target.value);
 	// const handleChangeSale = (event) => setSale(event.target.value);
@@ -234,7 +233,7 @@ const NewAdvert = (props) => {
 					<br></br>
 					<br></br>
 
-					<label>Descripción del producto:</label>
+					<label>Description:</label>
 					{/* <textarea
             type="text"
             name="description"
@@ -259,7 +258,7 @@ const NewAdvert = (props) => {
 						className='button-log'
 						// disabled={!isEnabled()}
 					>
-						Crear anuncio
+						Create advert
 					</button>
 				</form>
 			</section>

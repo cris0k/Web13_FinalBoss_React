@@ -7,8 +7,8 @@ import storage from '../../utils/storage';
 
 const config = {
 	headers: {
-		// "Content-Type": "application/json",
-		'Content-Type': 'multipart/form-data',
+		//"Content-Type": "application/json"
+		'Content-Type': 'multipart/form-data'
 	},
 };
 
@@ -28,10 +28,6 @@ export const logout = () => {
 		removeAuthorizationHeader();
 		storage.remove('auth');
 	});
-};
-
-export const userInfo = () => {
-	return client.get('/api/profile').then((response) => console.log(response));
 };
 
 // const adsUrl = "/api/newadvert";

@@ -6,33 +6,12 @@ import AdvertsPage from "./components/adverts/AdvertsPage";
 import RegisterPage from "./components/auth/RegisterPage";
 import ProfilePage from "./components/profile/ProfilePage";
 import AdvertDetail from "./components/adverts/AdvertDetail";
-<<<<<<< HEAD
+import NotFoundPage from "./components/common/NotFoundPage";
 import NewAdvert from "./components/adverts/NewAdvert";
 
-function App() {
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/adverts" element={<Layout />}>
-          <Route index element={<AdvertsPage />} />
-          <Route path=":advertId" element={<AdvertDetail />} />
-        </Route>
-
-        <Route
-          path="/user-profile"
-          element={
-            <RequireAuth>
-              <ProfilePage />
-            </RequireAuth>
-          }
-        />
-=======
-import NotFoundPage from "./components/common/NotFoundPage";
-
 
 function App() {
   return (
-    
       <div className="App" >
         <Routes>
           
@@ -44,7 +23,12 @@ function App() {
                 <ProfilePage />
               </RequireAuth>
             } />
-          </Route>
+            <Route path="/newadvert" element={
+              <RequireAuth>
+                <NewAdvert />
+              </RequireAuth>
+            }/>
+            </Route>
 
           <Route path ='/login' element={<LoginPage />}/>
           <Route path='/register' element={<RegisterPage />} />
@@ -52,27 +36,7 @@ function App() {
           <Route path="/" element={<Navigate to="/adverts" />} />
           <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
-          
-      </div>
-    
->>>>>>> main
-
-        <Route
-          path="/newadvert"
-          element={
-            // <RequireAuth>
-            <NewAdvert />
-            //</RequireAuth>
-          }
-        />
-
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/" element={<Navigate to="/adverts" />} />
-        <Route path="*" element={<Navigate to="/404" />} />
-      </Routes>
-    </div>
-  );
+     </div> );
 }
 
 export default App;
