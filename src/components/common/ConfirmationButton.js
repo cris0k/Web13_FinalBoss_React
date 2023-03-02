@@ -15,13 +15,19 @@ function ConfirmationButton({ confirmation, onConfirm, ...props }) {
 
   return (
     <>
-      <button onClick={handleClick} {...props} />
+      <button className='button-cancel' onClick={handleClick} {...props} />
       {confirmationVisible && (
-        <div>
+        <dialog className='confirmation'>
+          <div className='confirmation-message'>
           {confirmation}
-          <button onClick={handleConfirmClick}>Ok</button>
-          <button onClick={handleCancelClick}>Cancel</button>
-        </div>
+          </div>
+          <div>
+          <button className='button-sign' onClick={handleConfirmClick}>Ok</button>
+          </div>
+          <div>
+          <button className='button-cancel' onClick={handleCancelClick}>Cancel</button>
+          </div>
+        </dialog>
       )}
     </>
   );

@@ -2,80 +2,78 @@ import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { registerUser } from "../../store/actions/authActions"
+import { registerUser} from "../../store/actions/authActions"
 import Error from "../Error"
 
-
 const RegisterPage = () => {
-  const [customError, setCustomError] = useState(null)
+  const [customError, setCustomError] = useState(null);
 
-  const { loading, userInfo, error, success } = useSelector(
+  const { loading, error, token } = useSelector(
     (state) => state.auth
-  )
-  const dispatch = useDispatch()
+  );
+  const dispatch = useDispatch();
 
-  const { register, handleSubmit } = useForm()
-  const navigate = useNavigate()
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // redirect authenticated user to profile screen
-    if (userInfo) navigate('/user-profile')
-    // redirect user to login page if registration was successful
-    if (success) navigate('/login')
-  }, [navigate, userInfo, success])
+    if (token) {
+      navigate('/')
+    }
+  }, [navigate, token])
 
   const submitForm = (data) => {
-    // check if passwords match
-    if (data.password !== data.confirmPassword) {
-      setCustomError('Password mismatch')
-      return
-    }
-    // transform email string to lowercase to avoid case sensitivity issues in login
-    data.email = data.email.toLowerCase()
+      if (data.password !== data.confirmPassword) {
+        setCustomError("Password mismatch");
+        return;
+      }
+      data.email = data.email.toLowerCase();
 
-    dispatch(registerUser(data))
-  }
+      dispatch(registerUser(data));
+
+  };
 
   return (
-    <form onSubmit={handleSubmit(submitForm)}>
-      {error && <Error>{error}</Error>}
-      {customError && <Error>{customError}</Error>}
+    <form onSubmit={handleSubmit(submitForm)} className='signin-up-form'>
+      <h1 className='form-title'> Sign up </h1>
       <div className='form-group'>
-        <label htmlFor='name'>Name</label>
         <input
           type='text'
           className='form-input'
+          placeholder='Name'
           {...register('name')}
           required
         />
       </div>
       <div className='form-group'>
-        <label htmlFor='email'>Email</label>
         <input
           type='email'
           className='form-input'
+          placeholder='Email'
           {...register('email')}
           required
         />
       </div>
       <div className='form-group'>
-        <label htmlFor='password'>Password</label>
         <input
           type='password'
           className='form-input'
+          placeholder='Password'
           {...register('password')}
           required
         />
       </div>
       <div className='form-group'>
-        <label htmlFor='email'>Confirm Password</label>
         <input
           type='password'
           className='form-input'
+          placeholder='Confirm Password'
           {...register('confirmPassword')}
           required
         />
       </div>
+      {error && <Error>{error}</Error>}
+      {customError && <Error>{customError}</Error>}
       <button type='submit' className='button' disabled={loading}>
         {loading ? 'Loading...' : 'Register'}
       </button>

@@ -1,34 +1,28 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getUniqueAdvert } from "../../store/slices/adverts";
 import Page from "../layout/Page";
+import "../../style/advertDetail.css";
 
 const AdvertDetail = (props) => {
-  //coger el id ddel anuncio que viene en la URL
   const { advertId } = useParams();
   const dispatch = useDispatch();
 
   //Obtener el anuncio
-  const advert = useEffect(() => {
+  const { list: adverts } = useSelector((state) => state.adverts);
+  const [advert] = adverts;
+  console.log(advert);
+
+  useEffect(() => {
     dispatch(getUniqueAdvert(advertId));
-  }, [dispatch,advertId]);
+  }, [dispatch, advertId]);
 
   return (
     <Page title="Detail product" {...props}>
       {advert !== undefined ? (
-        <div>
-          <p>Juego: {advert.name}</p>
-          <p>
-            - Precio: {advert.price}$ -Estado:
-            {advert.sale ? "Se vende" : "Se compra"}
-          </p>
-          <p>PGI: {advert.PGI}</p>
-          <p>
-            -Categorias:
-            {advert.tags.toString()}
-          </p>
-          <div>
+        <div className="AdvertDetail-card">
+          <div className="AdvertDetail-photo">
             {advert.photo ? (
               <img
                 height="60%"
@@ -40,7 +34,23 @@ const AdvertDetail = (props) => {
               "Imagen no disponible"
             )}{" "}
           </div>
-          <p>Descripción: {advert.description}</p>
+          <p className="AdvertDetail-title">Juego: {advert.name}</p>
+          <p className="AdvertDetail-price">- Precio: {advert.price}$</p>
+          <p className="AdvertDetail-state">
+            -Estado:
+            {advert.sale ? "Se vende" : "Se compra"}
+          </p>
+          <p className="AdvertDetail-user">-Propietario: {advert.userOwner}</p>
+          <p className="AdvertDetail-PGI">PGI: {advert.PGI}</p>
+          {advert.category.length && (
+            <p className="AdvertDetail-category">
+              -Categorias:
+              {advert.category.toString()}
+            </p>
+          )}
+          <p className="AdvertDetail-description">
+            Descripción: {advert.description}
+          </p>
         </div>
       ) : (
         " Producto no encontrado"
