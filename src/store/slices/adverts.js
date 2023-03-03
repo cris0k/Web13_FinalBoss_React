@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import client from "../../api/client";
 
 const advertUrl = "/api/adverts";

@@ -9,7 +9,8 @@
   --details-black: #000000;
   --disabled: #bfc1c2;
   --hover: linear-gradient(90deg, #57cbf7 0%, #deb1ff 100%);
-  --shadow: #e5cdfc;
+  --neon-title:#ed95ffee;
+  --shadow: #c7b2dab6;
 
   font-family: "Poppins", sans-serif;
 }
@@ -22,6 +23,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .nav-buttons {
   display: flex;
@@ -36,12 +38,13 @@ body {
 }
 
 .nav-link {
-  border-radius: 30%;
   margin-left: 10px;
   font-weight: 400;
   font-size: 1.2rem;
   text-decoration: none;
   color: var(--details-white);
+  background: var(--background-color);
+  padding: 5px;
 }
 
 .nav-link:hover {
@@ -97,4 +100,16 @@ footer {
 .linkDetail {
   color: #000000;
   text-decoration: none;
+}
+.uwu-404 {
+  width: 500px;
+}
+.message-404 {
+  font-size: 4rem;
+}
+
+.home-link {
+  margin-top: 20px;
+  color: var(--details-black);
+  font-size: 2rem;
 }
