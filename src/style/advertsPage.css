@@ -5,6 +5,12 @@
   background-color: rgb(230, 225, 225);
 }
 
+.advertsPage-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .advertsPage-item {
   border: 3px rgb(75, 74, 72) solid;
   border-radius: 15%;

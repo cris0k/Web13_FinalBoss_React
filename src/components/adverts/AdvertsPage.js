@@ -25,10 +25,10 @@ const AdvertsPage = (props) => {
     <Page {...props}>
       <div className="advertsPage">
         {adverts.length > 0 ? (
-          <ul>
+          <ul className="advertsPage-list">
             {adverts.map((item) => (
               <li className="advertsPage-item" key={item._id}>
-                <Link className="linkDetail" to={`/adverts/${item._id}`}>
+                <Link className="linkDetail" to={`/${item._id}`}>
                   <p>
                     {i18n.t("Product")}: {item.name}
                   </p>
