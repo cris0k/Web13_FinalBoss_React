@@ -2,6 +2,14 @@
   "Product": "Producto",
   "Price": "Precio",
   "State": "Estado",
-  "Category": "Categoria",
-  "No products": "No hay productos"
+  "Category": "Categoría",
+  "No products": "No hay productos",
+  "Game": "Juego",
+  "UserProperty": "Propietario",
+  "PGI": "PGI",
+  "Description": "Descripción",
+  "Delete": "Borrar",
+  "Are you sure?": "¿Estás seguro?",
+  "Yes": "Si",
+  "No": "No"
 }
