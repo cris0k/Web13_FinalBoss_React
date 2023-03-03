@@ -3,5 +3,13 @@
   "Price": "Price",
   "State": "State",
   "Category": "Category",
-  "No products": "No products"
+  "No products": "No products",
+  "Game": "Game",
+  "UserProperty": "Owner",
+  "PGI": "PGI",
+  "Description": "Description",
+  "Delete": "Delete",
+  "Are you sure?": "Are you sure?",
+  "Yes": "Yes",
+  "No": "No"
 }
