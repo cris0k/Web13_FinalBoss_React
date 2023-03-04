@@ -10,13 +10,13 @@ import "../../style/advertsPage.css";
 const EmptyList = () => {
   return (
     <div>
-      <p>{"No products"}</p>
+      <p>{i18n.t("No products")}</p>
     </div>
   );
 };
 const AdvertsPage = (props) => {
-  const [t, i18n] = useTranslation("translation");
   const adverts = useSelector((state) => state.adverts.list);
+  const [t, i18n] = useTranslation("translation");
   const dispatch = useDispatch();
 
   useEffect(() => {
