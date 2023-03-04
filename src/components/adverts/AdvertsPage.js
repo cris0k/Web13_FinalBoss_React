@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { fetchAllAdverts } from "../../store/slices/adverts";
 import { useDispatch, useSelector } from "react-redux";
 import i18n from "../../i18n";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import "../../style/advertsPage.css";
 
@@ -15,6 +16,7 @@ const EmptyList = () => {
 };
 const AdvertsPage = (props) => {
   const adverts = useSelector((state) => state.adverts.list);
+  const [t, i18n] = useTranslation("translation");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,17 +32,17 @@ const AdvertsPage = (props) => {
               <li className="advertsPage-item" key={item._id}>
                 <Link className="linkDetail" to={`/${item._id}`}>
                   <p>
-                    {i18n.t("Product")}: {item.name}
+                    {t("Product")}: {item.name}
                   </p>
                   <p>
-                    -{i18n.t("Price")}: {item.price}$
+                    -{t("Price")}: {item.price}$
                   </p>
                   <p>
-                    -{i18n.t("State")}:{item.sale ? "Se vende" : "Se compra"}
+                    -{t("State")}:{item.sale ? "Se vende" : "Se compra"}
                   </p>
                   <p>
                     {" "}
-                    - {i18n.t("Category")}: {item.category.toString()}{" "}
+                    - {t("Category")}: {item.category.toString()}{" "}
                   </p>
                 </Link>
               </li>

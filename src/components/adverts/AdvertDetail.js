@@ -4,12 +4,14 @@ import { useParams } from "react-router-dom";
 import { getUniqueAdvert, deleteAdvert } from "../../store/slices/adverts";
 import Page from "../layout/Page";
 import i18n from "../../i18n";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import "../../style/advertDetail.css";
 
 const AdvertDetail = (props) => {
   const { advertId } = useParams();
+  const [t, i18n] = useTranslation("translation");
   const dispatch = useDispatch();
   const [deleteProdcut, setDeleteProdcut] = useState(false);
   const navigate = useNavigate();
@@ -50,27 +52,27 @@ const AdvertDetail = (props) => {
             )}{" "}
           </div>
           <p className="AdvertDetail-title">
-            {i18n.t("Game")}: {advert.name}
+            {t("Game")}: {advert.name}
           </p>
           <p className="AdvertDetail-price">
-            - {i18n.t("Price")}: {advert.price}$
+            - {t("Price")}: {advert.price}$
           </p>
           <p className="AdvertDetail-state">
-            -{i18n.t("State")}:{advert.sale ? "Se vende" : "Se compra"}
+            -{t("State")}:{advert.sale ? "Se vende" : "Se compra"}
           </p>
           <p className="AdvertDetail-user">
-            -{i18n.t("UserProperty")}: {advert.userOwner}
+            -{t("UserProperty")}: {advert.userOwner}
           </p>
           <p className="AdvertDetail-PGI">
-            {i18n.t("PGI")}: {advert.PGI}
+            {t("PGI")}: {advert.PGI}
           </p>
           {advert.category.length && (
             <p className="AdvertDetail-category">
-              -{i18n.t("Category")}:{advert.category.toString()}
+              -{t("Category")}:{advert.category.toString()}
             </p>
           )}
           <p className="AdvertDetail-description">
-            {i18n.t("Description")}: {advert.description}
+            {t("Description")}: {advert.description}
           </p>
         </div>
       ) : (
@@ -78,15 +80,15 @@ const AdvertDetail = (props) => {
       )}
       <button className="detailProduct-button" onClick={handleDeleteProduct}>
         {" "}
-        {i18n.t("Delete")}
+        {t("Delete")}
       </button>
       {deleteProdcut ? (
         <div>
-          <h3>{i18n.t("Are you sure?")}</h3>
+          <h3>{t("Are you sure?")}</h3>
           <button type="submit" onClick={handleRemoveProdcut}>
-            {i18n.t("Yes")}
+            {t("Yes")}
           </button>
-          <button onClick={removeAdvise}>{i18n.t("No")}</button>
+          <button onClick={removeAdvise}>{t("No")}</button>
         </div>
       ) : (
         ""

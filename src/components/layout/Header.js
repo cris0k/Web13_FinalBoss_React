@@ -1,9 +1,11 @@
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import AuthButton from "../auth/AuthButton";
+import { useTranslation } from "react-i18next";
 
 function Header() {
   const { token } = useSelector((state) => state.auth);
+  const [t, i18n] = useTranslation("translation");
 
   return (
     <header>
@@ -11,21 +13,24 @@ function Header() {
         <h1>UwUntu's Final BOSS</h1>
       </NavLink>
 
+      <button onClick={() => i18n.changeLanguage("es")}>ES</button>
+      <button onClick={() => i18n.changeLanguage("en")}>EN</button>
+
       <section className="nav-buttons">
         {token ? (
           <nav className="header-nav">
-            <NavLink to="/newadvert" className="nav-link">
-              | New Advert |
+            <NavLink to="/adverts/new" className="nav-link">
+              | {t("New Advert")} |
             </NavLink>
 
             <NavLink to="/user-profile" className="nav-link">
-              | My Profile |
+              | {t("My profile")} |
             </NavLink>
           </nav>
         ) : (
           <nav>
             <NavLink to="/register" className="button-log">
-              Sign Up
+              {t("Sign up")}
             </NavLink>
           </nav>
         )}
