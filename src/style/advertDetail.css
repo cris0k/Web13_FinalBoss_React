@@ -2,17 +2,17 @@
   border: 3px rgb(75, 74, 72) solid;
   display: grid;
   grid-template-areas:
-    "photo photo title title state state"
-    "photo photo price price user user"
-    "photo photo category category pgi pgi"
-    "description description description description description description"
-    "description description description description description description";
+    "photo title title state state"
+    "photo price price user user"
+    "photo category category pgi pgi"
+    "photo description description description description"
+    "photo description description description description";
   background-color: rgb(230, 225, 225);
 }
 
 .AdvertDetail-photo {
   grid-area: photo;
-  border: 1px green solid;
+  box-sizing: border-box;
 }
 
 .AdvertDetail-title {
@@ -24,15 +24,23 @@
 }
 
 .AdvertDetail-state {
-  grid-area: state;
+  display: flex;
+  justify-content: start;
+  align-items: start;
 }
 
 .AdvertDetail-user {
   grid-area: user;
+  display: flex;
+  justify-content: start;
+  align-items: start;
 }
 
 .AdvertDetail-PGI {
   grid-area: pgi;
+  display: flex;
+  justify-content: start;
+  align-items: start;
 }
 
 .AdvertDetail-category {
@@ -41,4 +49,5 @@
 
 .AdvertDetail-description {
   grid-area: description;
+  background-color: rgb(212, 191, 237);
 }
