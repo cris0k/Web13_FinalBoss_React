@@ -10,22 +10,23 @@ const DeleteAccount = () => {
     const dispatch = useDispatch()
     const [t] = useTranslation("translation");
 
-    const handleDelete = async()=>{
+    const handleDelete = ()=>{
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: t('Are you sure?'),
+                text: t("You won't be able to revert this!"),
                 icon: 'warning',
                 showCancelButton: true,
+                cancelButtonText: t('Cancel'),
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: t('Yes, delete it')
               }).then((result) => {
                 if (result.isConfirmed) {
                     deleteUser()
                     dispatch(logoutSlice())
                   Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
+                    t('Deleted!'),
+                    t('Your account has been deleted.'),
                     'success'
                   )
                 }

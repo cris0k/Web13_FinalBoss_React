@@ -24,5 +24,10 @@
   "Email":"Correo",
   "Edit profile":"Editar perfil",
   "Delete account": "Borrar cuenta",
-  "My Adverts": "Mis Anuncios"
+  "My Adverts": "Mis Anuncios",
+  "You won't be able to revert this!":"¡Esta accion no se podrá deshacer!",
+  "Yes, delete it" : "Si, Borrala",
+  "Deleted!":"¡Borrado!",
+  "Your account has been deleted.":"Su cuenta ha sido borrada.",
+  "Cancel":"Cancelar"
 }
