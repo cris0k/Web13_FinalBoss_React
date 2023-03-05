@@ -1,9 +1,12 @@
 import {  NavLink, useNavigate } from "react-router-dom"
 import { deleteUser } from "./service";
 import Swal from "sweetalert2"
+import { useDispatch } from "react-redux";
+import {logoutSlice} from '../../store/slices/authSlice'
 
 const DeleteAccount = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const handleDelete = async()=>{
             Swal.fire({
@@ -17,6 +20,7 @@ const DeleteAccount = () => {
               }).then((result) => {
                 if (result.isConfirmed) {
                     deleteUser()
+                    dispatch(logoutSlice())
                   Swal.fire(
                     'Deleted!',
                     'Your file has been deleted.',
