@@ -17,5 +17,12 @@
   "Sign up": "Sign up",
   "Remember?": "Remember me?",
   "Login": "Login",
-  "ForgotPwd?": "Forgot Password?"
+  "ForgotPwd?": "Forgot Password?",
+  "Favourites":"Favourites",
+  "Reserved" : "Reserved",
+  "Name":"Name",
+  "Email":"Email",
+  "Edit profile":"Edit profile",
+  "Delete account": "Delete Acount",
+  "My Adverts": "My Adverts"
 }

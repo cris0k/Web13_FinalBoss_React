@@ -3,10 +3,12 @@ import { deleteUser } from "./service";
 import Swal from "sweetalert2"
 import { useDispatch } from "react-redux";
 import {logoutSlice} from '../../store/slices/authSlice'
+import { useTranslation } from "react-i18next";
 
 const DeleteAccount = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [t] = useTranslation("translation");
 
     const handleDelete = async()=>{
             Swal.fire({
@@ -33,7 +35,7 @@ const DeleteAccount = () => {
     }
    
   
-    return <NavLink onClick={handleDelete}>Delete account</NavLink>
+    return <NavLink onClick={handleDelete}>{t('Delete account')}</NavLink>
 
 ;}
 
