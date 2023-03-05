@@ -19,7 +19,7 @@ function Header() {
       <section className="nav-buttons">
         {token ? (
           <nav className="header-nav">
-            <NavLink to="/adverts/new" className="nav-link">
+            <NavLink to="/newadvert" className="nav-link">
               | {t("New Advert")} |
             </NavLink>
 
