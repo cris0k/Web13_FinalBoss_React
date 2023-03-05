@@ -24,11 +24,11 @@ const DeleteAccount = () => {
                 if (result.isConfirmed) {
                     deleteUser()
                     dispatch(logoutSlice())
-                  Swal.fire(
-                    t('Deleted!'),
-                    t('Your account has been deleted.'),
-                    'success'
-                  )
+                  Swal.fire({
+                    title:t('Deleted!'),
+                    text:t('Your account has been deleted.'),
+                    imageUrl: 'img/sponge-bob-patrick.gif',
+                  })
                 }
                 
             }).then(()=> navigate('/'))
