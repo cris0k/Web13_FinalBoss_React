@@ -17,5 +17,10 @@
   "Sign up": "Sign up",
   "Remember?": "Remember me?",
   "Login": "Login",
-  "ForgotPwd?": "Forgot Password?"
+  "ForgotPwd?": "Forgot Password?",
+  "Name": "Name",
+  "Password": "Password",
+  "Email": "Email",
+  "Confirm password": "Confirm password",
+  "Log In": "Log In"
 }

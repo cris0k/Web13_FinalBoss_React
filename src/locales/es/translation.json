@@ -17,5 +17,10 @@
   "Sign up": "Registro",
   "Remember?": "¿Recordar?",
   "Login": "Entrar",
-  "ForgotPwd?": "¿Olvidaste tu contraseña?"
+  "ForgotPwd?": "¿Olvidaste tu contraseña?",
+  "Name": "Nombre",
+  "Password": "Contraseña",
+  "Email": "Email",
+  "Confirm password": "Confirmar contraseña",
+  "Log In": "Log In"
 }
