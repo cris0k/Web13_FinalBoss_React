@@ -21,9 +21,8 @@ function App() {
           <Route path='/' element={<Layout />}>
             <Route index element={<AdvertsPage />}/>
             <Route path=":advertId" element={<AdvertDetail />} />
-          </Route>
 
-          <Route path='/user-profile' element={
+            <Route path='/user-profile' element={
               <RequireAuth>
                 <ProfilePage />
               </RequireAuth>
@@ -33,10 +32,13 @@ function App() {
                 <NewAdvert />
               </RequireAuth>
             }/>
-           <Route path = '/passwordReset' element={<PasswordResset/>}/>
+          </Route>
+
+          <Route path = '/passwordReset' element={<PasswordResset/>}/>
           <Route path ='/forgotpassword'element={<ForgetPassword/>}/>
           <Route path ='/login' element={<LoginPage />}/>
           <Route path='/register' element={<RegisterPage />} />
+          
           <Route path="/404" element={<NotFoundPage/>}/>
           <Route path="/" element={<Navigate to="/adverts" />} />
           <Route path="*" element={<Navigate to="/404" />} />
