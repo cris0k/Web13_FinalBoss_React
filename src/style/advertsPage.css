@@ -1,9 +1,14 @@
 .advertsPage {
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
   flex-wrap: nowrap;
   background-color: rgb(230, 225, 225);
+}
+
+.advertsPage-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .advertsPage-item {

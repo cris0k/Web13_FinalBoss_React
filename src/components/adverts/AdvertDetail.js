@@ -1,13 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getUniqueAdvert } from "../../store/slices/adverts";
+import { getUniqueAdvert, deleteAdvert } from "../../store/slices/adverts";
 import Page from "../layout/Page";
+import i18n from "../../i18n";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+
 import "../../style/advertDetail.css";
 
 const AdvertDetail = (props) => {
   const { advertId } = useParams();
+  const [t, i18n] = useTranslation("translation");
   const dispatch = useDispatch();
+  const [deleteProdcut, setDeleteProdcut] = useState(false);
+  const navigate = useNavigate();
 
   //Obtener el anuncio
   const { list: adverts } = useSelector((state) => state.adverts);
@@ -17,6 +24,16 @@ const AdvertDetail = (props) => {
   useEffect(() => {
     dispatch(getUniqueAdvert(advertId));
   }, [dispatch, advertId]);
+
+  //Eliminar producto
+  const handleDeleteProduct = () => setDeleteProdcut(true);
+
+  const removeAdvise = () => setDeleteProdcut(false);
+
+  const handleRemoveProdcut = () => {
+    dispatch(deleteAdvert(advert));
+    navigate("/");
+  };
 
   return (
     <Page title="Detail product" {...props}>
@@ -34,26 +51,47 @@ const AdvertDetail = (props) => {
               "Imagen no disponible"
             )}{" "}
           </div>
-          <p className="AdvertDetail-title">Juego: {advert.name}</p>
-          <p className="AdvertDetail-price">- Precio: {advert.price}$</p>
-          <p className="AdvertDetail-state">
-            -Estado:
-            {advert.sale ? "Se vende" : "Se compra"}
+          <p className="AdvertDetail-title">
+            {t("Game")}: {advert.name}
           </p>
-          <p className="AdvertDetail-user">-Propietario: {advert.userOwner}</p>
-          <p className="AdvertDetail-PGI">PGI: {advert.PGI}</p>
+          <p className="AdvertDetail-price">
+            - {t("Price")}: {advert.price}$
+          </p>
+          <p className="AdvertDetail-state">
+            -{t("State")}:{advert.sale ? "Se vende" : "Se compra"}
+          </p>
+          <p className="AdvertDetail-user">
+            -{t("UserProperty")}: {advert.userOwner}
+          </p>
+          <p className="AdvertDetail-PGI">
+            {t("PGI")}: {advert.PGI}
+          </p>
           {advert.category.length && (
             <p className="AdvertDetail-category">
-              -Categorias:
-              {advert.category.toString()}
+              -{t("Category")}:{advert.category.toString()}
             </p>
           )}
           <p className="AdvertDetail-description">
-            Descripción: {advert.description}
+            {t("Description")}: {advert.description}
           </p>
         </div>
       ) : (
         " Producto no encontrado"
+      )}
+      <button className="detailProduct-button" onClick={handleDeleteProduct}>
+        {" "}
+        {t("Delete")}
+      </button>
+      {deleteProdcut ? (
+        <div>
+          <h3>{t("Are you sure?")}</h3>
+          <button type="submit" onClick={handleRemoveProdcut}>
+            {t("Yes")}
+          </button>
+          <button onClick={removeAdvise}>{t("No")}</button>
+        </div>
+      ) : (
+        ""
       )}
     </Page>
   );

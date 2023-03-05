@@ -3,5 +3,19 @@
   "Price": "Price",
   "State": "State",
   "Category": "Category",
-  "No products": "No products"
+  "No products": "No products",
+  "Game": "Game",
+  "UserProperty": "Owner",
+  "PGI": "PGI",
+  "Description": "Description",
+  "Delete": "Delete",
+  "Are you sure?": "Are you sure?",
+  "Yes": "Yes",
+  "No": "No",
+  "New Advert": "New Advert",
+  "My profile": "My profile",
+  "Sign up": "Sign up",
+  "Remember?": "Remember me?",
+  "Login": "Login",
+  "ForgotPwd?": "Forgot Password?"
 }

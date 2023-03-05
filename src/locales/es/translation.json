@@ -2,6 +2,20 @@
   "Product": "Producto",
   "Price": "Precio",
   "State": "Estado",
-  "Category": "Categoria",
-  "No products": "No hay productos"
+  "Category": "Categoría",
+  "No products": "No hay productos",
+  "Game": "Juego",
+  "UserProperty": "Propietario",
+  "PGI": "PGI",
+  "Description": "Descripción",
+  "Delete": "Borrar",
+  "Are you sure?": "¿Estás seguro?",
+  "Yes": "Si",
+  "No": "No",
+  "New Advert": "Nuevo anuncio",
+  "My profile": "Mi perfil",
+  "Sign up": "Registro",
+  "Remember?": "¿Recordar?",
+  "Login": "Entrar",
+  "ForgotPwd?": "¿Olvidaste tu contraseña?"
 }

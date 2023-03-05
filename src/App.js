@@ -4,29 +4,36 @@ import RequireAuth from "./components/auth/RequiteAuth";
 import Layout from "./components/layout/Layout";
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import RegisterPage from "./components/auth/RegisterPage";
-import ProfilePage from "./components/ProfilePage";
+import ProfilePage from "./components/profile/ProfilePage";
 import AdvertDetail from "./components/adverts/AdvertDetail";
 import NotFoundPage from "./components/common/NotFoundPage";
+
 import ForgetPassword from "./components/auth/ForgottenPassword";
 import PasswordResset from "./components/auth/PasswordResset"
+import NewAdvert from "./components/adverts/NewAdvert";
+
 
 function App() {
   return (
-    
       <div className="App" >
         <Routes>
           
-          <Route path='/adverts' element={<Layout />}>
+          <Route path='/' element={<Layout />}>
             <Route index element={<AdvertsPage />}/>
             <Route path=":advertId" element={<AdvertDetail />} />
           </Route>
 
           <Route path='/user-profile' element={
-            <RequireAuth>
-              <ProfilePage />
-            </RequireAuth>
-          } />
-          <Route path = '/passwordReset' element={<PasswordResset/>}/>
+              <RequireAuth>
+                <ProfilePage />
+              </RequireAuth>
+            } />
+            <Route path="/newadvert" element={
+              <RequireAuth>
+                <NewAdvert />
+              </RequireAuth>
+            }/>
+           <Route path = '/passwordReset' element={<PasswordResset/>}/>
           <Route path ='/forgotpassword'element={<ForgetPassword/>}/>
           <Route path ='/login' element={<LoginPage />}/>
           <Route path='/register' element={<RegisterPage />} />
@@ -34,10 +41,7 @@ function App() {
           <Route path="/" element={<Navigate to="/adverts" />} />
           <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
-          
-      </div>
-    
+     </div> );
+}
 
-  )}
-
-  export default App;
+export default App;

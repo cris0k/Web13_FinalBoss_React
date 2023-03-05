@@ -1,16 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import storage from '../../utils/storage'
 import { registerUser, userLogin } from '../actions/authActions'
 
 
-// initialize userToken from local storage
-const token = storage.get('auth')
-  ? storage.get('auth')
-  : null
-
 const initialState = {
   loading: false,
-  token,
+  token: null,
   error: null,
   success: false,
 }
@@ -24,10 +18,7 @@ const authSlice = createSlice({
       state.token = null
       state.error = null
       state.success = true
-    },
-    setCredentials: (state, { payload }) => {
-      state.token = payload
-    },
+    }
   },
   extraReducers: {
     // login user
@@ -61,6 +52,6 @@ const authSlice = createSlice({
   },
 })
 
-export const { logoutSlice, setCredentials } = authSlice.actions
+export const { logoutSlice } = authSlice.actions
 
 export default authSlice.reducer

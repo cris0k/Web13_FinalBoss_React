@@ -23,6 +23,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .nav-buttons {
   display: flex;
@@ -37,12 +38,13 @@ body {
 }
 
 .nav-link {
-  border-radius: 30%;
   margin-left: 10px;
   font-weight: 400;
   font-size: 1.2rem;
   text-decoration: none;
   color: var(--details-white);
+  background: var(--background-color);
+  padding: 5px;
 }
 
 .nav-link:hover {
