@@ -3,29 +3,32 @@ import { deleteUser } from "./service";
 import Swal from "sweetalert2"
 import { useDispatch } from "react-redux";
 import {logoutSlice} from '../../store/slices/authSlice'
+import { useTranslation } from "react-i18next";
 
 const DeleteAccount = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [t] = useTranslation("translation");
 
-    const handleDelete = async()=>{
+    const handleDelete = ()=>{
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: t('Are you sure?'),
+                text: t("You won't be able to revert this!"),
                 icon: 'warning',
                 showCancelButton: true,
+                cancelButtonText: t('Cancel'),
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: t('Yes, delete it')
               }).then((result) => {
                 if (result.isConfirmed) {
                     deleteUser()
                     dispatch(logoutSlice())
-                  Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                  )
+                  Swal.fire({
+                    title:t('Deleted!'),
+                    text:t('Your account has been deleted.'),
+                    imageUrl: 'img/sponge-bob-patrick.gif',
+                  })
                 }
                 
             }).then(()=> navigate('/'))
@@ -33,7 +36,7 @@ const DeleteAccount = () => {
     }
    
   
-    return <NavLink onClick={handleDelete}>Delete account</NavLink>
+    return <NavLink onClick={handleDelete}>{t('Delete account')}</NavLink>
 
 ;}
 
