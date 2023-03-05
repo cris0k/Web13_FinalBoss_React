@@ -7,6 +7,9 @@ import RegisterPage from "./components/auth/RegisterPage";
 import ProfilePage from "./components/profile/ProfilePage";
 import AdvertDetail from "./components/adverts/AdvertDetail";
 import NotFoundPage from "./components/common/NotFoundPage";
+
+import ForgetPassword from "./components/auth/ForgottenPassword";
+import PasswordResset from "./components/auth/PasswordResset"
 import NewAdvert from "./components/adverts/NewAdvert";
 
 
@@ -18,7 +21,9 @@ function App() {
           <Route path='/' element={<Layout />}>
             <Route index element={<AdvertsPage />}/>
             <Route path=":advertId" element={<AdvertDetail />} />
-            <Route path='/user-profile' element={
+          </Route>
+
+          <Route path='/user-profile' element={
               <RequireAuth>
                 <ProfilePage />
               </RequireAuth>
@@ -28,8 +33,8 @@ function App() {
                 <NewAdvert />
               </RequireAuth>
             }/>
-            </Route>
-
+           <Route path = '/passwordReset' element={<PasswordResset/>}/>
+          <Route path ='/forgotpassword'element={<ForgetPassword/>}/>
           <Route path ='/login' element={<LoginPage />}/>
           <Route path='/register' element={<RegisterPage />} />
           <Route path="/404" element={<NotFoundPage/>}/>

@@ -31,10 +31,11 @@ const RegisterPage = () => {
 
     dispatch(registerUser(data));
   };
-
   return (
     <form onSubmit={handleSubmit(submitForm)} className="signin-up-form">
+
       <h1 className="form-title"> {t("Sign up")} </h1>
+
       <div className="form-group">
         <input
           type="text"

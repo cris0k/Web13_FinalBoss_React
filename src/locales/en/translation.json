@@ -23,4 +23,16 @@
   "Email": "Email",
   "Confirm password": "Confirm password",
   "Log In": "Log In"
+  "Favourites":"Favourites",
+  "Reserved" : "Reserved",
+  "Edit profile":"Edit profile",
+  "Delete account": "Delete Acount",
+  "My Adverts": "My Adverts",
+  "You won't be able to revert this!":"You won't be able to revert this!",
+  "Yes, delete it" : "Yes, delete it",
+  "Deleted!":"Deleted!",
+  "Your account has been deleted.":"Your account has been deleted.",
+  "Cancel":"Cancel",
+  "Do not have an account?":"Do not have an account?",
+  "Register here":"Register here"
 }

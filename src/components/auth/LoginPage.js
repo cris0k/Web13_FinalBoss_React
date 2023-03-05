@@ -56,6 +56,10 @@ const LoginPage = () => {
       </button>
       <NavLink className="nav-link"> {t("ForgotPwd?")}</NavLink>
       {error && <Error>{error}</Error>}
+      <div>
+        <span>{t('Do not have an account?')}</span>
+        <NavLink className="nav-link" to="/register" >{t('Register here')}</NavLink>
+      </div>
     </form>
   );
 };
