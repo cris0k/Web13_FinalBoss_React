@@ -30,14 +30,19 @@ export const logout = () => {
 	});
 };
 
-// const adsUrl = "/api/newadvert";
-//const adsUrl = "/api/newadvert";
+
 export const setAd = (newAd) => {
-	//const url = adsUrl;
-	// return client.post("/api/adverts", newAd, config);
-	// return client.post("/api/adverts", uploadFiles);
-	// function uploadFiles(req, res) {
-	//   console.log(req.body);
-	// }
 	return client.post('/api/adverts', newAd, config);
+};
+
+export const forgottenPassword = (credentials) => {
+    
+	return client
+	.post('/api/requestPasswordReset', credentials)
+	.then(credentials => console.log(credentials))
+};
+export const changePassword = (credentials) => {
+	return client
+	.put('/api/passwordChange', credentials)
+	.then(credentials => credentials)
 };

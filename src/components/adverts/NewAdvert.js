@@ -91,7 +91,7 @@ const NewAdvert = (props) => {
 		<Page {...props}>
 			<h2>Create a new Advert</h2>
 			<section>
-				<form
+				<form className="signin-up-form"
 					// encType="multipart/form-data"
 					// method="post"
 					onSubmit={handleSubmit(onSubmit)}>
