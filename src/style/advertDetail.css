@@ -1,0 +1,44 @@
+.AdvertDetail-card {
+  border: 3px rgb(75, 74, 72) solid;
+  display: grid;
+  grid-template-areas:
+    "photo photo title title state state"
+    "photo photo price price user user"
+    "photo photo category category pgi pgi"
+    "description description description description description description"
+    "description description description description description description";
+  background-color: rgb(230, 225, 225);
+}
+
+.AdvertDetail-photo {
+  grid-area: photo;
+  border: 1px green solid;
+}
+
+.AdvertDetail-title {
+  grid-area: title;
+}
+
+.AdvertDetail-price {
+  grid-area: price;
+}
+
+.AdvertDetail-state {
+  grid-area: state;
+}
+
+.AdvertDetail-user {
+  grid-area: user;
+}
+
+.AdvertDetail-PGI {
+  grid-area: pgi;
+}
+
+.AdvertDetail-category {
+  grid-area: category;
+}
+
+.AdvertDetail-description {
+  grid-area: description;
+}

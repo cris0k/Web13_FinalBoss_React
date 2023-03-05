@@ -1,19 +1,113 @@
 :root {
   font-size: 16px;
   font-weight: 200;
-  --background-color:#c2d0ff;
-  --header-footer:#ffa200;
-  --details-dark:#294E6B;
-  --details-light-blue:#5AADED;
-  --details-white:#ffffff;
-  --details-black:#000000;
-  --disabled:#bfc1c2;
-  --cancel: #dd0202;
-  --green-bttn: #03ac03;
-  --yellow-bttn:#e4e404;
-  --black-shadow:#00000060;
-  
-  font-family: 'Poppins', sans-serif;
+  --background-color: #242222;
+  --header-footer: #ffa200;
+  --details-dark: #294e6b;
+  --details-light-blue: linear-gradient(90deg, #57cbf7 0%, #cb86ff 100%);
+  --details-white: #ffffff;
+  --details-black: #000000;
+  --disabled: #bfc1c2;
+  --hover: linear-gradient(90deg, #57cbf7 0%, #deb1ff 100%);
+  --neon-title:#ed95ffee;
+  --shadow: #c7b2dab6;
+
+  font-family: "Poppins", sans-serif;
 }
 
+header {
+  background-color: var(--background-color);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-buttons {
+  display: flex;
+  align-items: center;
+}
 
+body {
+  text-align: center;
+  width: 80%;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.nav-link {
+  border-radius: 30%;
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: var(--details-white);
+}
+
+.nav-link:hover {
+  color: var(--shadow);
+}
+
+li {
+  list-style-type: none;
+}
+.confirmation-message {
+  font-size: 1.5rem;
+}
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-radius: 5px;
+  background: var(--shadow);
+  margin-top: 100px;
+  min-width: 250px;
+  position: fixed;
+  top: 2%;
+  left: 60%;
+  right: 0;
+  bottom: 0;
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--button);
+  padding: 10px;
+  height: 45px;
+  border: none;
+  border-radius: 10%;
+  margin-left: 20px;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: var(--button-hover);
+  transition: background-color 0.3s linear;
+}
+
+footer {
+  padding: 0.5rem;
+  margin-top: auto;
+  text-align: center;
+  background-color: var(--background-color);
+  color: var(--details-white);
+}
+
+.linkDetail {
+  color: #000000;
+  text-decoration: none;
+}
+.uwu-404 {
+  width: 500px;
+}
+.message-404 {
+  font-size: 4rem;
+}
+
+.home-link {
+  margin-top: 20px;
+  color: var(--details-black);
+  font-size: 2rem;
+}
