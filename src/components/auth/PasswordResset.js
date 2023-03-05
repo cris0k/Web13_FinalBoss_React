@@ -12,7 +12,7 @@ const ForgetPassword = () => {
   const email = query.get("email");
   const token = query.get("token");
   const navigate = useNavigate();
-  // TODO comprobar vainas locas- pero mi codigo siempre funciona!
+  
 
   useEffect(() => {
     if (!token) {
@@ -23,8 +23,9 @@ const ForgetPassword = () => {
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm();
-
-  const submitForm = (credentials) => {
+  
+  
+  const submitForm = async(credentials) => {
     if (credentials.password !== credentials.confirmPassword) {
       Swal.fire({
         imageUrl:
@@ -36,38 +37,14 @@ const ForgetPassword = () => {
         confirmButtonText: "Continuar",
       });
     } else {
-      try {
         const passR = {
           password: credentials.password,
           email: email,
         };
-        dispatch(resetPassword(passR));
-        Swal.fire({
-          imageUrl: "https://imgflip.com/s/meme/Buddy-Christ.jpg",
-          imageHeight: 250,
-          imageWidth: 250,
-          title: "UwUntuInfo",
-          text: `Contraseña cambiada con exito`,
-          confirmButtonText: "Aceptar",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            navigate("/login");
-          }
-        });
-      } catch (error) {
-        Swal.fire({
-          imageUrl: "https://media.tenor.com/uPzeWnRQTQAAAAAM/shocked-seal.gif",
-          imageHeight: 250,
-          imageWidth: 250,
-          title: "UwUntuInfo",
-          text: `Algo salio mal, intentalo mas tarde`,
-          confirmButtonText: "Continuar",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            navigate("/login");
-          }
-        });
-      }
+         const result = await dispatch(resetPassword(passR));
+        if (result.payload === "success"){
+        navigate("/login")
+        }
     }
   };
   return (

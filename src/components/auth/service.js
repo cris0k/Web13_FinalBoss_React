@@ -37,8 +37,7 @@ import client, {
     .then(credentials => console.log(credentials))
   };
   export const changePassword = (credentials) => {
-    console.log(credentials)
     return client
     .put('/api/passwordChange', credentials)
-    .then(credentials => console.log(credentials))
+    .then(credentials => credentials)
   };
