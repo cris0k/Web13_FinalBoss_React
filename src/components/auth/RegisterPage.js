@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { registerUser } from "../../store/actions/authActions";
 import Error from "../Error";
 
 const RegisterPage = () => {
   const [customError, setCustomError] = useState(null);
+  const [t, i18n] = useTranslation("translation");
 
   const { loading, error, token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -31,12 +33,14 @@ const RegisterPage = () => {
   };
   return (
     <form onSubmit={handleSubmit(submitForm)} className="signin-up-form">
-      <h1 className="form-title"> Sign up </h1>
+
+      <h1 className="form-title"> {t("Sign up")} </h1>
+
       <div className="form-group">
         <input
           type="text"
           className="form-input"
-          placeholder="Name"
+          placeholder={t("Name")}
           {...register("name")}
           required
         />
@@ -45,7 +49,7 @@ const RegisterPage = () => {
         <input
           type="email"
           className="form-input"
-          placeholder="Email"
+          placeholder={t("Email")}
           {...register("email")}
           required
         />
@@ -54,7 +58,7 @@ const RegisterPage = () => {
         <input
           type="password"
           className="form-input"
-          placeholder="Password"
+          placeholder={t("Password")}
           {...register("password")}
           required
         />
@@ -63,7 +67,7 @@ const RegisterPage = () => {
         <input
           type="password"
           className="form-input"
-          placeholder="Confirm Password"
+          placeholder={t("Confirm password")}
           {...register("confirmPassword")}
           required
         />
@@ -76,4 +80,5 @@ const RegisterPage = () => {
     </form>
   );
 };
+
 export default RegisterPage;

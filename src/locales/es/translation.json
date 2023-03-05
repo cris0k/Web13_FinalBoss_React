@@ -18,10 +18,13 @@
   "Remember?": "¿Recordar?",
   "Login": "Entrar",
   "ForgotPwd?": "¿Olvidaste tu contraseña?",
+  "Name": "Nombre",
+  "Password": "Contraseña",
+  "Email": "Email",
+  "Confirm password": "Confirmar contraseña",
+  "Log In": "Log In"
   "Favourites":"Favoritos",
   "Reserved" : "Reservados",
-  "Name":"Nombre",
-  "Email":"Correo",
   "Edit profile":"Editar perfil",
   "Delete account": "Borrar cuenta",
   "My Adverts": "Mis Anuncios",
@@ -32,4 +35,5 @@
   "Cancel":"Cancelar",
   "Do not have an account?":"¿No tienes una cuenta?",
   "Register here":"Registrate aquí"
+
 }
