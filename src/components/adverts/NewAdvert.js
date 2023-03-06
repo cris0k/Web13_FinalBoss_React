@@ -1,14 +1,18 @@
 // Imports goes here
-/* import { useState } from 'react';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useParams, useNavigate, useLocation } from 'react-router-dom'; */
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useNavigate } from 'react-router-dom';
 import Page from '../layout/Page';
 import { setAd } from '../auth/service';
 import { useForm } from 'react-hook-form';
+import i18n from '../../i18n';
+import { useTranslation } from 'react-i18next';
 import '../../style/form.css';
 
 const NewAdvert = (props) => {
+	const [t, i18n] = useTranslation('translation');
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	// const [name, setName] = useState("");
 	// const [sale, setSale] = useState("");
 	// let [tags, setTags] = useState("");
@@ -44,17 +48,14 @@ const NewAdvert = (props) => {
 	//   );
 	// };
 
-	// Use form managing destructuring
+	// Useform managing destructuring
 	const { register, handleSubmit } = useForm();
-	//const onSubmit = (data) => console.log(data);
 
 	const onSubmit = (data) => {
 		const files = document.getElementById('photo');
 		// console.log(files);
 		const formData = new FormData();
-		// formData.append("photo", data.photo);
 		formData.append('photo', data.photo[0].name);
-		// formData.append("category", JSON.stringify(data.category));
 		formData.append('category', data.category.types);
 		formData.append('name', data.name);
 		formData.append('price', data.price);
@@ -62,48 +63,23 @@ const NewAdvert = (props) => {
 		formData.append('company', data.company);
 		formData.append('sale', data.sale);
 		formData.append('PGI', data.pgi);
-		// Añadir PGI
 
-		// formData.append("buyorsale", JSON.stringify(data.buyorsale));
-		// const jsond = JSON.stringify(data);
-
-		// Tutorial Multer
-		// console.log(files.files.length + " es la longitud del array");
 		for (let i = 0; i < files.files.length; i++) {
-			// console.log(files.files[i]);
 			formData.append('photo', files.files[i]);
 		}
 
-		// console.log(formData.get("files"));
 		console.log(data);
 		setAd(formData);
 	};
-
-	// const onSubmit = (data) =>
-	//   setAd(data).then(
-	//     function (response) {
-	//       navigate("/adverts");
-	//     },
-	//     (error) => setError(error)
-	//   );
 
 	return (
 		<Page {...props}>
 			<h2>Create a new Advert</h2>
 			<section>
-				<form
-					// encType="multipart/form-data"
-					// method="post"
-					onSubmit={handleSubmit(onSubmit)}>
+				<form onSubmit={handleSubmit(onSubmit)}>
 					<br></br>
 					<label>Name:</label>
-					{/* <input
-            type="text"
-            name="name"
-            placeholder="Write your name."
-            onChange={handleChangeUsername}
-            value={name}
-          ></input> */}
+
 					<input
 						id='name'
 						type='text'
@@ -111,13 +87,7 @@ const NewAdvert = (props) => {
 						{...register('name', { required: true })}></input>
 					<br></br>
 					<label>User:</label>
-					{/* <input
-            type="text"
-            name="username"
-            placeholder="Write your username."
-            //onChange={handleChangeUser}
-            //   value={user}
-          ></input> */}
+
 					<input
 						type='text'
 						placeholder='User name'
@@ -125,13 +95,7 @@ const NewAdvert = (props) => {
 
 					<br></br>
 					<label>Company:</label>
-					{/* <input
-            type="text"
-            name="company"
-            placeholder="Developer company."
-            //onChange=""
-            //   value={company}
-          ></input> */}
+
 					<input
 						type='text'
 						placeholder='Write your company name'
@@ -141,40 +105,32 @@ const NewAdvert = (props) => {
 					<br></br>
 					<h3>¿Is for buy or sale?</h3>
 					<label>Buy:</label>
-					{/* <input
-              type="radio"
-              name="saleorbuy"
-              value="buy"
-              onChange={handleChangeSale}
-            /> */}
+
 					<input type='radio' value='buy' {...register('sale')}></input>
 
 					<label>Sale:</label>
-					{/* <input
-              type="radio"
-              name="saleorbuy"
-              value="sale"
-              onChange={handleChangeSale}
-            /> */}
+
 					<input type='radio' value='sale' {...register('sale')}></input>
 
 					<br></br>
 					<br></br>
 					<br></br>
-					<label>PGI:</label>
-					<input type='number' {...register('pgi', { required: true })}></input>
+					<label>PEGI:</label>
+
+					<select {...register('pgi')}>
+						<option value='3'>3</option>
+						<option value='7'>7</option>
+						<option value='12'>12</option>
+						<option value='16'>16</option>
+						<option value='18'>18</option>
+					</select>
 					<br></br>
 					<br></br>
 					<label>Price:</label>
-					{/* <input
-            type="number"
-            name="price"
-            min="0"
-            onChange={handleChangePrice}
-            value={price}
-          ></input> */}
+
 					<input
 						type='number'
+						step='0.01'
 						{...register('price', { required: true })}></input>
 
 					<br></br>
@@ -182,12 +138,7 @@ const NewAdvert = (props) => {
 					<label>
 						<h3>Upload your photo:</h3>
 					</label>
-					{/* <input
-            type="file"
-            name="photo"
-            onChange={handleChangePhoto}
-            value={photo}
-          ></input> */}
+
 					<input
 						id='photo'
 						name='photo'
@@ -234,12 +185,7 @@ const NewAdvert = (props) => {
 					<br></br>
 
 					<label>Description:</label>
-					{/* <textarea
-            type="text"
-            name="description"
-            onChange={handleChandgeDescription}
-            value={description}
-          ></textarea> */}
+
 					<br></br>
 					<textarea
 						{...register('description')}
