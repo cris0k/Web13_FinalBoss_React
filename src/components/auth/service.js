@@ -7,7 +7,7 @@ import storage from '../../utils/storage';
 
 const config = {
 	headers: {
-		'Content-Type': 'multipart/form-data'
+		'Content-Type': 'multipart/form-data',
 	},
 };
 
@@ -29,19 +29,17 @@ export const logout = () => {
 	});
 };
 
-
 export const setAd = (newAd) => {
 	return client.post('/api/adverts', newAd, config);
 };
 
 export const forgottenPassword = (credentials) => {
-    
 	return client
-	.post('/api/requestPasswordReset', credentials)
-	.then(credentials => console.log(credentials))
+		.post('/api/requestPasswordReset', credentials)
+		.then((credentials) => console.log(credentials));
 };
 export const changePassword = (credentials) => {
 	return client
-	.put('/api/passwordChange', credentials)
-	.then(credentials => credentials)
+		.put('/api/passwordChange', credentials)
+		.then((credentials) => credentials);
 };

@@ -1,43 +1,43 @@
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import AuthButton from "../auth/AuthButton";
-import { useTranslation } from "react-i18next";
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import AuthButton from '../auth/AuthButton';
+import { useTranslation } from 'react-i18next';
 
 function Header() {
-  const { token } = useSelector((state) => state.auth);
-  const [t, i18n] = useTranslation("translation");
+	const { token } = useSelector((state) => state.auth);
+	const [t, i18n] = useTranslation('translation');
 
-  return (
-    <header>
-      <NavLink to="/" className="main-title">
-        <h1>UwUntu's Final BOSS</h1>
-      </NavLink>
+	return (
+		<header>
+			<NavLink to='/' className='main-title'>
+				<h1>UwUntu's Final BOSS</h1>
+			</NavLink>
 
-      <button onClick={() => i18n.changeLanguage("es")}>ES</button>
-      <button onClick={() => i18n.changeLanguage("en")}>EN</button>
+			<button onClick={() => i18n.changeLanguage('es')}>ES</button>
+			<button onClick={() => i18n.changeLanguage('en')}>EN</button>
 
-      <section className="nav-buttons">
-        {token ? (
-          <nav className="header-nav">
-            <NavLink to="/newadvert" className="nav-link">
-              | {t("New Advert")} |
-            </NavLink>
+			<section className='nav-buttons'>
+				{token ? (
+					<nav className='header-nav'>
+						<NavLink to='/newadvert' className='nav-link'>
+							| {t('New Advert')} |
+						</NavLink>
 
-            <NavLink to="/user-profile" className="nav-link">
-              | {t("My profile")} |
-            </NavLink>
-          </nav>
-        ) : (
-          <nav>
-            <NavLink to="/register" className="button-log">
-              {t("Sign up")}
-            </NavLink>
-          </nav>
-        )}
-        <AuthButton />
-      </section>
-    </header>
-  );
+						<NavLink to='/user-profile' className='nav-link'>
+							| {t('My profile')} |
+						</NavLink>
+					</nav>
+				) : (
+					<nav>
+						<NavLink to='/register' className='button-log'>
+							{t('Sign up')}
+						</NavLink>
+					</nav>
+				)}
+				<AuthButton />
+			</section>
+		</header>
+	);
 }
 
 export default Header;
