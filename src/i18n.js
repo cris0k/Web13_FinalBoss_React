@@ -5,9 +5,15 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import common_en from "./locales/en/translation.json";
 import common_es from "./locales/es/translation.json";
 
+const languageDefined = localStorage.getItem("lng");
+
+function lagunageSelected() {
+  return languageDefined ? languageDefined : "es";
+}
+
 i18n.use(LanguageDetector).init({
   fallbackLng: "es",
-  lng: "es",
+  lng: lagunageSelected(),
   debug: true,
   interpolation: {
     escapeValue: false, // not needed for react!!
