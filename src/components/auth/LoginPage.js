@@ -54,12 +54,13 @@ const LoginPage = () => {
       <button type="submit" className="button-log" disabled={loading}>
         {t("Login")}
       </button>
-      <NavLink className="nav-link"> {t("ForgotPwd?")}</NavLink>
+      <NavLink className="nav-link" to="/forgotpassword"> {t("ForgotPwd?")}</NavLink>
       {error && <Error>{error}</Error>}
       <div>
         <span>{t('Do not have an account?')}</span>
         <NavLink className="nav-link" to="/register" >{t('Register here')}</NavLink>
       </div>
+      <NavLink className="nav-link" to="/">Home Page</NavLink>
     </form>
   );
 };

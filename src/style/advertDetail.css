@@ -7,12 +7,14 @@
     "photo category category pgi pgi"
     "photo description description description description"
     "photo description description description description";
-  background-color: rgb(230, 225, 225);
+  background-color: rgb(255, 255, 255);
 }
 
 .AdvertDetail-photo {
   grid-area: photo;
   box-sizing: border-box;
+  margin:20px;
+  
 }
 
 .AdvertDetail-title {
@@ -25,22 +27,22 @@
 
 .AdvertDetail-state {
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .AdvertDetail-user {
   grid-area: user;
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .AdvertDetail-PGI {
   grid-area: pgi;
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .AdvertDetail-category {
@@ -50,4 +52,7 @@
 .AdvertDetail-description {
   grid-area: description;
   background-color: rgb(212, 191, 237);
+}
+img {
+  width: 350px;
 }

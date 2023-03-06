@@ -2,21 +2,21 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: nowrap;
-  background-color: rgb(230, 225, 225);
+ 
 }
 
 .advertsPage-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  
 }
 
 .advertsPage-item {
   border: 3px rgb(75, 74, 72) solid;
-  border-radius: 15%;
-  padding: 1em;
-  margin: 3em;
+  border-radius: 5%;
+  margin: 1em;
   flex-direction: row;
   box-shadow: 1px 2px rgb(104, 102, 102);
-  background-color: rgb(206, 203, 203);
+  background-color: rgb(255, 255, 255);
 }

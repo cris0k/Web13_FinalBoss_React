@@ -63,6 +63,7 @@ const NewAdvert = (props) => {
 		formData.append('company', data.company);
 		formData.append('sale', data.sale);
 		formData.append('PGI', data.pgi);
+		formData.append('description', data.description)
 
 		for (let i = 0; i < files.files.length; i++) {
 			formData.append('photo', files.files[i]);

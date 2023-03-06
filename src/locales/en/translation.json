@@ -3,6 +3,8 @@
   "Price": "Price",
   "State": "State",
   "Category": "Category",
+  "On sale":"On sale",
+  "Buying":"Buying",
   "No products": "No products",
   "Game": "Game",
   "UserProperty": "Owner",

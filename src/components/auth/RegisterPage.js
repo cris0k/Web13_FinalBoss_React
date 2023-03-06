@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { registerUser } from "../../store/actions/authActions";
 import Error from "../Error";
@@ -77,6 +77,7 @@ const RegisterPage = () => {
       <button type="submit" className="button" disabled={loading}>
         {loading ? "Loading..." : "Register"}
       </button>
+      <NavLink className="nav-link" to="/">Home Page</NavLink>
     </form>
   );
 };

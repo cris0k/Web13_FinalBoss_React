@@ -18,6 +18,7 @@ const AdvertsPage = (props) => {
   const adverts = useSelector((state) => state.adverts.list);
   const [t, i18n] = useTranslation("translation");
   const dispatch = useDispatch();
+  const url = process.env.REACT_APP_URL_PHOTO;
 
   useEffect(() => {
     dispatch(fetchAllAdverts());
@@ -31,18 +32,28 @@ const AdvertsPage = (props) => {
             {adverts.map((item) => (
               <li className="advertsPage-item" key={item._id}>
                 <Link className="linkDetail" to={`/${item._id}`}>
+                <div className='AdvertDetail-photo'>
+						    {item.photo ? (
+                <img
+                  src={url + item.photo}
+                  alt='imagen del producto'
+                />
+						   ) : (
+							<img src={'img/image-coming-soon.jpg'} alt='coming-soon'/>
+						)}
+					</div>
                   <p>
-                    {t("Product")}: {item.name}
+                    {item.name}
                   </p>
                   <p>
-                    -{t("Price")}: {item.price}$
+                    {t("Price")}: {item.price}$
                   </p>
                   <p>
-                    -{t("State")}:{item.sale ? "Se vende" : "Se compra"}
+                    {t("State")}: {item.sale ? t("On sale") : t("Buying")}
                   </p>
                   <p>
                     {" "}
-                    - {t("Category")}: {item.category.toString()}{" "}
+                    {t("Category")}: {item.category.toString()}{" "}
                   </p>
                 </Link>
               </li>

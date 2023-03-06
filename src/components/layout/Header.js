@@ -12,10 +12,10 @@ function Header() {
 			<NavLink to='/' className='main-title'>
 				<h1>UwUntu's Final BOSS</h1>
 			</NavLink>
-
-			<button onClick={() => i18n.changeLanguage('es')}>ES</button>
-			<button onClick={() => i18n.changeLanguage('en')}>EN</button>
-
+			<div>
+				<button onClick={() => i18n.changeLanguage('es')}>ES</button>
+				<button onClick={() => i18n.changeLanguage('en')}>EN</button>
+			</div>
 			<section className='nav-buttons'>
 				{token ? (
 					<nav className='header-nav'>

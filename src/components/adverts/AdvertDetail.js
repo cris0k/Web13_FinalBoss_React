@@ -43,33 +43,31 @@ const AdvertDetail = (props) => {
 					<div className='AdvertDetail-photo'>
 						{advert.photo ? (
 							<img
-								width='150px'
-								max-width='100%'
 								src={url + advert.photo}
 								alt='imagen del producto'
 							/>
 						) : (
-							'Imagen no disponible'
-						)}{' '}
+							<img src={'img/image-coming-soon.jpg'} alt='coming-soon'/>
+						)}
 					</div>
 					<p className='AdvertDetail-title'>
 						{t('Game')}: {advert.name}
 					</p>
 					<p className='AdvertDetail-price'>
-						- {t('Price')}: {advert.price}$
+						{t('Price')}: {advert.price}$
 					</p>
 					<p className='AdvertDetail-state'>
-						-{t('State')}:{advert.sale ? 'Se vende' : 'Se compra'}
+						{t('State')}:{advert.sale ? 'Se vende' : 'Se compra'}
 					</p>
 					<p className='AdvertDetail-user'>
-						-{t('UserProperty')}: {advert.userOwner}
+						{t('UserProperty')}: {advert.userOwner}
 					</p>
 					<p className='AdvertDetail-PGI'>
 						{t('PGI')}: {advert.PGI}
 					</p>
 					{advert.category.length && (
 						<p className='AdvertDetail-category'>
-							-{t('Category')}:{advert.category.toString()}
+							{t('Category')}:{advert.category.toString()}
 						</p>
 					)}
 					<p className='AdvertDetail-description'>

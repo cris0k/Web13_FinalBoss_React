@@ -26,7 +26,7 @@ export const fetchAllAdverts = () => (dispatch) => {
   client
     .get(advertUrl)
     .then((response) => {
-      dispatch(setAdvertsList(response.results));
+      dispatch(setAdvertsList(response.results.reverse()));
     })
     .catch((error) => console.log(error));
 };
