@@ -19,7 +19,7 @@ const AdvertDetail = (props) => {
   const url = process.env.REACT_APP_URL_PHOTO;
   const location = useLocation();
   // const shareUrl = `http://localhost:3000${location.pathname}`;
-  const shareUrl = "www.marca.com";
+  const shareUrl = "https://youtu.be/m9QQKzApkXY";
   //Obtener el anuncio
   const { list: adverts } = useSelector((state) => state.adverts);
   const [advert] = adverts;
@@ -50,30 +50,35 @@ const AdvertDetail = (props) => {
               <img src={"img/image-coming-soon.jpg"} alt="coming-soon" />
             )}
           </div>
-          <p className="AdvertDetail-title">
-            {t("Game")}: {advert.name}
-          </p>
-          <p className="AdvertDetail-price">
-            {t("Price")}: {advert.price}$
-          </p>
-          <p className="AdvertDetail-state">
-            {t("State")}:{advert.sale ? "Se vende" : "Se compra"}
-          </p>
-          <p className="AdvertDetail-user">
-            {t("UserProperty")}: {advert.userOwner}
-          </p>
-          <p className="AdvertDetail-PGI">
-            {t("PGI")}: {advert.PGI}
-          </p>
-          {advert.category.length && (
-            <p className="AdvertDetail-category">
-              {t("Category")}:{advert.category.toString()}
+          <div className="AdvertDetail-general-info">
+            <p className="AdvertDetail-title">
+              {t("Game")}: {advert.name}
             </p>
-          )}
+            <p className="AdvertDetail-price">
+              {t("Price")}: {advert.price}$
+            </p>
+            <p className="AdvertDetail-state">
+              {t("State")}:{advert.sale ? "Se vende" : "Se compra"}
+            </p>
+            <p className="AdvertDetail-user">
+              {t("UserProperty")}: {advert.userOwner}
+            </p>
+            <p className="AdvertDetail-PGI">
+              {t("PGI")}: {advert.PGI}
+            </p>
+            {advert.category.length && (
+              <p className="AdvertDetail-category">
+                {t("Category")}:{advert.category.toString()}
+              </p>
+            )}
+          </div>
           <p className="AdvertDetail-description">
             {t("Description")}: {advert.description}
           </p>
-          <SocialShare shareUrl={shareUrl} />
+          <SocialShare
+            className="AdvertDetail-SocialShare"
+            shareUrl={shareUrl}
+          />
         </div>
       ) : (
         " Producto no encontrado"

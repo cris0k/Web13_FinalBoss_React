@@ -7,9 +7,9 @@ import {
   LinkedinIcon,
 } from "react-share";
 
-function SocialShare({ shareUrl }) {
+function SocialShare({ shareUrl, className }) {
   return (
-    <div className="social-sharing-card">
+    <div className={className}>
       <FacebookShareButton url={shareUrl}>
         <FacebookIcon size={50} />
       </FacebookShareButton>
