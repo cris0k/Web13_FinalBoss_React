@@ -6,14 +6,7 @@ import Page from "../layout/Page";
 import i18n from "../../i18n";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  TwitterShareButton,
-  TwitterIcon,
-  LinkedinShareButton,
-  LinkedinIcon,
-} from "react-share";
+import SocialShare from "../layout/SocialShare";
 
 import "../../style/advertDetail.css";
 
@@ -80,17 +73,7 @@ const AdvertDetail = (props) => {
           <p className="AdvertDetail-description">
             {t("Description")}: {advert.description}
           </p>
-          <div className="social-sharing-card">
-            <FacebookShareButton url={shareUrl}>
-              <FacebookIcon size={50} />
-            </FacebookShareButton>
-            <TwitterShareButton url={shareUrl}>
-              <TwitterIcon size={50} />
-            </TwitterShareButton>
-            <LinkedinShareButton url={shareUrl}>
-              <LinkedinIcon size={50} />
-            </LinkedinShareButton>
-          </div>
+          <SocialShare shareUrl={shareUrl} />
         </div>
       ) : (
         " Producto no encontrado"
