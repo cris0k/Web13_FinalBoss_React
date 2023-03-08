@@ -16,7 +16,7 @@ const EmptyList = () => {
 };
 const AdvertsPage = (props) => {
   const adverts = useSelector((state) => state.adverts.list);
-  const [t, i18n] = useTranslation("translation");
+  const [t] = useTranslation("translation");
   const dispatch = useDispatch();
   const url = process.env.REACT_APP_URL_PHOTO;
 
@@ -32,19 +32,17 @@ const AdvertsPage = (props) => {
             {adverts.map((item) => (
               <li className="advertsPage-item" key={item._id}>
                 <Link className="linkDetail" to={`/${item._id}`}>
-                <div className='AdvertDetail-photo'>
-						    {item.photo ? (
-                <img
-                  src={url + item.photo}
-                  alt='imagen del producto'
-                />
-						   ) : (
-							<img src={'img/image-coming-soon.jpg'} alt='coming-soon'/>
-						)}
-					</div>
-                  <p>
-                    {item.name}
-                  </p>
+                  <div className="AdvertDetail-photo">
+                    {item.photo ? (
+                      <img src={url + item.photo} alt="imagen del producto" />
+                    ) : (
+                      <img
+                        src={"img/image-coming-soon.jpg"}
+                        alt="coming-soon"
+                      />
+                    )}
+                  </div>
+                  <p>{item.name}</p>
                   <p>
                     {t("Price")}: {item.price}$
                   </p>

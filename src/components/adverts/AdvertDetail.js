@@ -1,20 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { getUniqueAdvert, deleteAdvert } from "../../store/slices/adverts";
 import Page from "../layout/Page";
-import i18n from "../../i18n";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import SocialShare from "../layout/SocialShare";
 
 import "../../style/advertDetail.css";
 
 const AdvertDetail = (props) => {
   const { advertId } = useParams();
-  const [t, i18n] = useTranslation("translation");
+  const [t] = useTranslation("translation");
   const dispatch = useDispatch();
-  const [deleteProdcut, setDeleteProdcut] = useState(false);
   const navigate = useNavigate();
   const url = process.env.REACT_APP_URL_PHOTO;
   const location = useLocation();
@@ -30,13 +29,36 @@ const AdvertDetail = (props) => {
   }, [dispatch, advertId]);
 
   //Eliminar producto
-  const handleDeleteProduct = () => setDeleteProdcut(true);
+  // const handleDeleteProduct = () => setDeleteProdcut(true);
 
-  const removeAdvise = () => setDeleteProdcut(false);
+  // const removeAdvise = () => setDeleteProdcut(false);
 
+  // const handleRemoveProdcut = () => {
+  //   dispatch(deleteAdvert(advert));
+  //   navigate("/");
+  // };
   const handleRemoveProdcut = () => {
-    dispatch(deleteAdvert(advert));
-    navigate("/");
+    try {
+      Swal.fire({
+        title: t("Delete"),
+        imageUrl: "/img/men-in-black.gif",
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "men-in-black-delete",
+        showCancelButton: true,
+        cancelButtonText: t("Cancel"),
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: t("Yes"),
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(deleteAdvert(advert));
+          navigate("/");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -83,21 +105,10 @@ const AdvertDetail = (props) => {
       ) : (
         " Producto no encontrado"
       )}
-      <button className="detailProduct-button" onClick={handleDeleteProduct}>
+      <button className="detailProduct-button" onClick={handleRemoveProdcut}>
         {" "}
         {t("Delete")}
       </button>
-      {deleteProdcut ? (
-        <div>
-          <h3>{t("Are you sure?")}</h3>
-          <button type="submit" onClick={handleRemoveProdcut}>
-            {t("Yes")}
-          </button>
-          <button onClick={removeAdvise}>{t("No")}</button>
-        </div>
-      ) : (
-        ""
-      )}
     </Page>
   );
 };
