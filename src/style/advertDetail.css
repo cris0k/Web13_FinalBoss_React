@@ -1,28 +1,36 @@
 .AdvertDetail-card {
-  border: 3px rgb(75, 74, 72) solid;
-  display: grid;
-  grid-template-areas:
-    "photo title title state state"
-    "photo price price user user"
-    "photo category category pgi pgi"
-    "photo description description description description"
-    "photo description description description description";
+  border-right: 3px rgb(75, 74, 72) solid;
+  border-left: 3px rgb(75, 74, 72) solid;
+  display: flex;
   background-color: rgb(255, 255, 255);
+  justify-content: space-between;
 }
 
 .AdvertDetail-photo {
   grid-area: photo;
-  box-sizing: border-box;
-  margin:20px;
-  
+  margin: 20px;
+}
+
+.AdvertDetail-general-info {
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+}
+.AdvertDetail-general-info > p {
+  margin: 0.3em;
 }
 
 .AdvertDetail-title {
   grid-area: title;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .AdvertDetail-price {
-  grid-area: price;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .AdvertDetail-state {
@@ -47,12 +55,23 @@
 
 .AdvertDetail-category {
   grid-area: category;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .AdvertDetail-description {
   grid-area: description;
-  background-color: rgb(212, 191, 237);
+  border: 3px double gainsboro;
+  max-height: 25vh;
+  overflow: scroll;
 }
+
+.AdvertDetail-SocialShare {
+  display: flex;
+  flex-direction: column;
+}
+
 img {
   width: 350px;
 }
