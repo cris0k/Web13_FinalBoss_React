@@ -62,7 +62,7 @@ const AdvertDetail = (props) => {
   };
 
   return (
-    <Page title="Detail product" {...props}>
+    <Page title={t("Game's Details")} {...props}>
       {advert !== undefined ? (
         <div className="AdvertDetail-card">
           <div className="AdvertDetail-photo">
@@ -80,7 +80,7 @@ const AdvertDetail = (props) => {
               {t("Price")}: {advert.price}$
             </p>
             <p className="AdvertDetail-state">
-              {t("State")}:{advert.sale ? "Se vende" : "Se compra"}
+              {t("State")}: {advert.sale ? "Se vende" : "Se compra"}
             </p>
             <p className="AdvertDetail-user">
               {t("UserProperty")}: {advert.userOwner}
@@ -90,7 +90,7 @@ const AdvertDetail = (props) => {
             </p>
             {advert.category.length && (
               <p className="AdvertDetail-category">
-                {t("Category")}:{advert.category.toString()}
+                {t("Category")}: {advert.category.toString()}
               </p>
             )}
           </div>
