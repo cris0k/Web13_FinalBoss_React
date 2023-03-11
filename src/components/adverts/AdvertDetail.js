@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import SocialShare from "../layout/SocialShare";
 
 import "../../style/advertDetail.css";
+import FavButton from "../common/FavButton";
 
 const AdvertDetail = (props) => {
   const { advertId } = useParams();
@@ -97,10 +98,13 @@ const AdvertDetail = (props) => {
           <p className="AdvertDetail-description">
             {t("Description")}: {advert.description}
           </p>
-          <SocialShare
-            className="AdvertDetail-SocialShare"
-            shareUrl={shareUrl}
-          />
+          <div>
+            <SocialShare
+              className="AdvertDetail-SocialShare"
+              shareUrl={shareUrl}
+            />
+            <FavButton />
+          </div>
         </div>
       ) : (
         " Producto no encontrado"
