@@ -1,17 +1,17 @@
 // Imports goes here
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+/* import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'; */
+import {  useNavigate } from 'react-router-dom';
 import Page from '../layout/Page';
 import { setAd } from '../auth/service';
 import { useForm } from 'react-hook-form';
-import i18n from '../../i18n';
-import { useTranslation } from 'react-i18next';
+/* import i18n from '../../i18n';
+import { useTranslation } from 'react-i18next'; */
 import '../../style/form.css';
 
 const NewAdvert = (props) => {
-	const [t, i18n] = useTranslation('translation');
-	const dispatch = useDispatch();
+	/* const [t, i18n] = useTranslation('translation');
+	const dispatch = useDispatch(); */
 	const navigate = useNavigate();
 	// const [name, setName] = useState("");
 	// const [sale, setSale] = useState("");
@@ -71,6 +71,7 @@ const NewAdvert = (props) => {
 
 		console.log(data);
 		setAd(formData);
+		navigate('/')
 	};
 
 	return (

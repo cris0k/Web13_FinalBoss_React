@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import {/*  useLocation, */ useParams } from "react-router-dom";
 import { getUniqueAdvert, deleteAdvert } from "../../store/slices/adverts";
 import Page from "../layout/Page";
 import { useTranslation } from "react-i18next";
@@ -16,7 +16,7 @@ const AdvertDetail = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const url = process.env.REACT_APP_URL_PHOTO;
-  const location = useLocation();
+  //const location = useLocation();
   // const shareUrl = `http://localhost:3000${location.pathname}`;
   const shareUrl = "https://youtu.be/m9QQKzApkXY";
   //Obtener el anuncio
