@@ -15,14 +15,14 @@ const EmptyList = () => {
   );
 };
 const AdvertsPage = (props) => {
-  const adverts = useSelector((state) => state.adverts.list);
+  const { list }= useSelector((state) => state.adverts);
   const [t] = useTranslation("translation");
   const dispatch = useDispatch();
   const url = process.env.REACT_APP_URL_PHOTO;
 
   const [visible, setVisible] = useState(6);
   const [isCompleted, setIsCompleted] = useState(false)
-  const allGames = adverts.length
+  const allGames = list.length
 
   const showMoreGames = () => {
     setVisible((prevValue)=>{
@@ -46,7 +46,7 @@ const AdvertsPage = (props) => {
       <div className="advertsPage">
         {allGames > 0 ? (
           <ul className="advertsPage-list">
-            {adverts?.slice(0, visible).map((item) => (
+            {list?.slice(0, visible).map((item) => (
               <li className="advertsPage-item" key={item._id}>
                 <Link className="linkDetail" to={`/${item._id}`}>
                   <div className="AdvertDetail-photo">
