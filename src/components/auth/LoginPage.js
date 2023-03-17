@@ -11,7 +11,7 @@ import "../../style/form.css";
 
 const LoginPage = () => {
   const { loading, token, error } = useSelector((state) => state.auth);
-  const [t, i18n] = useTranslation("translation");
+  const [t] = useTranslation("translation");
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm();

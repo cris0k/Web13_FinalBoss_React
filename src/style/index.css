@@ -7,7 +7,7 @@
   --details-light-blue: linear-gradient(90deg, #57cbf7 0%, #cb86ff 100%);
   --details-white: #ffffff;
   --details-black: #000000;
-  --disabled: #bfc1c2;
+  --disabled: #8f9091;
   --hover: linear-gradient(90deg, #57cbf7 0%, #deb1ff 100%);
   --neon-title:#ed95ffee;
   --shadow: #c7b2dab6;
@@ -87,6 +87,9 @@ button {
 button:hover {
   background-color: var(--button-hover);
   transition: background-color 0.3s linear;
+}
+button:disabled {
+  color: var(--disabled);
 }
 
 footer {

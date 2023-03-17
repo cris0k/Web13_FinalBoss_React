@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import {/*  useLocation, */ useParams } from "react-router-dom";
 import { getUniqueAdvert, deleteAdvert } from "../../store/slices/adverts";
 import Page from "../layout/Page";
 import { useTranslation } from "react-i18next";
@@ -22,7 +22,9 @@ const AdvertDetail = (props) => {
   const urlProd = process.env.REACT_APP_API_BASE_URL;
   const location = useLocation();
   const shareUrl = `${urlProd}${location.pathname}`;
-  //const shareUrl = "https://youtu.be/m9QQKzApkXY";
+ 
+  const shareUrl = "https://youtu.be/m9QQKzApkXY";
+
   //Obtener el anuncio
   const { list: adverts } = useSelector((state) => state.adverts);
   const [advert] = adverts;
@@ -67,7 +69,7 @@ const AdvertDetail = (props) => {
   };
 
   return (
-    <Page title="Detail product" {...props}>
+    <Page title={t("Game's Details")} {...props}>
       {advert !== undefined ? (
         <div className="AdvertDetail-card">
           <div className="AdvertDetail-photo">
@@ -85,7 +87,7 @@ const AdvertDetail = (props) => {
               {t("Price")}: {advert.price}$
             </p>
             <p className="AdvertDetail-state">
-              {t("State")}:{advert.sale ? "Se vende" : "Se compra"}
+              {t("State")}: {advert.sale ? "Se vende" : "Se compra"}
             </p>
             <p className="AdvertDetail-user">
               {t("UserProperty")}: {advert.userOwner}
@@ -95,7 +97,7 @@ const AdvertDetail = (props) => {
             </p>
             {advert.category.length && (
               <p className="AdvertDetail-category">
-                {t("Category")}:{advert.category.toString()}
+                {t("Category")}: {advert.category.toString()}
               </p>
             )}
           </div>

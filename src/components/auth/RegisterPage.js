@@ -8,7 +8,7 @@ import Error from "../Error";
 
 const RegisterPage = () => {
   const [customError, setCustomError] = useState(null);
-  const [t, i18n] = useTranslation("translation");
+  const [t] = useTranslation("translation");
 
   const { loading, error, token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
