@@ -38,9 +38,21 @@ export const { updateUser } = userSlice.actions;
 
 export const addFavToArray = (user, advert) => (dispatch) => {
   // const userToUpdate = { ...user, favAdverts: [...user.favAdverts, advert] };
+  const userAdvertsToUpdate = [...user.favAdverts, advert];
+  client
+    .put(`/api/user/${user.id}`, userAdvertsToUpdate)
+    .then((response) => {
+      dispatch(updateUser(response));
+    })
+    .catch((error) => console.log(error));
+};
+
+export const deleteFavToArray = (user, advert) => (dispatch) => {
   console.log(user);
   console.log(advert);
-  const userAdvertsToUpdate = [...user.favAdverts, advert];
+  const userAdvertsToUpdate = user.favAdverts.filter(
+    ({ _id }) => _id !== advert._id
+  );
   client
     .put(`/api/user/${user.id}`, userAdvertsToUpdate)
     .then((response) => {

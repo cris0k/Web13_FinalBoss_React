@@ -26,8 +26,6 @@ const AdvertDetail = (props) => {
   //Obtener el anuncio
   const { list: adverts } = useSelector((state) => state.adverts);
   const [advert] = adverts;
-  const user = useSelector((state) => state.user.userInfo);
-  console.log(user);
 
   const token = storage.get("auth");
 
