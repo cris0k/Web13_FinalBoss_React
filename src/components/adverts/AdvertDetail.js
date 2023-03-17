@@ -9,6 +9,9 @@ import Swal from "sweetalert2";
 import SocialShare from "../layout/SocialShare";
 
 import "../../style/advertDetail.css";
+import FavButton from "../common/FavButton";
+import storage from "../../utils/storage";
+import { profileData } from "../../store/actions/userActions";
 
 const AdvertDetail = (props) => {
   const { advertId } = useParams();
@@ -16,27 +19,31 @@ const AdvertDetail = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const url = process.env.REACT_APP_URL_PHOTO;
-  //const location = useLocation();
-  // const shareUrl = `http://localhost:3000${location.pathname}`;
+  const urlProd = process.env.REACT_APP_API_BASE_URL;
+  const location = useLocation();
+  const shareUrl = `${urlProd}${location.pathname}`;
+ 
   const shareUrl = "https://youtu.be/m9QQKzApkXY";
+
   //Obtener el anuncio
   const { list: adverts } = useSelector((state) => state.adverts);
   const [advert] = adverts;
-  console.log(advert);
 
+  const token = storage.get("auth");
+
+  //Traer al usuario
+  useEffect(() => {
+    if (token) {
+      dispatch(profileData());
+    }
+  }, [dispatch]);
+
+  //Traer el anuncio
   useEffect(() => {
     dispatch(getUniqueAdvert(advertId));
   }, [dispatch, advertId]);
 
   //Eliminar producto
-  // const handleDeleteProduct = () => setDeleteProdcut(true);
-
-  // const removeAdvise = () => setDeleteProdcut(false);
-
-  // const handleRemoveProdcut = () => {
-  //   dispatch(deleteAdvert(advert));
-  //   navigate("/");
-  // };
   const handleRemoveProdcut = () => {
     try {
       Swal.fire({
@@ -97,10 +104,13 @@ const AdvertDetail = (props) => {
           <p className="AdvertDetail-description">
             {t("Description")}: {advert.description}
           </p>
-          <SocialShare
-            className="AdvertDetail-SocialShare"
-            shareUrl={shareUrl}
-          />
+          <div>
+            <SocialShare
+              className="AdvertDetail-SocialShare"
+              shareUrl={shareUrl}
+            />
+            <FavButton />
+          </div>
         </div>
       ) : (
         " Producto no encontrado"
