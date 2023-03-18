@@ -16,6 +16,9 @@ import PasswordResset from "./components/auth/PasswordResset";
 import NewAdvert from "./components/adverts/NewAdvert";
 import storage from "./utils/storage";
 import FavoritesPage from "./components/profile/Favorites";
+import socketIO from 'socket.io-client';
+import ChatPage from "./components/chat/ChatPage";
+const socket = socketIO.connect(process.env.REACT_APP_SOCKET_URL);
 
 function App() {
   const dispatch = useDispatch();
@@ -58,11 +61,19 @@ function App() {
               </RequireAuth>
             }
           />
+           <Route
+            path="/chat"
+            element={
+              <RequireAuth>
+                <ChatPage socket={socket}/>
+              </RequireAuth>
+            }
+          />
         </Route>
-
+       
         <Route path="/passwordReset" element={<PasswordResset />} />
         <Route path="/forgotpassword" element={<ForgetPassword />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage socket={socket}/>} />
         <Route path="/register" element={<RegisterPage />} />
 
         <Route path="/404" element={<NotFoundPage />} />

@@ -40,6 +40,9 @@ function Header() {
             <NavLink to="/user-profile" className="nav-link">
               | {t("My profile")} |
             </NavLink>
+            <NavLink to="/chat" className="nav-link">
+              | Chat |
+            </NavLink>
           </nav>
         ) : (
           <nav>
