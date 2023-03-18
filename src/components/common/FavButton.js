@@ -21,7 +21,7 @@ const FavButton = () => {
   };
 
   return (
-    <div>
+    <div className="fav-buttons">
       <button className="nofav-button" onClick={handleForgetButton}>
         Forget Favourite
       </button>

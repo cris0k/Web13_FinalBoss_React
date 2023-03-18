@@ -23,7 +23,7 @@ const LoginPage = () => {
       dispatch(profileData());
       navigate("/");
     }
-  }, [navigate, token]);
+  }, [navigate, token,dispatch]);
 
   const submitForm = (credentials) => {
     dispatch(userLogin(credentials));

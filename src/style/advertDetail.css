@@ -1,73 +1,47 @@
 .AdvertDetail-card {
   border-right: 3px rgb(75, 74, 72) solid;
   border-left: 3px rgb(75, 74, 72) solid;
-  display: flex;
+  display: grid;
   background-color: rgb(255, 255, 255);
-  justify-content: space-between;
+  grid-template-columns: 1fr 2fr 3fr;
+  grid-template-areas: 
+    "photo data description social"
+    
 }
 
 .AdvertDetail-photo {
   grid-area: photo;
   margin: 20px;
+  
 }
 
 .AdvertDetail-general-info {
   font-size: 1em;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  text-align: left;
+  font-size: 1.5rem;
+  
 }
 .AdvertDetail-general-info > p {
   margin: 0.3em;
 }
 
-.AdvertDetail-title {
-  grid-area: title;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.AdvertDetail-price {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.AdvertDetail-state {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.AdvertDetail-user {
-  grid-area: user;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.AdvertDetail-PGI {
-  grid-area: pgi;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.AdvertDetail-category {
-  grid-area: category;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
 .AdvertDetail-description {
   grid-area: description;
-  border: 3px double gainsboro;
-  max-height: 25vh;
-  overflow: scroll;
+  max-width: 300px;
+  font-size: 1.2rem;
+  text-align: left;
+  display: flex;
+  justify-self: center;
+  align-content: center;
 }
 
-.AdvertDetail-SocialShare {
+.edit-details{
+  grid-area: social;
   display: flex;
   flex-direction: column;
 }
@@ -75,3 +49,27 @@
 img {
   width: 350px;
 }
+
+@media (max-width:1075px) {
+  .AdvertDetail-card  {
+      grid-template-columns: 4fr;
+      grid-template-areas:
+        "photo"
+        "data"
+        "description"
+        "social"
+        
+    }
+}
+
+@media (max-width: 800px) {
+    .AdvertDetail-card  {
+      grid-template-columns: 4fr;
+      grid-template-areas:
+        "photo"
+        "data"
+        "description"
+        "social"
+        
+    }
+  }

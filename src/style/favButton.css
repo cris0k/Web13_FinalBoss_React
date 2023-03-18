@@ -1,7 +1,18 @@
 .fav-button {
-  background-color: red;
+  background-color: #ff0000;
 }
 
 .nofav-button {
-  background-color: grey;
+  background-color: #808080;
+}
+
+:is(.fav-button, .nofav-button):hover{
+  background-color: #d1cfcf;
+}
+
+.fav-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
 }

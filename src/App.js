@@ -25,7 +25,7 @@ function App() {
     if (token) {
       dispatch(profileData());
     }
-  }, [dispatch]);
+  }, [dispatch,token]);
 
   return (
     <div className="App">

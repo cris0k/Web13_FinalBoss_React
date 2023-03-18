@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {/*  useLocation, */ useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getUniqueAdvert, deleteAdvert } from "../../store/slices/adverts";
 import Page from "../layout/Page";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialShare from "../layout/SocialShare";
-
 import "../../style/advertDetail.css";
 import FavButton from "../common/FavButton";
 import storage from "../../utils/storage";
@@ -18,13 +17,12 @@ const AdvertDetail = (props) => {
   const [t] = useTranslation("translation");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const url = process.env.REACT_APP_URL_PHOTO;
   const urlProd = process.env.REACT_APP_API_BASE_URL;
-  const location = useLocation();
+
   const shareUrl = `${urlProd}${location.pathname}`;
  
-  const shareUrl = "https://youtu.be/m9QQKzApkXY";
-
   //Obtener el anuncio
   const { list: adverts } = useSelector((state) => state.adverts);
   const [advert] = adverts;
@@ -36,7 +34,7 @@ const AdvertDetail = (props) => {
     if (token) {
       dispatch(profileData());
     }
-  }, [dispatch]);
+  }, [dispatch,token]);
 
   //Traer el anuncio
   useEffect(() => {
@@ -104,7 +102,8 @@ const AdvertDetail = (props) => {
           <p className="AdvertDetail-description">
             {t("Description")}: {advert.description}
           </p>
-          <div>
+          <div className="edit-details">
+            <span>Share this game</span>
             <SocialShare
               className="AdvertDetail-SocialShare"
               shareUrl={shareUrl}
