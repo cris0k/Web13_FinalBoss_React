@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { profileData } from "../../store/actions/userActions";
 import "../../style/profile.css";
 import DeleteAccount from "./DeleteAccount";
-import FavoritesPage from "./Favorites";
+//import FavoritesPage from "./Favorites";
 
 const ProfilePage = () => {
   const { userInfo } = useSelector((state) => state.user);

@@ -16,6 +16,9 @@ import PasswordResset from "./components/auth/PasswordResset";
 import NewAdvert from "./components/adverts/NewAdvert";
 import storage from "./utils/storage";
 import FavoritesPage from "./components/profile/Favorites";
+import socketIO from 'socket.io-client';
+import ChatPage from "./components/chat/ChatPage";
+const socket = socketIO.connect('http://localhost:4000');
 
 function App() {
   const dispatch = useDispatch();
@@ -30,7 +33,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout socket={socket}/>}>
           <Route index element={<AdvertsPage />} />
           <Route path=":advertId" element={<AdvertDetail />} />
 
@@ -58,8 +61,16 @@ function App() {
               </RequireAuth>
             }
           />
+           <Route
+            path="/chat"
+            element={
+              
+              <ChatPage socket={socket}/>
+             
+            }
+          />
         </Route>
-
+       
         <Route path="/passwordReset" element={<PasswordResset />} />
         <Route path="/forgotpassword" element={<ForgetPassword />} />
         <Route path="/login" element={<LoginPage />} />
