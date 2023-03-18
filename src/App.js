@@ -18,7 +18,7 @@ import storage from "./utils/storage";
 import FavoritesPage from "./components/profile/Favorites";
 import socketIO from 'socket.io-client';
 import ChatPage from "./components/chat/ChatPage";
-const socket = socketIO.connect('http://localhost:4000');
+const socket = socketIO.connect(process.env.REACT_APP_SOCKET_URL);
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Layout socket={socket}/>}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<AdvertsPage />} />
           <Route path=":advertId" element={<AdvertDetail />} />
 
@@ -64,16 +64,16 @@ function App() {
            <Route
             path="/chat"
             element={
-              
-              <ChatPage socket={socket}/>
-             
+              <RequireAuth>
+                <ChatPage socket={socket}/>
+              </RequireAuth>
             }
           />
         </Route>
        
         <Route path="/passwordReset" element={<PasswordResset />} />
         <Route path="/forgotpassword" element={<ForgetPassword />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage socket={socket}/>} />
         <Route path="/register" element={<RegisterPage />} />
 
         <Route path="/404" element={<NotFoundPage />} />

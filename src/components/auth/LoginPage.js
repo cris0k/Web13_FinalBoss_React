@@ -9,11 +9,11 @@ import { profileData } from "../../store/actions/userActions";
 
 import "../../style/form.css";
 
-const LoginPage = () => {
+const LoginPage = ({ socket }) => {
   const { loading, token, error } = useSelector((state) => state.auth);
   const [t] = useTranslation("translation");
   const dispatch = useDispatch();
-
+  const userName = useSelector((state) => state.user.userInfo?.name);
   const { register, handleSubmit } = useForm();
 
   const navigate = useNavigate();
@@ -25,8 +25,10 @@ const LoginPage = () => {
     }
   }, [navigate, token,dispatch]);
 
-  const submitForm = (credentials) => {
-    dispatch(userLogin(credentials));
+  const submitForm = async(credentials) => {
+    await dispatch(userLogin(credentials));
+    
+    await socket.emit('newUser', { userName, socketID: socket.id });
   };
 
   return (
