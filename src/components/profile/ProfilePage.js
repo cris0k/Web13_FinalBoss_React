@@ -1,20 +1,13 @@
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { profileData } from "../../store/actions/userActions";
 import "../../style/profile.css";
 import DeleteAccount from "./DeleteAccount";
 //import FavoritesPage from "./Favorites";
 
 const ProfilePage = () => {
   const { userInfo } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
   const [t] = useTranslation("translation");
-
-  useEffect(() => {
-    dispatch(profileData());
-  }, [dispatch]);
 
   return (
     <section className="profile-page">
