@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const ChatFooter = ({ socket }) => {
-  const [message, setMessage] = useState('')
+  const [msg, setMsg] = useState('')
   const { userInfo } = useSelector((state) => state.user);
 
   const handleTyping = () =>
@@ -10,15 +10,15 @@ const ChatFooter = ({ socket }) => {
 
   const handleSendMessage = (e) => {
     e.preventDefault();
-    if (message.trim() && userInfo.name) {
+    if (msg.trim() && userInfo.name) {
         socket.emit('message', {
-          text: message,
+          text: msg,
           name: userInfo.name,
           id: `${socket.id}${Math.random()}`,
           socketID: socket.id
         });
       }
-      setMessage('');
+    setMsg('');
   };
 
   return (
@@ -28,8 +28,8 @@ const ChatFooter = ({ socket }) => {
           type="text"
           placeholder="Write message"
           className="message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          value={msg}
+          onChange={(e) => setMsg(e.target.value)}
           onKeyDown={handleTyping}
         />
         <button className="sendBtn">SEND</button>
