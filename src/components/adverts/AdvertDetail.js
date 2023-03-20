@@ -74,7 +74,7 @@ const AdvertDetail = (props) => {
             {advert.photo ? (
               <img src={url + advert.photo} alt="imagen del producto" />
             ) : (
-              <img src={"img/image-coming-soon.jpg"} alt="coming-soon" />
+              <img src={"img/default.jpg"} alt="coming-soon" />
             )}
           </div>
           <div className="AdvertDetail-general-info">

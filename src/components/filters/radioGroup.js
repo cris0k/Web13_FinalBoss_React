@@ -5,13 +5,13 @@ const TypeFilter = () => {
   const { filterParams, setFilterParams } = useFilterContext();
   const [radioValue, setRadioValue] = useState(filterParams.type);
 
+
   useEffect(() => {
     setFilterParams((prevValues) => ({ ...prevValues, type: radioValue }));
   }, [radioValue, setFilterParams]);
 
   const handleChange = (event) => {
     const value = event.target.value;
-    console.log(value)
 
     setRadioValue(value);
   };

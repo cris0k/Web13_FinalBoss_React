@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 // import { getTags } from "../auth/service";
 import { useFilterContext } from "./filterContext";
-const categories = ["fantasy", "rpg", "shooter", "arcade"]
+const categories = ["fantasy", "rpg", "shooter", "arcade"];
 
 const TagFilter = () => {
   const [tags, setTags] = useState(categories);
   const { filterParams, setFilterParams } = useFilterContext();
   const [chosen, setChosen] = useState(filterParams.category);
-  
+
   // useEffect(() => {
   //   // getTags()
   //   //   .then(setTags)
@@ -27,7 +27,7 @@ const TagFilter = () => {
 
   return (
     <div>
-       Busca por tags:{" "}
+      Busca por tags:{" "}
       {tags.map((tag, index) => (
         <label key={index}>
           {tag}
