@@ -4,10 +4,9 @@ import { useFilterContext } from "./filterContext";
 const categories = ["fantasy", "rpg", "shooter", "arcade"];
 
 const TagFilter = () => {
-  const [tags, setTags] = useState(categories);
+  const [tags] = useState(categories);
   const { filterParams, setFilterParams } = useFilterContext();
   const [chosen, setChosen] = useState(filterParams.category);
-
   // useEffect(() => {
   //   // getTags()
   //   //   .then(setTags)
