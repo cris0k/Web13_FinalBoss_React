@@ -1,58 +1,75 @@
 .AdvertDetail-card {
-  border: 3px rgb(75, 74, 72) solid;
+  border-right: 3px rgb(75, 74, 72) solid;
+  border-left: 3px rgb(75, 74, 72) solid;
   display: grid;
-  grid-template-areas:
-    "photo title title state state"
-    "photo price price user user"
-    "photo category category pgi pgi"
-    "photo description description description description"
-    "photo description description description description";
   background-color: rgb(255, 255, 255);
+  grid-template-columns: 1fr 2fr 3fr;
+  grid-template-areas: 
+    "photo data description social"
+    
 }
 
 .AdvertDetail-photo {
   grid-area: photo;
-  box-sizing: border-box;
-  margin:20px;
+  margin: 20px;
   
 }
 
-.AdvertDetail-title {
-  grid-area: title;
-}
-
-.AdvertDetail-price {
-  grid-area: price;
-}
-
-.AdvertDetail-state {
+.AdvertDetail-general-info {
+  font-size: 1em;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  text-align: left;
+  font-size: 1.5rem;
+  
 }
-
-.AdvertDetail-user {
-  grid-area: user;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.AdvertDetail-PGI {
-  grid-area: pgi;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.AdvertDetail-category {
-  grid-area: category;
+.AdvertDetail-general-info > p {
+  margin: 0.3em;
 }
 
 .AdvertDetail-description {
   grid-area: description;
-  background-color: rgb(212, 191, 237);
+  max-width: 300px;
+  font-size: 1.2rem;
+  text-align: left;
+  display: flex;
+  justify-self: center;
+  align-content: center;
 }
+
+.edit-details{
+  grid-area: social;
+  display: flex;
+  flex-direction: column;
+}
+
 img {
   width: 350px;
 }
+
+@media (max-width:1075px) {
+  .AdvertDetail-card  {
+      grid-template-columns: 4fr;
+      grid-template-areas:
+        "photo"
+        "data"
+        "description"
+        "social"
+        
+    }
+}
+
+@media (max-width: 800px) {
+    .AdvertDetail-card  {
+      grid-template-columns: 4fr;
+      grid-template-areas:
+        "photo"
+        "data"
+        "description"
+        "social"
+        
+    }
+  }

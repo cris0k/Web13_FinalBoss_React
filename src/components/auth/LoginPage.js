@@ -5,25 +5,30 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { userLogin } from "../../store/actions/authActions";
 import { useTranslation } from "react-i18next";
+import { profileData } from "../../store/actions/userActions";
+
 import "../../style/form.css";
 
-const LoginPage = () => {
+const LoginPage = ({ socket }) => {
   const { loading, token, error } = useSelector((state) => state.auth);
-  const [t, i18n] = useTranslation("translation");
+  const [t] = useTranslation("translation");
   const dispatch = useDispatch();
-
+  const userName = useSelector((state) => state.user.userInfo?.name);
   const { register, handleSubmit } = useForm();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (token) {
+      dispatch(profileData());
       navigate("/");
     }
-  }, [navigate, token]);
+  }, [navigate, token,dispatch]);
 
-  const submitForm = (credentials) => {
-    dispatch(userLogin(credentials));
+  const submitForm = async(credentials) => {
+    await dispatch(userLogin(credentials));
+    
+    await socket.emit('newUser', { userName, socketID: socket.id });
   };
 
   return (
@@ -54,13 +59,20 @@ const LoginPage = () => {
       <button type="submit" className="button-log" disabled={loading}>
         {t("Login")}
       </button>
-      <NavLink className="nav-link" to="/forgotpassword"> {t("ForgotPwd?")}</NavLink>
+      <NavLink className="nav-link" to="/forgotpassword">
+        {" "}
+        {t("ForgotPwd?")}
+      </NavLink>
       {error && <Error>{error}</Error>}
       <div>
-        <span>{t('Do not have an account?')}</span>
-        <NavLink className="nav-link" to="/register" >{t('Register here')}</NavLink>
+        <span>{t("Do not have an account?")}</span>
+        <NavLink className="nav-link" to="/register">
+          {t("Register here")}
+        </NavLink>
       </div>
-      <NavLink className="nav-link" to="/">Home Page</NavLink>
+      <NavLink className="nav-link" to="/">
+        Home Page
+      </NavLink>
     </form>
   );
 };

@@ -7,7 +7,7 @@
   --details-light-blue: linear-gradient(90deg, #57cbf7 0%, #cb86ff 100%);
   --details-white: #ffffff;
   --details-black: #000000;
-  --disabled: #bfc1c2;
+  --disabled: #8f9091;
   --hover: linear-gradient(90deg, #57cbf7 0%, #deb1ff 100%);
   --neon-title:#ed95ffee;
   --shadow: #c7b2dab6;
@@ -28,6 +28,8 @@ header {
 .nav-buttons {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  margin:10px;
 }
 
 body {
@@ -54,39 +56,12 @@ body {
 li {
   list-style-type: none;
 }
-.confirmation-message {
-  font-size: 1.5rem;
-}
-.confirmation {
-  display: flex;
-  flex-direction: column;
-  border: none;
-  border-radius: 5px;
-  background: var(--shadow);
-  margin-top: 100px;
-  min-width: 250px;
-  position: fixed;
-  top: 2%;
-  left: 60%;
-  right: 0;
-  bottom: 0;
-}
 
-button {
-  cursor: pointer;
-  background-color: var(--button);
-  padding: 10px;
-  height: 45px;
-  border: none;
-  border-radius: 10%;
-  margin-left: 20px;
-  font-weight: 400;
-  font-size: 1rem;
-}
-
-button:hover {
-  background-color: var(--button-hover);
-  transition: background-color 0.3s linear;
+button:disabled {
+  color: var(--disabled);
+  pointer-events: none; 
+  background-color: var(--disabled);
+  
 }
 
 footer {
@@ -98,7 +73,7 @@ footer {
 }
 
 .linkDetail {
-  color: #000000;
+  color: var(--details-black);
   text-decoration: none;
 }
 .uwu-404 {

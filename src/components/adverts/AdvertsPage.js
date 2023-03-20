@@ -1,11 +1,12 @@
 import Page from "../layout/Page";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchAllAdverts } from "../../store/slices/adverts";
 import { useDispatch, useSelector } from "react-redux";
 import i18n from "../../i18n";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import "../../style/advertsPage.css";
+import FilterForm from "../filters/FilterForm"
 
 const EmptyList = () => {
   return (
@@ -15,10 +16,34 @@ const EmptyList = () => {
   );
 };
 const AdvertsPage = (props) => {
-  const adverts = useSelector((state) => state.adverts.list);
-  const [t, i18n] = useTranslation("translation");
+  const { list }= useSelector((state) => state.adverts);
+  const [t] = useTranslation("translation");
   const dispatch = useDispatch();
   const url = process.env.REACT_APP_URL_PHOTO;
+
+//FILTROS
+  const [filterAds, setFilterAds] = useState([])
+  // const onFilter = (ads) => {
+  //   setFilterAds(ads)
+  // }
+//FILTROS
+
+  const [visible, setVisible] = useState(6);
+  const [isCompleted, setIsCompleted] = useState(false)
+  const allGames = list.length
+
+  const showMoreGames = () => {
+    setVisible((prevValue)=>{
+      const nextGames = prevValue + 6
+      if(nextGames > allGames){
+        setIsCompleted(true)
+        return allGames
+      }
+      return nextGames
+    });
+    
+  };
+  
 
   useEffect(() => {
     dispatch(fetchAllAdverts());
@@ -27,24 +52,24 @@ const AdvertsPage = (props) => {
   return (
     <Page {...props}>
       <div className="advertsPage">
-        {adverts.length > 0 ? (
+        {allGames > 0 ? (
+          <>
+         <FilterForm onFilter={setFilterAds}/>
           <ul className="advertsPage-list">
-            {adverts.map((item) => (
+            {filterAds.map((item) => (
               <li className="advertsPage-item" key={item._id}>
                 <Link className="linkDetail" to={`/${item._id}`}>
-                <div className='AdvertDetail-photo'>
-						    {item.photo ? (
-                <img
-                  src={url + item.photo}
-                  alt='imagen del producto'
-                />
-						   ) : (
-							<img src={'img/image-coming-soon.jpg'} alt='coming-soon'/>
-						)}
-					</div>
-                  <p>
-                    {item.name}
-                  </p>
+                  <div className="AdvertDetail-photo">
+                    {item.photo ? (
+                      <img src={url + item.photo} alt={item.photo} />
+                    ) : (
+                      <img
+                        src={"img/image-coming-soon.jpg"}
+                        alt="coming-soon"
+                      />
+                    )}
+                  </div>
+                  <p>{item.name}</p>
                   <p>
                     {t("Price")}: {item.price}$
                   </p>
@@ -59,9 +84,14 @@ const AdvertsPage = (props) => {
               </li>
             ))}
           </ul>
+          </>
         ) : (
           <EmptyList />
         )}
+      </div>
+      <div>
+        <button onClick={showMoreGames} disabled={isCompleted}>Load More {visible}/{allGames}</button>
+        
       </div>
     </Page>
   );
