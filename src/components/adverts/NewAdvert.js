@@ -13,42 +13,7 @@ const NewAdvert = (props) => {
 	const [t, i18n] = useTranslation('translation');
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	// const [name, setName] = useState("");
-	// const [sale, setSale] = useState("");
-	// let [tags, setTags] = useState("");
-	// const [price, setPrice] = useState("");
-	// const [photo, setPhoto] = useState("");
-	// const [description, setDescription] = useState("");
 
-	//const [error, setError] = useState(null);
-	// const location = useLocation();
-	//const navigate = useNavigate();
-
-	// const handleChangeUsername = (event) => setName(event.target.value);
-	// const handleChangeSale = (event) => setSale(event.target.value);
-	// const handleChangeTags = (event) => setTags(event.target.value);
-	// const handleChangePrice = (event) => setPrice(event.target.value);
-	// // const handleChangePhoto = (event) => setPhoto(event.target.files[0]);
-	// const handleChangePhoto = (event) => setPhoto(event.target.value);
-	// const handleChandgeDescription = (event) =>
-	//   setDescription(event.target.value);
-	// const handleErrorClick = () => setError(null);
-
-	// const handleSubmitNewAdvert = async (event) => {
-	//   event.preventDefault();
-	//   const formData = new FormData(event.target);
-
-	//   await setAd(formData).then(
-	//     function (response) {
-	//       // console.log(location.pathname + "/" + response.id);
-	//       // navigate("/adverts" + response.id);
-	//       navigate("/adverts");
-	//     },
-	//     (error) => setError(error)
-	//   );
-	// };
-
-	// Useform managing destructuring
 	const { register, handleSubmit } = useForm();
 
 	const onSubmit = (data) => {
@@ -154,25 +119,7 @@ const NewAdvert = (props) => {
 					<br></br>
 					<br></br>
 					<label style={{ verticalAlign: 'top' }}>Choose your category:</label>
-					{/* <select
-              // Aquí, en el value, debería ir asociado a un estado, que cambiará según cambie el select.
-              // value={tags}
-              // onChange={function (event) {
-              //   console.log(event.target.value);
-              //   handleChangeTags();
-              // }}
-              // onChange=
-              name="category"
-              // defaultValue={{ label: "Choose a category", value: 0 }}
-              multiple
-            >
-              //<option>Choose a category</option>
-              <option value="fantasy">Fantasy</option>
-              <option value="rpg">RPG</option>
-              <option value="shooter">Shooter</option>
-              <option value="arcade">Arcade</option>
-            </select> */}
-
+		
 					<select {...register('category.types')} multiple>
 						<option value='fantasy'>Fantasy</option>
 						<option value='rpg'>RPG</option>
