@@ -4,7 +4,7 @@ import { useFilterContext } from "./filterContext";
 const pegies = ["3", "7", "12", "16", "18"];
 
 const PegiFilter = () => {
-  const [tags, setTags] = useState(pegies);
+  const [tags] = useState(pegies);
   const { filterParams, setFilterParams } = useFilterContext();
   const [chosen, setChosen] = useState(filterParams.PGI);
 
