@@ -1,35 +1,43 @@
 // Imports goes here
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useParams, useNavigate } from 'react-router-dom';
-import Page from '../layout/Page';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { setAd } from '../auth/service';
 import { useForm } from 'react-hook-form';
-import { newAdvertSlice } from '../../store/slices/newAdvert';
-import i18n from '../../i18n';
 import { useTranslation } from 'react-i18next';
+import Swal from 'sweetalert2';
 
 import '../../style/form.css';
 
 const NewAdvert = () => {
 	const [t] = useTranslation('translation');
 	const navigate = useNavigate();
-	const stateAdvertData = useSelector((state) => state.newAdvert);
-
-	const [formAdvert, setFormAdvert] = useState(stateAdvertData);
+	const userName = useSelector((state) => state.user);
 
 	// Useform managing destructuring
 	const { register, handleSubmit } = useForm();
 
 	// Using useform to collect all data.
 	const onSubmit = (data) => {
-		console.log(data);
-		setAd(data);
+		data.userOwner = userName.userInfo.name;
+		setAd(data).then(function (response) {
+			Swal.fire({
+				title: t('Created advert'),
+				imageUrl: '/img/well-done.gif',
+				imageWidth: 400,
+				imageAlt: 'Well done!',
+				showCancelButton: false,
+				confirmButtonText: 'OK',
+			}).then((result) => {
+				if (result.isConfirmed) {
+					navigate('/' + response.advert._id);
+				}
+			});
+		});
 	};
 
 	return (
 		<form className='signin-up-form' onSubmit={handleSubmit(onSubmit)}>
-			<h1 className='form-title'>{t('Create a new Advert')}</h1>
+			<h1 className='form-title'>{t('Create an advert')}</h1>
 			<div>
 				<input
 					id='name'
@@ -54,7 +62,7 @@ const NewAdvert = () => {
 				<input type='radio' value='sale' {...register('sale')}></input>
 			</div>
 			<div>
-				<label>{t('PEGI: ')}</label>
+				<label>{t('PGI')}</label>
 
 				<select {...register('PGI', { required: true })}>
 					<option></option>
@@ -77,7 +85,7 @@ const NewAdvert = () => {
 				<input id='photo' name='photo' type='file' {...register('photo')} />
 			</div>
 			<div>
-				<label>{t('Choose your category: ')}</label>
+				<label>{t('Choose the category: ')}</label>
 			</div>
 			<div>
 				<select {...register('category')} multiple>
@@ -98,7 +106,7 @@ const NewAdvert = () => {
 					}}></textarea>
 			</div>
 			<button type='submit' className='button-log'>
-				{t('Create advert')}
+				{t('Upload advert')}
 			</button>
 		</form>
 	);
