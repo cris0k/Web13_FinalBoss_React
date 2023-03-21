@@ -5,12 +5,14 @@ import { addFavToArray, deleteFavToArray } from "../../store/slices/userSlice";
 import "../../style/favButton.css";
 
 const FavButton = () => {
-  //const [isLike, setIsLike] = useState(false);
   const dispatch = useDispatch();
   const [advert] = useSelector((state) => state.adverts.list);
   const user = useSelector((state) => state.user.userInfo);
 
-  //const favAdverts = useSelector((state) => state.user.user.favAdverts);
+  const advertId = advert._id;
+  const favAdverts = user.favAdverts;
+  const favAdvertsId = favAdverts.map((advert) => advert._id);
+  const isLiked = favAdvertsId.includes(advertId);
 
   const handleLikeButton = () => {
     dispatch(addFavToArray(user, advert));
@@ -22,12 +24,15 @@ const FavButton = () => {
 
   return (
     <div className="fav-buttons">
-      <button className="nofav-button" onClick={handleForgetButton}>
-        Forget Favourite
-      </button>
-      <button className="fav-button" onClick={handleLikeButton}>
-        Add Favourite
-      </button>
+      {isLiked ? (
+        <button className="nofav-button" onClick={handleForgetButton}>
+          Forget Favourite
+        </button>
+      ) : (
+        <button className="fav-button" onClick={handleLikeButton}>
+          Add Favourite
+        </button>
+      )}
     </div>
   );
 };

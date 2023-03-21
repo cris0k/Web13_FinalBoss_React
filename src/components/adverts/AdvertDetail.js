@@ -20,12 +20,18 @@ const AdvertDetail = (props) => {
   const location = useLocation();
   const url = process.env.REACT_APP_URL_PHOTO;
   const urlProd = process.env.REACT_APP_API_BASE_URL;
+  const [userName, adverts] = useSelector((state) => [
+    state.user?.userInfo?.name,
+    state.adverts.list,
+  ]);
 
   const shareUrl = `${urlProd}${location.pathname}`;
- 
+
   //Obtener el anuncio
-  const { list: adverts } = useSelector((state) => state.adverts);
+  //const { list: adverts } = useSelector((state) => state.adverts);
+
   const [advert] = adverts;
+  const advertproperty = advert?.userOwner;
 
   const token = storage.get("auth");
 
@@ -34,13 +40,41 @@ const AdvertDetail = (props) => {
     if (token) {
       dispatch(profileData());
     }
-  }, [dispatch,token]);
+  }, [dispatch, token]);
 
   //Traer el anuncio
   useEffect(() => {
     dispatch(getUniqueAdvert(advertId));
   }, [dispatch, advertId]);
+  //Traer el anuncio
+  useEffect(() => {
+    dispatch(getUniqueAdvert(advertId));
+  }, [dispatch, advertId]);
 
+  //Eliminar producto
+  const handleRemoveProdcut = () => {
+    try {
+      Swal.fire({
+        title: t("Delete"),
+        imageUrl: "/img/men-in-black.gif",
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "men-in-black-delete",
+        showCancelButton: true,
+        cancelButtonText: t("Cancel"),
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: t("Yes"),
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(deleteAdvert(advert));
+          navigate("/");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   //Eliminar producto
   const handleRemoveProdcut = () => {
     try {
@@ -74,7 +108,7 @@ const AdvertDetail = (props) => {
             {advert.photo ? (
               <img src={url + advert.photo} alt="imagen del producto" />
             ) : (
-              <img src={"img/default.jpg"} alt="coming-soon" />
+              <img src={"img/image-coming-soon.jpg"} alt="coming-soon" />
             )}
           </div>
           <div className="AdvertDetail-general-info">
@@ -114,10 +148,14 @@ const AdvertDetail = (props) => {
       ) : (
         " Producto no encontrado"
       )}
-      <button className="detailProduct-button" onClick={handleRemoveProdcut}>
-        {" "}
-        {t("Delete")}
-      </button>
+      {advertproperty === userName ? (
+        <button className="detailProduct-button" onClick={handleRemoveProdcut}>
+          {" "}
+          {t("Delete")}
+        </button>
+      ) : (
+        " "
+      )}
     </Page>
   );
 };

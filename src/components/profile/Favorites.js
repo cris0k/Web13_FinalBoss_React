@@ -14,13 +14,12 @@ const FavoritesPage = () => {
     dispatch(profileData());
   }, [dispatch]);
 
-  const adverts = useSelector((state) => state.user.userInfo.favAdverts);
+  const adverts = useSelector((state) => state.user?.userInfo?.favAdverts);
 
-  console.log(adverts);
   return (
     <Page>
       <div>
-        {adverts.length > 0 ? (
+        {adverts?.length > 0 ? (
           <ul className="advertsPage-list">
             {adverts.map((item) => (
               <li className="advertsPage-item" key={item._id}>
