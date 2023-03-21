@@ -18,6 +18,9 @@ import storage from "./utils/storage";
 import FavoritesPage from "./components/profile/Favorites";
 import { io }from 'socket.io-client';
 import ChatPage from "./components/chat/ChatPage";
+import MyAdvertsPage from "./components/profile/MyAdverts";
+
+
 const socket = io.connect(process.env.REACT_APP_SOCKET_URL);
 
 function App() {
@@ -50,6 +53,14 @@ function App() {
             element={
               <RequireAuth>
                 <FavoritesPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/user-profile/my-adverts"
+            element={
+              <RequireAuth>
+                <MyAdvertsPage />
               </RequireAuth>
             }
           />
