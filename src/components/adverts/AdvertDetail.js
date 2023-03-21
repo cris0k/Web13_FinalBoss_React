@@ -46,35 +46,7 @@ const AdvertDetail = (props) => {
   useEffect(() => {
     dispatch(getUniqueAdvert(advertId));
   }, [dispatch, advertId]);
-  //Traer el anuncio
-  useEffect(() => {
-    dispatch(getUniqueAdvert(advertId));
-  }, [dispatch, advertId]);
 
-  //Eliminar producto
-  const handleRemoveProdcut = () => {
-    try {
-      Swal.fire({
-        title: t("Delete"),
-        imageUrl: "/img/men-in-black.gif",
-        imageWidth: 400,
-        imageHeight: 200,
-        imageAlt: "men-in-black-delete",
-        showCancelButton: true,
-        cancelButtonText: t("Cancel"),
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: t("Yes"),
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch(deleteAdvert(advert));
-          navigate("/");
-        }
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
   //Eliminar producto
   const handleRemoveProdcut = () => {
     try {
