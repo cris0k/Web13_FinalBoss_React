@@ -13,7 +13,7 @@ const LoginPage = ({ socket }) => {
   const { loading, token, error } = useSelector((state) => state.auth);
   const [t] = useTranslation("translation");
   const dispatch = useDispatch();
-  const userName = useSelector((state) => state.user.userInfo?.name);
+
   const { register, handleSubmit } = useForm();
 
   const navigate = useNavigate();
@@ -27,8 +27,11 @@ const LoginPage = ({ socket }) => {
 
   const submitForm = async(credentials) => {
     await dispatch(userLogin(credentials));
+
+    const userName = credentials.name
     
-    await socket.emit('newUser', { userName, socketID: socket.id });
+    socket.emit('newUser', { userName, socketID: socket.id });
+    
   };
 
   return (

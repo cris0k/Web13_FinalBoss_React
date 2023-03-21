@@ -16,9 +16,9 @@ import PasswordResset from "./components/auth/PasswordResset";
 import NewAdvert from "./components/adverts/NewAdvert";
 import storage from "./utils/storage";
 import FavoritesPage from "./components/profile/Favorites";
-import socketIO from 'socket.io-client';
+import { io }from 'socket.io-client';
 import ChatPage from "./components/chat/ChatPage";
-const socket = socketIO.connect(process.env.REACT_APP_SOCKET_URL);
+const socket = io.connect(process.env.REACT_APP_SOCKET_URL);
 
 function App() {
   const dispatch = useDispatch();

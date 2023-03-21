@@ -3,15 +3,19 @@ import ChatBody from "./ChatBody";
 import ChatFooter from "./ChatFooter";
 import "../../style/chat.css"
 import { useEffect, useRef, useState } from "react";
+import { message } from "../../store/slices/chatSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const ChatPage =({socket})=>{
-  const [messages, setMessages] = useState([]);
   const [typingStatus, setTypingStatus] = useState('');
   const lastMessageRef = useRef(null)
+  const dispatch = useDispatch()
+  const {messages} = useSelector((state)=>state.chat)
+  
 
   useEffect(() => {
-    socket.on('messageResponse', (data) => setMessages([...messages, data]));
-  }, [socket, messages]);
+    socket.on('messageResponse', (data) => dispatch(message([...messages, data])))}
+  , [socket, dispatch,messages]);
 
   useEffect(() => {
     // scroll to bottom every time messages change

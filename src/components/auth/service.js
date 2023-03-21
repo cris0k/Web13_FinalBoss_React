@@ -43,3 +43,7 @@ export const changePassword = (credentials) => {
 		.put('/api/passwordChange', credentials)
 		.then((credentials) => credentials);
 };
+
+// export const getTags = async () => {
+//   return await client.get("/api/adverts/categories")
+// }
