@@ -21,15 +21,20 @@ const AdvertDetail = (props) => {
   const location = useLocation();
   const url = process.env.REACT_APP_URL_PHOTO;
   const urlProd = process.env.REACT_APP_API_BASE_URL;
-
-  
+  const [userName, adverts] = useSelector((state) => [
+    state.user?.userInfo?.name,
+    state.adverts.list,
+  ]);
 
   const shareUrl = `${urlProd}${location.pathname}`;
- 
+
   //Obtener el anuncio
-  const { list: adverts } = useSelector((state) => state.adverts);
+  //const { list: adverts } = useSelector((state) => state.adverts);
+
   const [advert] = adverts;
-  const [loggedInUser, setLoggedInUser] = useState({})
+  const [loggedInUser, setLoggedInUser] = useState({});
+  const advertproperty = advert?.userOwner;
+
   const token = storage.get("auth");
 
   //Traer al usuario
@@ -39,7 +44,7 @@ const AdvertDetail = (props) => {
         setLoggedInUser(response.payload);
       });
     }
-  }, [dispatch,token]);
+  }, [dispatch, token]);
 
   //Traer el anuncio
   useEffect(() => {
@@ -71,17 +76,26 @@ const AdvertDetail = (props) => {
     }
   };
 
-  const handleSendData = () => {
+  const handleSendData = async () => {
     //email del que esta logeado
-    const userEmail = loggedInUser.email; 
+    const userEmail = loggedInUser.email;
     // objeto con el usuario actual logeado y los detalles del anuncio
     const data = {
       userEmail: userEmail,
-      advert: advert
+      advert: advert,
     };
-    dispatch(contactEmail(data))
-  }
-
+    const result = await dispatch(contactEmail(data));
+    if (result.payload === "success") {
+      Swal.fire({
+        imageUrl: "/img/good-luck-congratulations.gif",
+        imageHeight: 250,
+        imageWidth: 250,
+        title: "UwUntuInfo",
+        text: `Email enviado con exito`,
+        confirmButtonText: "Aceptar",
+      });
+    }
+  };
 
   return (
     <Page title={t("Game's Details")} {...props}>
@@ -91,7 +105,7 @@ const AdvertDetail = (props) => {
             {advert.photo ? (
               <img src={url + advert.photo} alt="imagen del producto" />
             ) : (
-              <img src={"img/default.jpg"} alt="coming-soon" />
+              <img src={"img/image-coming-soon.jpg"} alt="coming-soon" />
             )}
           </div>
           <div className="AdvertDetail-general-info">
@@ -102,7 +116,7 @@ const AdvertDetail = (props) => {
               {t("Price")}: {advert.price}$
             </p>
             <p className="AdvertDetail-state">
-              {t("State")}: {advert.sale ? "Se vende" : "Se compra"}
+              {t("State")}: {advert.sale === "sale" ? "Se vende" : "Se compra"}
             </p>
             <p className="AdvertDetail-user">
               {t("UserProperty")}: {advert.userOwner}
@@ -126,16 +140,20 @@ const AdvertDetail = (props) => {
               shareUrl={shareUrl}
             />
             <FavButton />
-            <button onClick={handleSendData} >Contactar</button>
+            <button onClick={handleSendData}>Contactar</button>
           </div>
         </div>
       ) : (
         " Producto no encontrado"
       )}
-      <button className="detailProduct-button" onClick={handleRemoveProdcut}>
-        {" "}
-        {t("Delete")}
-      </button>
+      {advertproperty === userName ? (
+        <button className="detailProduct-button" onClick={handleRemoveProdcut}>
+          {" "}
+          {t("Delete")}
+        </button>
+      ) : (
+        " "
+      )}
     </Page>
   );
 };

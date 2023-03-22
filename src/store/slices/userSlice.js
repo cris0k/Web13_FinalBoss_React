@@ -48,8 +48,6 @@ export const addFavToArray = (user, advert) => (dispatch) => {
 };
 
 export const deleteFavToArray = (user, advert) => (dispatch) => {
-  console.log(user);
-  console.log(advert);
   const userAdvertsToUpdate = user.favAdverts.filter(
     ({ _id }) => _id !== advert._id
   );

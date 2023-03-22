@@ -1,22 +1,28 @@
 import { useTranslation } from "react-i18next";
-import {  useSelector ,useDispatch } from "react-redux";
-import { NavLink, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
 import "../../style/profile.css";
 import DeleteAccount from "./DeleteAccount";
 import { useEffect } from "react";
 import { getUserAdvert } from "../../store/slices/adverts";
 import "../../style/advertsPage.css";
 import { useState } from "react";
+import { profileData } from "../../store/actions/userActions";
 //import FavoritesPage from "./Favorites";
 
 const ProfilePage = () => {
   const { userInfo } = useSelector((state) => state.user);
   const [t] = useTranslation("translation");
   const url = process.env.REACT_APP_URL_PHOTO;
-  const name = useSelector((state) => state.user.userInfo.name);
+  const name = useSelector((state) => state.user?.userInfo?.name);
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(1)
   const [isCompleted, setIsCompleted] = useState(false);
+
+  useEffect(() => {
+    dispatch(profileData());
+  }, [dispatch]);
+
   useEffect(() => {
     dispatch(getUserAdvert(name))
    }, [name, dispatch]);
@@ -40,12 +46,14 @@ const ProfilePage = () => {
       <div>
         <nav className="nav-profile">
           <NavLink className="nav-user" to="/user-profile/my-favorites">
-            | {t("Favourites")} |
+            {t("Favourites")}
           </NavLink>
+
           <NavLink className="nav-user" to="/user-profile/my-adverts">
             | {t("My Adverts")} |
           </NavLink>
           <NavLink className="nav-user">| {t("Reserved")} |</NavLink>
+
         </nav>
       </div>
       <div className="profile-data">
@@ -76,7 +84,8 @@ const ProfilePage = () => {
           <ul className="advertsPage-list">
             {userAdverts.map((item) => (
               <li className="advertsPage-item" key={item._id}>
-                <Link className="linkDetail" to={`/${item._id}`}>
+                <Link
+                 className="linkDetail" to={`/${item._id}`}>
                   <div className="AdvertDetail-photo">
                     {item.photo ? (
                       <img src={url + item.photo} alt="imagen del producto" />

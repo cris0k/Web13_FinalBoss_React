@@ -47,7 +47,7 @@ export const changePassword = (credentials) => {
 export const emailContact = (credentials) => {
 	return client
 		.post('/api/contactEmail', credentials)
-		.then((credentials) => console.log(credentials));
+		.then((credentials) => (credentials));
 };
 // export const getTags = async () => {
 //   return await client.get("/api/adverts/categories")

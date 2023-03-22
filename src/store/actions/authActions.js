@@ -50,17 +50,20 @@ export const registerUser = createAsyncThunk(
 
 export const contactEmail = createAsyncThunk(
   "user/conctact",
-  async (data, { rejectWithValue }) => {
+  async (data) => {
     try {
       const token = await emailContact(data);
-
       return token;
     } catch (error) {
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
-      } else {
-        return rejectWithValue(error.message);
-      }
+      Swal.fire({
+        imageUrl: "/img/super-sad-cat-sits-in-corner.gif",
+        imageHeight: 250,
+        imageWidth: 250,
+        title: "UwUntuInfo",
+        text: `Algo ha salido mal, inténtalo mas tarde`,
+        confirmButtonText: "Continuar",
+      });
+      return "fail"
     }
   }
 );
