@@ -3,21 +3,29 @@
     height: 80vh;
     display: flex;
     align-items: center;
+    
   }
   .chat__sidebar {
     height: 100%;
-    background-color: #f9f5eb;
+    color: #f9f5eb;
     flex: 0.2;
-    border-right: 1px solid #fdfdfd;
+    border-right: 1px solid #aadd4c;
+    background-image: url("/public/img/game-data.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 23%;
+    
   }
   .chat__main {
     height: 100%;
     flex: 0.8;
+    
   }
   .chat__users > * {
     margin-bottom: 10px;
-    color: #415e8a;
-    font-size: 1.2rem;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 400;
   }
   .online__users > * {
     margin-bottom: 10px;
@@ -31,6 +39,7 @@
     background-color: #fff;
     padding: 20px;
     overflow-y:scroll;
+    
   }
   
   .message {
@@ -47,6 +56,7 @@
     border-radius: 10px;
     font-size: 1.5rem;
     word-break: break-word;
+    
 
   }
   .message__sender {
@@ -71,7 +81,7 @@
 
   .message__status {
     position: fixed;
-    bottom: 130px;
+    bottom: 90px;
     font-size: 13px;
     font-style: italic;
   }

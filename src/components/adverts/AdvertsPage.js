@@ -2,19 +2,12 @@ import Page from "../layout/Page";
 import { useEffect, useState } from "react";
 import { fetchAllAdverts } from "../../store/slices/adverts";
 import { useDispatch, useSelector } from "react-redux";
-import i18n from "../../i18n";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import "../../style/advertsPage.css";
 import FilterForm from "../filters/FilterForm";
+import EmptyList from "../common/EmptyList";
 
-const EmptyList = () => {
-  return (
-    <div>
-      <p>{i18n.t("No products")}</p>
-    </div>
-  );
-};
 const AdvertsPage = (props) => {
   const { list } = useSelector((state) => state.adverts);
   const [t] = useTranslation("translation");
@@ -82,7 +75,7 @@ const AdvertsPage = (props) => {
       </div>
       <div>
         <button onClick={showMoreGames} disabled={isCompleted}>
-          Load More {visible}/{allGames}
+          {t("Load More ")}{visible}/{allGames}
         </button>
       </div>
     </Page>

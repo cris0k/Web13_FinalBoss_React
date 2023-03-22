@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 const ChatFooter = ({ socket }) => {
   const [msg, setMsg] = useState('')
   const { userInfo } = useSelector((state) => state.user);
+  const [t] = useTranslation("translation");
 
   const handleTyping = () =>
-    socket.emit('typing', `${userInfo.name} is typing...`);
+    socket.emit('typing', `${userInfo.name}`+ t(" is typing..."));
 
   const handleSendMessage = (e) => {
     e.preventDefault();
@@ -26,13 +28,13 @@ const ChatFooter = ({ socket }) => {
       <form className="form" onSubmit={handleSendMessage}>
         <input
           type="text"
-          placeholder="Write message"
+          placeholder={t("Write message")}
           className="message"
           value={msg}
           onChange={(e) => setMsg(e.target.value)}
           onKeyDown={handleTyping}
         />
-        <button className="sendBtn">SEND</button>
+        <button className="sendBtn">{t("SEND")}</button>
       </form>
     </div>
   );

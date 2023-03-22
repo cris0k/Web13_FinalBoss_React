@@ -1,9 +1,11 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 const ChatBody = ({ lastMessageRef, typingStatus }) => {
   const { userInfo } = useSelector((state) => state.user);
   const {messages} = useSelector((state)=>state.chat)
+  const [t] = useTranslation("translation");
   
   return (
     <>
@@ -11,7 +13,7 @@ const ChatBody = ({ lastMessageRef, typingStatus }) => {
         {messages.map((msg) =>
           msg.name === userInfo.name ? (
             <div className="message__chats" key={msg.id}>
-              <p className="sender__name">You</p>
+              <p className="sender__name">{t("You")}</p>
               <div className="message__sender">
                 <p>{msg.text}</p>
               </div>
@@ -26,11 +28,11 @@ const ChatBody = ({ lastMessageRef, typingStatus }) => {
           )
         )}
         <div ref={lastMessageRef} />
-        
-      </div>
-      <div className="message__status">
+        <div className="message__status">
           <p>{typingStatus}</p>
         </div>
+      </div>
+      
     </>
   );
 };

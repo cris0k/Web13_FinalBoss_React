@@ -11,7 +11,7 @@ export const profileData = createAsyncThunk(
             return userData
             
         } catch (error) {
-            console.log(error);
+            throw new Error(error);
         }
     }
 )

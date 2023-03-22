@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useFilterContext } from "./filterContext";
 
 const TypeFilter = () => {
   const { filterParams, setFilterParams } = useFilterContext();
   const [radioValue, setRadioValue] = useState(filterParams.type);
-
+  const [t] = useTranslation("translation");
 
   useEffect(() => {
     setFilterParams((prevValues) => ({ ...prevValues, type: radioValue }));
@@ -18,10 +19,8 @@ const TypeFilter = () => {
 
   return (
     <div>
-      <span>Busca por tipo:</span>
-      <br />
       <label>
-        Venta
+        {t("Venta")}
         <input
           className="filter_sell"
           type="radio"
@@ -32,7 +31,7 @@ const TypeFilter = () => {
         />
       </label>{" "}
       <label>
-        Compra
+        {t("Compra")}
         <input
           className="filter_buy"
           type="radio"
@@ -43,7 +42,7 @@ const TypeFilter = () => {
         />
       </label>{" "}
       <label>
-        Todo
+        {t("Todo")}
         <input
           className="filter_all"
           type="radio"

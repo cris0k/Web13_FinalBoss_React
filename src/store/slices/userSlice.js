@@ -37,14 +37,14 @@ const userSlice = createSlice({
 export const { updateUser } = userSlice.actions;
 
 export const addFavToArray = (user, advert) => (dispatch) => {
-  // const userToUpdate = { ...user, favAdverts: [...user.favAdverts, advert] };
+  
   const userAdvertsToUpdate = [...user.favAdverts, advert];
   client
     .put(`/api/user/${user.id}`, userAdvertsToUpdate)
     .then((response) => {
       dispatch(updateUser(response));
     })
-    .catch((error) => console.log(error));
+    .catch((error) => (error));
 };
 
 export const deleteFavToArray = (user, advert) => (dispatch) => {
@@ -56,7 +56,7 @@ export const deleteFavToArray = (user, advert) => (dispatch) => {
     .then((response) => {
       dispatch(updateUser(response));
     })
-    .catch((error) => console.log(error));
+    .catch((error) => (error));
 };
 
 export default userSlice.reducer;

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { useFilterContext } from "./filterContext"
 
 const NameFilter = () => {
   const { filterParams, setFilterParams } = useFilterContext()
   const [value, setValue] = useState(filterParams.name)
+  const [t] = useTranslation("translation");
 
   useEffect(() => {
     setFilterParams((prev) => ({ ...prev, name: value }))
@@ -15,7 +17,7 @@ const NameFilter = () => {
   
   return (
     <label>
-      Busca por nombre:
+     {t("Busca por nombre:")}
       <br />
       <input className="filter_name" name="name-filter" onChange={handleChange} value={value} />
     </label>

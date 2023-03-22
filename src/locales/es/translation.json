@@ -48,5 +48,17 @@
   "Fantasy": "Fantasía",
   "Shooter": "Disparos",
   "Upload advert": "Subir anuncio",
-  "Created advert": "Anuncio creado correctamente"
+  "Created advert": "Anuncio creado correctamente",
+  "Open Chat":"Chat abierto",
+  "ACTIVE USERS":"USUARIOS ACTIVOS",
+  "You":"Tu",
+  "SEND":"ENVIAR",
+  "Write message":"Escribe un mensaje",
+  " is typing...":" está escribiendo...",
+  "Busca por rango de precios:":"Busca por rango de precios:",
+  "Busca por nombre:":"Busca por nombre:",
+  "Busca por tipo:":"Busca por tipo:",
+  "Venta":"Venta",
+  "Compra":"Compra",
+  "Todo":"Todo"
 }

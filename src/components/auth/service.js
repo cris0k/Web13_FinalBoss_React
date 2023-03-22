@@ -36,14 +36,10 @@ export const setAd = (newAd) => {
 export const forgottenPassword = (credentials) => {
 	return client
 		.post('/api/requestPasswordReset', credentials)
-		.then((credentials) => console.log(credentials));
+		.then((credentials) => (credentials));
 };
 export const changePassword = (credentials) => {
 	return client
 		.put('/api/passwordChange', credentials)
 		.then((credentials) => credentials);
 };
-
-// export const getTags = async () => {
-//   return await client.get("/api/adverts/categories")
-// }

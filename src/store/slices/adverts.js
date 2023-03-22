@@ -28,7 +28,7 @@ export const fetchAllAdverts = () => (dispatch) => {
     .then((response) => {
       dispatch(setAdvertsList(response.results.reverse()));
     })
-    .catch((error) => console.log(error));
+    .catch((error) => (error));
 };
 
 export const getUniqueAdvert = (advertId) => (dispatch) => {
@@ -37,7 +37,7 @@ export const getUniqueAdvert = (advertId) => (dispatch) => {
     .then((response) => {
       dispatch(setAdvertDetail(response.results));
     })
-    .catch((error) => console.log(error));
+    .catch((error) =>(error));
 };
 
 export const deleteAdvert = (advert) => (dispatch) => {
@@ -47,7 +47,7 @@ export const deleteAdvert = (advert) => (dispatch) => {
     .then((response) => {
       dispatch(setDeletedAdvert(response.results));
     })
-    .catch((error) => console.log(error));
+    .catch((error) => (error));
 };
 
 export const getUserAdvert = (userOwner) => (dispatch) => {
@@ -56,7 +56,7 @@ export const getUserAdvert = (userOwner) => (dispatch) => {
 		.then((response) => {
 			dispatch(setAdvertsList(response.results.reverse()));
 		})
-		.catch((error) => console.log(error));
+		.catch((error) => (error));
 };
 
 export const { setAdvertsList, setAdvertDetail, setDeletedAdvert } =

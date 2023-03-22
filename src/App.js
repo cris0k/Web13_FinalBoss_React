@@ -10,7 +10,6 @@ import NotFoundPage from "./components/common/NotFoundPage";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { profileData } from "./store/actions/userActions";
-
 import ForgetPassword from "./components/auth/ForgottenPassword";
 import PasswordResset from "./components/auth/PasswordResset";
 import NewAdvert from "./components/adverts/NewAdvert";
@@ -18,8 +17,6 @@ import storage from "./utils/storage";
 import FavoritesPage from "./components/profile/Favorites";
 import { io }from 'socket.io-client';
 import ChatPage from "./components/chat/ChatPage";
-import MyAdvertsPage from "./components/profile/MyAdverts";
-
 
 const socket = io.connect(process.env.REACT_APP_SOCKET_URL);
 
@@ -57,14 +54,6 @@ function App() {
             }
           />
           <Route
-            path="/user-profile/my-adverts"
-            element={
-              <RequireAuth>
-                <MyAdvertsPage />
-              </RequireAuth>
-            }
-          />
-          <Route
             path="/newadvert"
             element={
               <RequireAuth>
@@ -85,7 +74,7 @@ function App() {
         <Route path="/passwordReset" element={<PasswordResset />} />
         <Route path="/forgotpassword" element={<ForgetPassword />} />
         <Route path="/login" element={<LoginPage socket={socket}/>} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/register" element={<RegisterPage socket={socket} />} />
 
         <Route path="/404" element={<NotFoundPage />} />
         <Route path="/" element={<Navigate to="/adverts" />} />

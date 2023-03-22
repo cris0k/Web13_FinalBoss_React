@@ -28,7 +28,7 @@
   "Favourites": "Favourites",
   "Reserved": "Reserved",
   "Edit profile": "Edit profile",
-  "Delete account": "Delete Acount",
+  "Delete account": "Delete Account",
   "My Adverts": "My Adverts",
   "You won't be able to revert this!": "You won't be able to revert this!",
   "Yes, delete it": "Yes, delete it",
@@ -48,5 +48,17 @@
   "Fantasy": "Fantasy",
   "Shooter": "Shooter",
   "Upload advert": "Upload advert",
-  "Created advert": "Advert created"
+  "Created advert": "Advert created",
+  "Open Chat":"Open Chat",
+  "ACTIVE USERS":"ACTIVE USERS",
+  "You":"You",
+  "SEND":"SEND",
+  "Write message":"Write message",
+  " is typing...":" is typing...",
+  "Busca por rango de precios:":"Search by price range:",
+  "Busca por nombre:":"Search by name:",
+  "Venta":"Sale",
+  "Compra":"Buy",
+  "Todo":"All"
+  
 }

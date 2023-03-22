@@ -30,7 +30,7 @@ const PegiFilter = () => {
 
   return (
     <div>
-      Busca por Pegi:{" "}
+      Pegi :{" "}
       {tags.map((tag, index) => (
         <label key={index}>
           {tag}

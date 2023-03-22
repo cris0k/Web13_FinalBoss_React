@@ -34,7 +34,7 @@ span {
 
 input, select {
     padding: 10px 30px;
-    margin: 8px 0;
+    margin: 8px 5px;
     border-radius: 5px;
     border-color: var(--details-dark);
     cursor: pointer;

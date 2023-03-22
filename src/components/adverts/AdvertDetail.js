@@ -28,7 +28,6 @@ const AdvertDetail = (props) => {
   const shareUrl = `${urlProd}${location.pathname}`;
 
   //Obtener el anuncio
-  //const { list: adverts } = useSelector((state) => state.adverts);
 
   const [advert] = adverts;
   const advertproperty = advert?.userOwner;
@@ -68,7 +67,7 @@ const AdvertDetail = (props) => {
         }
       });
     } catch (error) {
-      console.log(error);
+      throw new Error(error);
     }
   };
 
