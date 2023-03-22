@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "../../style/profile.css";
 import DeleteAccount from "./DeleteAccount";
@@ -14,9 +14,8 @@ const ProfilePage = () => {
       <div>
         <nav className="nav-profile">
           <NavLink className="nav-user" to="/user-profile/my-favorites">
-            | {t("Favourites")} |
+            {t("Favourites")}
           </NavLink>
-          <NavLink className="nav-user">| {t("Reserved")} |</NavLink>
         </nav>
       </div>
       <div className="profile-data">

@@ -64,7 +64,8 @@ const AdvertsPage = (props) => {
                       {t("Price")}: {item.price}$
                     </p>
                     <p>
-                      {t("State")}: {item.sale ? t("On sale") : t("Buying")}
+                      {t("State")}:{" "}
+                      {item.sale === "sale" ? t("On sale") : t("Buying")}
                     </p>
                     <p>
                       {" "}

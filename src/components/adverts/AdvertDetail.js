@@ -91,7 +91,7 @@ const AdvertDetail = (props) => {
               {t("Price")}: {advert.price}$
             </p>
             <p className="AdvertDetail-state">
-              {t("State")}: {advert.sale ? "Se vende" : "Se compra"}
+              {t("State")}: {advert.sale === "sale" ? "Se vende" : "Se compra"}
             </p>
             <p className="AdvertDetail-user">
               {t("UserProperty")}: {advert.userOwner}
