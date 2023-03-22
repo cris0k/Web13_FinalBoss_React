@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { getUniqueAdvert, deleteAdvert } from "../../store/slices/adverts";
@@ -11,6 +11,7 @@ import "../../style/advertDetail.css";
 import FavButton from "../common/FavButton";
 import storage from "../../utils/storage";
 import { profileData } from "../../store/actions/userActions";
+import { contactEmail } from "../../store/actions/authActions";
 
 const AdvertDetail = (props) => {
   const { advertId } = useParams();
@@ -30,6 +31,7 @@ const AdvertDetail = (props) => {
   //Obtener el anuncio
 
   const [advert] = adverts;
+  const [loggedInUser, setLoggedInUser] = useState({});
   const advertproperty = advert?.userOwner;
 
   const token = storage.get("auth");
@@ -37,7 +39,9 @@ const AdvertDetail = (props) => {
   //Traer al usuario
   useEffect(() => {
     if (token) {
-      dispatch(profileData());
+      dispatch(profileData()).then((response) => {
+        setLoggedInUser(response.payload);
+      });
     }
   }, [dispatch, token]);
 
@@ -68,6 +72,27 @@ const AdvertDetail = (props) => {
       });
     } catch (error) {
       throw new Error(error);
+    }
+  };
+
+  const handleSendData = async () => {
+    //email del que esta logeado
+    const userEmail = loggedInUser.email;
+    // objeto con el usuario actual logeado y los detalles del anuncio
+    const data = {
+      userEmail: userEmail,
+      advert: advert,
+    };
+    const result = await dispatch(contactEmail(data));
+    if (result.payload === "success") {
+      Swal.fire({
+        imageUrl: "/img/good-luck-congratulations.gif",
+        imageHeight: 250,
+        imageWidth: 250,
+        title: "UwUntuInfo",
+        text: `Email enviado con exito`,
+        confirmButtonText: "Aceptar",
+      });
     }
   };
 
@@ -114,6 +139,7 @@ const AdvertDetail = (props) => {
               shareUrl={shareUrl}
             />
             <FavButton />
+            <button onClick={handleSendData}>Contactar</button>
           </div>
         </div>
       ) : (

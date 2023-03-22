@@ -5,6 +5,7 @@ import {
   forgottenPassword,
   login,
   changePassword,
+  emailContact,
 } from "../../components/auth/service";
 
 export const userLogin = createAsyncThunk(
@@ -46,6 +47,28 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
+
+export const contactEmail = createAsyncThunk(
+  "user/conctact",
+  async (data) => {
+    try {
+      const token = await emailContact(data);
+      return token;
+    } catch (error) {
+      Swal.fire({
+        imageUrl: "/img/super-sad-cat-sits-in-corner.gif",
+        imageHeight: 250,
+        imageWidth: 250,
+        title: "UwUntuInfo",
+        text: `Algo ha salido mal, inténtalo mas tarde`,
+        confirmButtonText: "Continuar",
+      });
+      return "fail"
+    }
+  }
+);
+
+
 
 export const forgottenPasswords = createAsyncThunk(
   "user/forgotPassWord",

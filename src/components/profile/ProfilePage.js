@@ -15,7 +15,7 @@ const ProfilePage = () => {
   const url = process.env.REACT_APP_URL_PHOTO;
   const name = useSelector((state) => state.user?.userInfo?.name);
   const dispatch = useDispatch();
-  const [visible, setVisible] = useState(6)
+  const [visible, setVisible] = useState(2)
   const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
