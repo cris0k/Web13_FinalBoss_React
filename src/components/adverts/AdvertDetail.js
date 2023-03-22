@@ -79,7 +79,6 @@ const AdvertDetail = (props) => {
       userEmail: userEmail,
       advert: advert
     };
-    console.log(data)
     dispatch(contactEmail(data))
   }
 
