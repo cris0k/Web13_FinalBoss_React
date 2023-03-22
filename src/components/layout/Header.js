@@ -10,7 +10,7 @@ function Header() {
   return (
     <header>
       <NavLink to="/" className="main-title">
-        <h1>UwUntu's Final BOSS</h1>
+        <h1>UwUntu</h1>
       </NavLink>
       <div>
         <button
