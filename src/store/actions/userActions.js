@@ -8,7 +8,6 @@ export const profileData = createAsyncThunk(
 
         try {
             const userData = await getUserInfo()
-            
             return userData
             
         } catch (error) {

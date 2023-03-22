@@ -49,6 +49,16 @@ export const deleteAdvert = (advert) => (dispatch) => {
     })
     .catch((error) => console.log(error));
 };
+
+export const getUserAdvert = (userOwner) => (dispatch) => {
+	client
+		.get(`${advertUrl}/user/${userOwner}`)
+		.then((response) => {
+			dispatch(setAdvertsList(response.results.reverse()));
+		})
+		.catch((error) => console.log(error));
+};
+
 export const { setAdvertsList, setAdvertDetail, setDeletedAdvert } =
   advertsSlice.actions;
 
