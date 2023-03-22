@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { registerUser } from "../../store/actions/authActions";
-import Error from "../Error";
+import Error from "../../components/common/Error";
 
-const RegisterPage = () => {
+const RegisterPage = ({socket}) => {
   const [customError, setCustomError] = useState(null);
   const [t] = useTranslation("translation");
 
@@ -30,6 +30,10 @@ const RegisterPage = () => {
     data.email = data.email.toLowerCase();
 
     dispatch(registerUser(data));
+
+    const userName = data.name
+    
+    socket.emit('newUser', { userName, socketID: socket.id });
   };
   return (
     <form onSubmit={handleSubmit(submitForm)} className="signin-up-form">

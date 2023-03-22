@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import { getTags } from "../auth/service";
+import { useTranslation } from "react-i18next";
 import { useFilterContext } from "./filterContext";
 const categories = ["fantasy", "rpg", "shooter", "arcade"];
 
@@ -7,13 +7,7 @@ const TagFilter = () => {
   const [tags] = useState(categories);
   const { filterParams, setFilterParams } = useFilterContext();
   const [chosen, setChosen] = useState(filterParams.category);
-  // useEffect(() => {
-  //   // getTags()
-  //   //   .then(setTags)
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  const [t] = useTranslation("translation");
 
   useEffect(() => {
     setFilterParams((prevValues) => ({ ...prevValues, category: chosen }));
@@ -26,7 +20,7 @@ const TagFilter = () => {
 
   return (
     <div>
-      Busca por tags:{" "}
+      {t("Category : ")}{" "}
       {tags.map((tag, index) => (
         <label key={index}>
           {tag}

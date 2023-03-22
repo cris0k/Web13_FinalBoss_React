@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import Error from "../Error";
+import Error from "../../components/common/Error";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { userLogin } from "../../store/actions/authActions";

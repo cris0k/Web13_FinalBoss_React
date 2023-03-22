@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { useFilterContext } from "./filterContext"
 
 const PriceFilter = () => {
   const { filterParams, setFilterParams } = useFilterContext()
   const [values, setValues] = useState(filterParams.range)
+  const [t] = useTranslation("translation");
 
   useEffect(() => {
     setFilterParams((prev) => ({
@@ -19,7 +21,7 @@ const PriceFilter = () => {
 
   return (
     <label>
-      Busca por rango:{" "}
+      {t("Busca por rango de precios:")}{" "}
       <input
         className="filter_min"
         name="minVal"

@@ -36,7 +36,7 @@ const DeleteAccount = () => {
     }
    
   
-    return <NavLink onClick={handleDelete}>{t('Delete account')}</NavLink>
+    return <NavLink onClick={handleDelete} style={{ color:'red'}}>{t('Delete account')}</NavLink>
 
 ;}
 

@@ -33,7 +33,7 @@ const AuthButton = () => {
       })
       
     } catch (error) {
-      console.log(error);
+      throw new Error(error);
     }
     
   };

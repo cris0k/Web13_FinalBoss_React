@@ -19,10 +19,3 @@ export const deleteUser =()=>{
     })
     .catch(error => error)
 }
-
-// export const getMyAdvert = async (name)=>{
-//     return await client
-//     .get(`/api/adverts/user/${name}`)
-//     .then(response => response)
-//     .catch(error => error)
-// }

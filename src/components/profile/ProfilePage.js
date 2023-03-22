@@ -8,7 +8,6 @@ import { getUserAdvert } from "../../store/slices/adverts";
 import "../../style/advertsPage.css";
 import { useState } from "react";
 import { profileData } from "../../store/actions/userActions";
-//import FavoritesPage from "./Favorites";
 
 const ProfilePage = () => {
   const { userInfo } = useSelector((state) => state.user);
@@ -16,7 +15,7 @@ const ProfilePage = () => {
   const url = process.env.REACT_APP_URL_PHOTO;
   const name = useSelector((state) => state.user?.userInfo?.name);
   const dispatch = useDispatch();
-  const [visible, setVisible] = useState(1)
+  const [visible, setVisible] = useState(2)
   const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
@@ -48,12 +47,6 @@ const ProfilePage = () => {
           <NavLink className="nav-user" to="/user-profile/my-favorites">
             {t("Favourites")}
           </NavLink>
-
-          <NavLink className="nav-user" to="/user-profile/my-adverts">
-            | {t("My Adverts")} |
-          </NavLink>
-          <NavLink className="nav-user">| {t("Reserved")} |</NavLink>
-
         </nav>
       </div>
       <div className="profile-data">
@@ -70,19 +63,16 @@ const ProfilePage = () => {
             </li>
           </ul>
           <div>
-            <NavLink> {t("Edit profile")}</NavLink>
-          </div>
-          <div>
             <DeleteAccount />
           </div>
         </section>
         <section className="my-adverts">
           <h1>{t("My Adverts")}</h1>
-        </section>
+        
         <div>
         {allGames > 0 ? (
           <ul className="advertsPage-list">
-            {userAdverts.map((item) => (
+            {userAdverts.slice(0, visible).map((item) => (
               <li className="advertsPage-item" key={item._id}>
                 <Link
                  className="linkDetail" to={`/${item._id}`}>
@@ -115,12 +105,13 @@ const ProfilePage = () => {
           <p>No hay resultados</p>
         )}
       </div>
-      <div>
-						<button onClick={showMoreGames} disabled={isCompleted}>
-							Load More {visible}/{allGames}
-						</button>
-					</div>
+      </section>
       </div>
+      <div>
+        <button onClick={showMoreGames} disabled={isCompleted}>
+          {t("Load More ")}{visible}/{allGames}
+        </button>
+			</div>
     </section>
   );
 };

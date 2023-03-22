@@ -36,7 +36,7 @@ export const setAd = (newAd) => {
 export const forgottenPassword = (credentials) => {
 	return client
 		.post('/api/requestPasswordReset', credentials)
-		.then((credentials) => console.log(credentials));
+		.then((credentials) => (credentials));
 };
 export const changePassword = (credentials) => {
 	return client

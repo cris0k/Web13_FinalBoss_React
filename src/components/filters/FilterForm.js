@@ -39,6 +39,7 @@ const FilterForm = ({onFilter }) => {
       <div className="form_inside">
         <FilterContextProvider value={{ filterParams, setFilterParams }}>
           <form className="signin-up-form" onSubmit={handleSubmit}>
+            <h2>Filter</h2>
             <NameFilter />
             <TypeFilter />
             <PriceFilter />
