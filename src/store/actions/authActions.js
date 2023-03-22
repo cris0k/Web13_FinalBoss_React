@@ -5,6 +5,7 @@ import {
   forgottenPassword,
   login,
   changePassword,
+  emailContact,
 } from "../../components/auth/service";
 
 export const userLogin = createAsyncThunk(
@@ -46,6 +47,25 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
+
+export const contactEmail = createAsyncThunk(
+  "user/conctact",
+  async (data, { rejectWithValue }) => {
+    try {
+      const token = await emailContact(data);
+
+      return token;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+
 
 export const forgottenPasswords = createAsyncThunk(
   "user/forgotPassWord",

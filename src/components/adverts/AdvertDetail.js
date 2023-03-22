@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { getUniqueAdvert, deleteAdvert } from "../../store/slices/adverts";
@@ -11,6 +11,7 @@ import "../../style/advertDetail.css";
 import FavButton from "../common/FavButton";
 import storage from "../../utils/storage";
 import { profileData } from "../../store/actions/userActions";
+import { contactEmail } from "../../store/actions/authActions";
 
 const AdvertDetail = (props) => {
   const { advertId } = useParams();
@@ -21,18 +22,22 @@ const AdvertDetail = (props) => {
   const url = process.env.REACT_APP_URL_PHOTO;
   const urlProd = process.env.REACT_APP_API_BASE_URL;
 
+  
+
   const shareUrl = `${urlProd}${location.pathname}`;
  
   //Obtener el anuncio
   const { list: adverts } = useSelector((state) => state.adverts);
   const [advert] = adverts;
-
+  const [loggedInUser, setLoggedInUser] = useState({})
   const token = storage.get("auth");
 
   //Traer al usuario
   useEffect(() => {
     if (token) {
-      dispatch(profileData());
+      dispatch(profileData()).then((response) => {
+        setLoggedInUser(response.payload);
+      });
     }
   }, [dispatch,token]);
 
@@ -65,6 +70,19 @@ const AdvertDetail = (props) => {
       console.log(error);
     }
   };
+
+  const handleSendData = () => {
+    //email del que esta logeado
+    const userEmail = loggedInUser.email; 
+    // objeto con el usuario actual logeado y los detalles del anuncio
+    const data = {
+      userEmail: userEmail,
+      advert: advert
+    };
+    console.log(data)
+    dispatch(contactEmail(data))
+  }
+
 
   return (
     <Page title={t("Game's Details")} {...props}>
@@ -109,6 +127,7 @@ const AdvertDetail = (props) => {
               shareUrl={shareUrl}
             />
             <FavButton />
+            <button onClick={handleSendData} >Contactar</button>
           </div>
         </div>
       ) : (
