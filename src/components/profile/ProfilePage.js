@@ -72,7 +72,7 @@ const ProfilePage = () => {
         <div>
         {allGames > 0 ? (
           <ul className="advertsPage-list">
-            {userAdverts.map((item) => (
+            {userAdverts.slice(0, visible).map((item) => (
               <li className="advertsPage-item" key={item._id}>
                 <Link
                  className="linkDetail" to={`/${item._id}`}>

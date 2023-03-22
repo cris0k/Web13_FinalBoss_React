@@ -42,7 +42,7 @@ const AdvertsPage = (props) => {
           <>
             <FilterForm onFilter={setFilterAds} />
             <ul className="advertsPage-list">
-              {filterAds.map((item) => (
+              {filterAds.slice(0, visible).map((item) => (
                 <li className="advertsPage-item" key={item._id}>
                   <Link className="linkDetail" to={`/${item._id}`}>
                     <div className="AdvertDetail-photo">
