@@ -13,7 +13,7 @@ const FavoritesPage = () => {
   useEffect(() => {
     dispatch(profileData());
   }, [dispatch]);
-
+  
   const adverts = useSelector((state) => state.user?.userInfo?.favAdverts);
 
   return (
