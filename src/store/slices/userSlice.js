@@ -54,7 +54,7 @@ export const deleteFavToArray = (user, advert) => (dispatch) => {
   client
     .put(`/api/user/${user.id}`, userAdvertsToUpdate)
     .then((response) => {
-      dispatch(updateUser(response));
+      dispatch(updateUser(response));     
     })
     .catch((error) => (error));
 };

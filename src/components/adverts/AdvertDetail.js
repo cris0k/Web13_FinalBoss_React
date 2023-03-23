@@ -138,14 +138,18 @@ const AdvertDetail = (props) => {
               className="AdvertDetail-SocialShare"
               shareUrl={shareUrl}
             />
-            <FavButton />
-            <button onClick={handleSendData}>Contactar</button>
+            {advertproperty !== userName && token ? <FavButton /> : ""}
+            {advertproperty !== userName && token ? (
+              <button onClick={handleSendData}>Contactar</button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       ) : (
         " Producto no encontrado"
       )}
-      {advertproperty === userName ? (
+      {advertproperty === userName && token ? (
         <button className="detailProduct-button" onClick={handleRemoveProdcut}>
           {" "}
           {t("Delete")}
